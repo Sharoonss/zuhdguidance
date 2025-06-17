@@ -1155,6 +1155,472 @@
                 transform: translateY(-5px);
             }
         }
+
+        /* donation section  */
+          .donation-hero-container {
+    background: 
+        linear-gradient(rgba(15, 61, 46, 0.8), rgba(15, 61, 46, 0.9));
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(15, 61, 46, 0.3);
+    overflow: hidden;
+    position: relative;
+}
+
+        .donation-content-wrapper {
+            padding: 60px 80px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .donation-support-subtitle {
+            font-size: 16px;
+            color: #C8B88A;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .donation-main-heading {
+            font-size: 48px;
+            font-weight: bold;
+            color: #F7EFE5;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .donation-description-text {
+            font-size: 18px;
+            color: #F7EFE5;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width:1200px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .donation-buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .donation-primary-btn {
+            background: linear-gradient(135deg, #C8B88A 0%, #b5a076 100%);
+            color: #0F3D2E;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(200, 184, 138, 0.3);
+        }
+
+        .donation-primary-btn:hover {
+            background: linear-gradient(135deg, #b5a076 0%, #a39464 100%);
+        }
+
+        .donation-secondary-btn {
+            background: transparent;
+            color: #F7EFE5;
+            border: 2px solid #C8B88A;
+            padding: 14px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+
+        .donation-secondary-btn:hover {
+            background: #C8B88A;
+            color: #0F3D2E;
+        }
+
+        .donation-decorative-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .donation-floating-icon {
+            position: absolute;
+            font-size: 24px;
+            color: #C8B88A;
+            opacity: 0.3;
+        }
+
+        .donation-floating-icon:nth-child(1) {
+            top: 20%;
+            left: 10%;
+        }
+
+        .donation-floating-icon:nth-child(2) {
+            top: 30%;
+            right: 15%;
+        }
+
+        .donation-floating-icon:nth-child(3) {
+            bottom: 25%;
+            left: 15%;
+        }
+
+        .donation-floating-icon:nth-child(4) {
+            bottom: 20%;
+            right: 10%;
+        }
+
+        .donation-impact-stats {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .donation-stat-item {
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            background: rgba(247, 239, 229, 0.1);
+            border: 1px solid rgba(200, 184, 138, 0.3);
+            min-width: 150px;
+        }
+
+        .donation-stat-item:hover {
+            background: rgba(247, 239, 229, 0.15);
+        }
+
+        .donation-stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #C8B88A;
+            margin-bottom: 8px;
+        }
+
+        .donation-stat-label {
+            font-size: 14px;
+            color: #F7EFE5;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .donation-content-wrapper {
+                padding: 40px 20px;
+            }
+
+            .donation-main-heading {
+                font-size: 36px;
+            }
+
+            .donation-description-text {
+                font-size: 16px;
+            }
+
+            .donation-buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .donation-primary-btn,
+            .donation-secondary-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .donation-impact-stats {
+                gap: 20px;
+            }
+
+            .donation-stat-item {
+                min-width: 120px;
+                padding: 15px;
+            }
+        }
+
+        /* footer  */
+
+ .footer {
+            background: linear-gradient(135deg, #0F3D2E 0%, #1a5c42 100%);
+            color: #F7EFE5;
+            padding: 3rem 0 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path d="M0,0 Q500,50 1000,0 L1000,100 L0,100 Z" fill="%23C8B88A" opacity="0.1"/></svg>');
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1.2fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo {
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(45deg, #C8B88A, #F7EFE5);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0F3D2E;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(200, 184, 138, 0.3);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 184, 138, 0.4);
+        }
+
+        .logo-text {
+            font-size: 0.9rem;
+            color: #F7EFE5;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-column h3 {
+            color: #C8B88A;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background: #C8B88A;
+            border-radius: 2px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.7rem;
+        }
+
+        .footer-column ul li a {
+            color: #F7EFE5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+            display: block;
+            padding: 0.2rem 0;
+        }
+
+        .footer-column ul li a:hover {
+            color: #C8B88A;
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .newsletter {
+            background: rgba(247, 239, 229, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(200, 184, 138, 0.2);
+        }
+
+        .newsletter h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .newsletter p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #0F3D2E;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #0F3D2E;
+            opacity: 0.6;
+        }
+
+        .newsletter-form button {
+            padding: 0.8rem 1.5rem;
+            background: #C8B88A;
+            color: #0F3D2E;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button:hover {
+            background: #F7EFE5;
+            transform: translateY(-1px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(200, 184, 138, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C8B88A;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: #C8B88A;
+            color: #0F3D2E;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(200, 184, 138, 0.2);
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-links a {
+            color: #F7EFE5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #C8B88A;
+        }
+
+        @media (max-width: 768px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer-column {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .footer-column:nth-child(1) { animation-delay: 0.1s; }
+        .footer-column:nth-child(2) { animation-delay: 0.2s; }
+        .footer-column:nth-child(3) { animation-delay: 0.3s; }
+        .footer-column:nth-child(4) { animation-delay: 0.4s; }
+        .footer-column:nth-child(5) { animation-delay: 0.5s; }
+
+
     </style>
 </head>
 <body>
@@ -1408,7 +1874,116 @@
     </div>
         </div>
     </section>
+ <div class="donation-hero-container">
+        <!-- <div class="donation-decorative-elements">
+            <div class="donation-floating-icon">🇵🇸</div>
+            <div class="donation-floating-icon">🕌</div>
+            <div class="donation-floating-icon">💝</div>
+            <div class="donation-floating-icon">🤲</div>
+        </div> -->
 
+        <div class="donation-content-wrapper">
+            <p class="donation-support-subtitle">Support our humanitarian efforts</p>
+            <h1 class="donation-main-heading">DONATE FOR<br>PALESTINE & MOSQUES</h1>
+            <p class="donation-description-text">
+                Join us in supporting Palestinian families in need and helping build and maintain 
+                mosques in our communities. Your donation provides essential aid, medical supplies, 
+                food, and supports places of worship that serve as centers of hope and community.
+            </p>
+
+            <div class="donation-buttons-container">
+                <button class="donation-primary-btn" onclick="handleDonation()">
+                    Donate Now
+                </button>
+                <button class="donation-secondary-btn" onclick="handleLearnMore()">
+                    Learn More
+                </button>
+            </div>
+
+            <div class="donation-impact-stats">
+                <div class="donation-stat-item">
+                    <div class="donation-stat-number">2,847</div>
+                    <div class="donation-stat-label">Families Helped</div>
+                </div>
+                <div class="donation-stat-item">
+                    <div class="donation-stat-number">15</div>
+                    <div class="donation-stat-label">Mosques Supported</div>
+                </div>
+                <div class="donation-stat-item">
+                    <div class="donation-stat-number">92%</div>
+                    <div class="donation-stat-label">Direct Aid</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column footer-logo">
+                    <div class="logo" onclick="logoClick()">LOGO</div>
+                    <p class="logo-text">Your brand tagline or description goes here. Creating amazing experiences since 2020.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Shop Matcha</h3>
+                    <ul>
+                        <li><a href="#" onclick="linkClick('Just the Matcha')">Just the Matcha</a></li>
+                        <li><a href="#" onclick="linkClick('The Trial Kit')">The Trial Kit</a></li>
+                        <li><a href="#" onclick="linkClick('Wholesale & Bulk')">Wholesale & Bulk</a></li>
+                        <li><a href="#" onclick="linkClick('Teaware')">Teaware</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Learn</h3>
+                    <ul>
+                        <li><a href="#" onclick="linkClick('Matcha Recipes')">Matcha Recipes</a></li>
+                        <li><a href="#" onclick="linkClick('Caffeine Content')">Caffeine Content</a></li>
+                        <li><a href="#" onclick="linkClick('Health Benefits')">Health Benefits</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>More from Tenzo</h3>
+                    <ul>
+                        <li><a href="#" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="#" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="#" onclick="linkClick('Affiliate')">Affiliate</a></li>
+                        <li><a href="#" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <li><a href="#" onclick="linkClick('FAQ')">FAQ's</a></li>
+                        <li><a href="#" onclick="linkClick('Sign In')">Sign In</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column newsletter">
+                    <h3>Let's Stay Connected</h3>
+                    <p>Enter your email to unlock 10% OFF.</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">SUBMIT</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" class="social-link" onclick="socialClick('Pinterest')" title="Pinterest">📌</a>
+                        <a href="#" class="social-link" onclick="socialClick('Facebook')" title="Facebook">📘</a>
+                        <a href="#" class="social-link" onclick="socialClick('Instagram')" title="Instagram">📷</a>
+                        <a href="#" class="social-link" onclick="socialClick('Twitter')" title="Twitter">🐦</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Your Company. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
     <script>
         // Sample search data
         const searchData = [
@@ -2019,6 +2594,102 @@ window.addEventListener('resize', () => {
                     qotdFeaturedCard.style.transform = 'translateX(0)';
                 }, 100);
             }, 100);
+        });
+
+
+        // donation 
+          // Button click handlers
+        function handleDonation() {
+            // Show donation options
+            const donationOptions = `
+🇵🇸 PALESTINE EMERGENCY AID:
+• $25 - Emergency food package
+• $50 - Medical supplies for families
+• $100 - Shelter materials
+• $250 - Monthly family support
+
+🕌 MOSQUE SUPPORT:
+• $30 - Daily maintenance
+• $75 - Community programs
+• $150 - Facility improvements
+• $500 - Major renovations
+
+Choose any amount - every donation matters!
+            `;
+            alert(donationOptions);
+        }
+
+        function handleLearnMore() {
+            // Show more information
+            const moreInfo = `
+OUR IMPACT:
+
+🇵🇸 PALESTINE RELIEF:
+• Emergency food & water distribution
+• Medical aid and supplies
+• Temporary shelter assistance
+• Educational support for children
+
+🕌 MOSQUE INITIATIVES:
+• Building & renovation projects
+• Community center development
+• Religious education programs
+• Youth and family services
+
+100% of donations go directly to those in need.
+All projects are Zakat eligible.
+            `;
+            alert(moreInfo);
+        }
+
+         function logoClick() {
+            console.log('Logo clicked');
+            alert('Logo clicked! You can customize this action.');
+        }
+
+        function linkClick(linkName) {
+            console.log(`${linkName} link clicked`);
+            // You can add navigation logic here
+        }
+
+        function socialClick(platform) {
+            console.log(`${platform} social link clicked`);
+            // You can add social media navigation logic here
+        }
+
+        function submitNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            console.log(`Newsletter signup: ${email}`);
+            alert(`Thank you for subscribing with: ${email}`);
+            event.target.reset();
+        }
+
+        // Add smooth scrolling effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.footer-column').forEach(column => {
+                observer.observe(column);
+            });
+        });
+
+        // Add dynamic hover effects
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.1)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
   </script>
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
