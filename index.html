@@ -1,0 +1,2026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZUHD GUIDANCE - Nourishing Hearts, Reviving Deen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-green: #0F3D2E;
+            --sand-beige: #F7EFE5;
+            --off-white: #FEFEFE;
+            --gold: #C8B88A;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--deep-green);
+            color: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 61, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-main {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo-sub {
+            font-size: 0.875rem;
+            color: var(--gold);
+            font-weight: 300;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: var(--off-white);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .dropdown-toggle .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown-toggle.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(15, 61, 46, 0.98);
+            border: 1px solid var(--gold);
+            border-radius: 4px;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 0.5rem 0;
+            margin-top: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px;
+            height: 12px;
+            background: rgba(15, 61, 46, 0.98);
+            border-left: 1px solid var(--gold);
+            border-top: 1px solid var(--gold);
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+        }
+
+        .dropdown-menu a {
+            padding: 0.75rem 1.5rem;
+            display: block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(200, 184, 138, 0.1);
+        }
+
+        .dropdown.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Search Functionality */
+        .search-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--off-white);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .search-btn:hover {
+            color: var(--gold);
+        }
+
+        .search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 61, 46, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 10vh;
+        }
+
+        .search-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .search-subtitle {
+            color: var(--off-white);
+            opacity: 0.8;
+        }
+
+        .search-input-container {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.5rem 3rem 1.5rem 1.5rem;
+            font-size: 1.125rem;
+            border: 2px solid var(--gold);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--off-white);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-input:focus {
+            border-color: var(--sand-beige);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(200, 184, 138, 0.3);
+        }
+
+        .search-icon-input {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+        }
+
+        .search-results {
+            width: 100%;
+            max-height: 60vh;
+            overflow-y: auto;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .search-results.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .search-category {
+            margin-bottom: 2rem;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(200, 184, 138, 0.3);
+        }
+
+        .search-item {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .search-item:hover {
+            background: rgba(200, 184, 138, 0.1);
+            border-left-color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .item-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--off-white);
+        }
+
+        .item-description {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .item-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--gold);
+            color: var(--deep-green);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 12px;
+            margin-top: 0.5rem;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .close-search {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--off-white);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-search:hover {
+            color: var(--gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--off-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .cta-button {
+            background: var(--sand-beige);
+            color: var(--deep-green);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            border-radius: 4px;
+        }
+
+        .cta-button:hover {
+            background: var(--gold);
+            color: var(--off-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image {
+            position: relative;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Content Section */
+        .content-section {
+            background: var(--sand-beige);
+            color: var(--deep-green);
+            padding: 5rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Statistics Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: rgba(15, 61, 46, 0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(15, 61, 46, 0.1);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(15, 61, 46, 0.15);
+            border-color: var(--gold);
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--deep-green);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--gold);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--deep-green);
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: rgba(15, 61, 46, 0.8);
+            font-weight: 500;
+        }
+
+        /* From the Minbar Section */
+        .minbar-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 4rem;
+        }
+
+        .minbar-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Amiri', serif;
+            color: var(--deep-green);
+        }
+
+        .minbar-subtitle {
+            font-size: 1.125rem;
+            color: rgba(15, 61, 46, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        /* Category Filters */
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+    padding: 0.75rem 1.5rem;
+    background: rgba(15, 61, 46, 0.1);
+    border: 1px solid rgba(15, 61, 46, 0.2);
+    border-radius: 25px;
+    color: var(--deep-green);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--deep-green);
+    color: var(--sand-beige);
+    border-color: var(--deep-green);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 61, 46, 0.3);
+}
+
+        /* Mini Playlists */
+        .mini-playlists h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--deep-green);
+        }
+
+        /* Video Player */
+        .video-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(15, 61, 46, 0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .video-thumbnail:hover {
+            transform: scale(1.02);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(15, 61, 46, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background: var(--deep-green);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid var(--gold);
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 4px;
+        }
+
+        /* Instagram Posts Section */
+        .instagram-section {
+            margin-bottom: 4rem;
+        }
+
+        .instagram-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .instagram-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--deep-green);
+            font-family: 'Amiri', serif;
+        }
+
+        .instagram-subtitle {
+            font-size: 1.125rem;
+            color: rgba(15, 61, 46, 0.7);
+            margin-left: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(15, 61, 46, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--deep-green);
+        }
+
+        .social-icon:hover {
+            background: var(--deep-green);
+            color: var(--sand-beige);
+            transform: translateY(-2px);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+        }
+
+        .instagram-post {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .instagram-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(15, 61, 46, 0.2);
+        }
+
+        .instagram-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 61, 46, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .instagram-post:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-icon {
+            color: var(--sand-beige);
+            font-size: 2rem;
+        }
+
+        /* Quote Section */
+.qotd-main-wrapper {
+            display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin:auto;
+        }
+
+        .qotd-sidebar-panel {
+            background-color: #FEFEFE;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(15, 61, 46, 0.1);
+            flex: 1;
+            min-width: 300px;
+            border: 1px solid #F7EFE5;
+        }
+
+        .qotd-featured-card {
+            background-color: #F7EFE5;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(15, 61, 46, 0.15);
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            position: relative;
+            border: 1px solid #C8B88A;
+        }
+
+        .qotd-main-heading {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0F3D2E;
+            margin-bottom: 20px;
+        }
+
+        .qotd-scholar-name {
+            font-size: 18px;
+            color: #0F3D2E;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .qotd-action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .qotd-share-control {
+            background-color: #FEFEFE;
+            border: 1px solid #C8B88A;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #0F3D2E;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .qotd-share-control:hover {
+            background-color: #C8B88A;
+            color: #FEFEFE;
+            transform: translateY(-1px);
+        }
+
+        .qotd-highlights-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0F3D2E;
+            margin-bottom: 20px;
+        }
+
+        .qotd-highlights-grid {
+            display: flex;
+            gap: 10px;
+        }
+
+        .qotd-highlight-button {
+            width: 50px;
+            height: 50px;
+            background-color: #FEFEFE;
+            border: 1px solid #C8B88A;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qotd-highlight-button:hover {
+            background-color: #C8B88A;
+            transform: translateY(-2px);
+        }
+
+        .qotd-quote-symbol {
+            font-size: 60px;
+            color: #C8B88A;
+            font-family: serif;
+            margin-bottom: 20px;
+        }
+
+        .qotd-wisdom-text {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #0F3D2E;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .qotd-attribution-text {
+            font-size: 16px;
+            color: #0F3D2E;
+            margin-bottom: 30px;
+            opacity: 0.7;
+        }
+
+        .qotd-social-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .qotd-primary-share-btn {
+            background-color: #0F3D2E;
+            color: #FEFEFE;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .qotd-primary-share-btn:hover {
+            background-color: #0A2A1F;
+            transform: translateY(-1px);
+        }
+
+        .qotd-social-icon-circle {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(200, 184, 138, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0F3D2E;
+        }
+
+        .qotd-social-icon-circle:hover {
+            background-color: #C8B88A;
+            color: #FEFEFE;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .qotd-main-wrapper {
+                flex-direction: column;
+            }
+            
+            .qotd-sidebar-panel, .qotd-featured-card {
+                padding: 20px;
+            }
+            
+            .qotd-wisdom-text {
+                font-size: 18px;
+            }
+        }
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--deep-green);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                height: auto;
+                max-height: 80vh;
+                overflow-y: auto;
+                align-items: flex-start;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-menu li {
+                width: 100%;
+            }
+
+            .nav-menu a {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .dropdown-menu::before {
+                display: none;
+            }
+
+            .dropdown-menu a {
+                padding: 0.75rem 1rem;
+                padding-left: 2rem;
+                text-align: left;
+                border-left: 2px solid var(--gold);
+                margin-left: 1rem;
+            }
+
+            .dropdown.active .dropdown-menu {
+                max-height: 500px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .search-btn span {
+                display: none;
+            }
+
+            .search-container {
+                margin-top: 5vh;
+            }
+
+            .search-title {
+                font-size: 1.5rem;
+            }
+
+            .search-input {
+                padding: 1.25rem 2.5rem 1.25rem 1.25rem;
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .cta-button {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.8rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .minbar-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .category-filters {
+                justify-content: center;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .instagram-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .quote-blog-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .quote-section {
+                padding: 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.125rem;
+            }
+
+            .quote-share {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .logo-main {
+                font-size: 1.25rem;
+            }
+
+            .logo-sub {
+                font-size: 0.75rem;
+            }
+
+            .search-overlay {
+                padding: 1rem;
+            }
+
+            .close-search {
+                top: 1rem;
+                right: 1rem;
+                font-size: 1.5rem;
+            }
+
+            .content-section {
+                padding: 3rem 0;
+            }
+
+            .minbar-content h2 {
+                font-size: 2rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+
+            .instagram-title {
+                font-size: 1.5rem;
+            }
+
+            .quote-section {
+                padding: 1.5rem;
+            }
+
+            .quote-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--deep-green);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loading-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--gold);
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        .scroll-arrow {
+            display: block;
+            margin-top: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-text" id="loadingText">ZUHD GUIDANCE</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-main">ZUHD</div>
+                    <div class="logo-sub">GUIDANCE</div>
+                </div>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#lectures">Lectures</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li class="dropdown" id="supportDropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Support
+                            <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#donate">Donate</a></li>
+                            <li><a href="#volunteer">Volunteer</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <span>SEARCH</span>
+                </button>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="close-search" id="closeSearch">&times;</button>
+        
+        <div class="search-container">
+            <div class="search-header">
+                <h2 class="search-title">Search ZUHD Guidance</h2>
+                <p class="search-subtitle">Find lectures, quotes, and Islamic guidance</p>
+            </div>
+
+            <div class="search-input-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for lectures, quotes, topics...">
+                <svg class="search-icon-input" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+
+            <div class="search-results" id="searchResults">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        <span>Nourishing Hearts,</span>
+                        <span>Reviving Deen</span>
+                    </h1>
+                    <button class="cta-button">Watch Our Latest Lecture</button>
+                </div>
+
+                <div class="hero-image">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0EG3WM6ZRf8FxoK2oarY77z4BolWsK.png" alt="Islamic Scholar Speaking" loading="lazy">
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div>Scroll to explore</div>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section" id="content">
+        <div class="container">
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">1M</div>
+                    <div class="stat-number">1M+ Subscribers</div>
+                    <div class="stat-label">on YouTube</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏛️</div>
+                    <div class="stat-number">Trusted by</div>
+                    <div class="stat-label">Global Ulama</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📱</div>
+                    <div class="stat-number">Daily Instagram</div>
+                    <div class="stat-label">Carousels</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏘️</div>
+                    <div class="stat-number">Community</div>
+                    <div class="stat-label">Outreach & Ziyam</div>
+                </div>
+            </div>
+
+            <!-- From the Minbar Section -->
+            <div class="minbar-section">
+                <div class="minbar-content">
+                    <h2>From the Minbar</h2>
+                    <p class="minbar-subtitle">This Week's Khutbah</p>
+                    
+                    <div class="category-filters">
+                        <button class="filter-btn active">Seerah Series</button>
+                        <button class="filter-btn">Palestine Series</button>
+                        <button class="filter-btn">Parenting & Tarbiyah</button>
+                        <button class="filter-btn">Spiritual Growth</button>
+                    </div>
+
+                    <div class="mini-playlists">
+                        <h3>Mini Playlists</h3>
+                    </div>
+                </div>
+
+                <div class="video-container">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OAjr1jsVCJbChrkRw8marGaZBVmTiu.png" alt="This Week's Khutbah" class="video-thumbnail">
+                    <div class="play-button" onclick="playVideo()"></div>
+                </div>
+            </div>
+
+            <!-- Instagram Posts Section -->
+            <div class="instagram-section">
+               <div class="elfsight-app-5834f7fa-9388-47b0-8e3b-52e6889264f8" data-elfsight-app-lazy></div>
+                </div>
+<!-- 
+                <div class="instagram-grid">
+                    <div class="instagram-post" onclick="openInstagramPost(1)">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-C2wQAiLPal6x8cRJ3QfD1G3hignhww.png" alt="Islamic Architecture 1">
+                        <div class="instagram-overlay">
+                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="instagram-post" onclick="openInstagramPost(2)">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Architecture 2">
+                        <div class="instagram-overlay">
+                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="instagram-post" onclick="openInstagramPost(3)">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Architecture 3">
+                        <div class="instagram-overlay">
+                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="instagram-post" onclick="openInstagramPost(4)">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Architecture 4">
+                        <div class="instagram-overlay">
+                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="instagram-post" onclick="openInstagramPost(5)">
+                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Calligraphy">
+                        <div class="instagram-overlay">
+                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- Quote and Blog Section -->
+           <div class="qotd-main-wrapper">
+        <div class="qotd-sidebar-panel">
+            <h1 class="qotd-main-heading">Quote of the Day</h1>
+            <p class="qotd-scholar-name">Ibn al-Qayyim</p>
+            
+            <div class="qotd-action-buttons">
+                <button class="qotd-share-control" onclick="shareQuote()">
+                    📤 Share
+                </button>
+                <button class="qotd-share-control" onclick="copyQuote()">
+                    📋 Share
+                </button>
+            </div>
+            
+            <h2 class="qotd-highlights-title">Blog Highlights</h2>
+            <div class="qotd-highlights-grid">
+                <div class="qotd-highlight-button" onclick="openInstagram()" title="Instagram">
+                    📷
+                </div>
+                <div class="qotd-highlight-button" onclick="openBlog()" title="Blog">
+                    📝
+                </div>
+                <div class="qotd-highlight-button" onclick="openMore()" title="More">
+                    👁️
+                </div>
+            </div>
+        </div>
+        
+        <div class="qotd-featured-card">
+            <div class="qotd-quote-symbol">❝❝</div>
+            <p class="qotd-wisdom-text">
+                The heart will not find complete happiness, until it is connected with Allah.
+            </p>
+            <p class="qotd-attribution-text">Ibn al-Qayyim</p>
+            
+            <div class="qotd-social-controls">
+                <div class="qotd-social-icon-circle" onclick="shareToInstagram()" title="Share to Instagram">
+                    📷
+                </div>
+                <div class="qotd-social-icon-circle" onclick="shareGeneral()" title="Share">
+                    📤
+                </div>
+                <button class="qotd-primary-share-btn" onclick="mainShare()">SHARE</button>
+            </div>
+        </div>
+    </div>
+        </div>
+    </section>
+
+    <script>
+        // Sample search data
+        const searchData = [
+            {
+                category: "Lectures",
+                items: [
+                    {
+                        title: "The Beauty of Patience in Islam",
+                        description: "A comprehensive lecture on the virtue of patience (Sabr) and its importance in a Muslim's life.",
+                        type: "Video"
+                    },
+                    {
+                        title: "Understanding Tawheed",
+                        description: "Deep dive into the concept of monotheism and its fundamental role in Islamic belief.",
+                        type: "Video"
+                    },
+                    {
+                        title: "The Night Prayer (Tahajjud)",
+                        description: "Learn about the blessed night prayer and its spiritual benefits for the believer.",
+                        type: "Video"
+                    },
+                    {
+                        title: "Purification of the Soul",
+                        description: "Guidance on spiritual purification and cleansing the heart from sins.",
+                        type: "Video"
+                    }
+                ]
+            },
+            {
+                category: "Quotes",
+                items: [
+                    {
+                        title: "On Gratitude",
+                        description: "\"And whoever is grateful, his gratitude is only for himself.\" - Quran 31:12",
+                        type: "Quote"
+                    },
+                    {
+                        title: "On Prayer",
+                        description: "\"Prayer is the key to Paradise\" - Prophet Muhammad (PBUH)",
+                        type: "Quote"
+                    },
+                    {
+                        title: "On Knowledge",
+                        description: "\"Seek knowledge from the cradle to the grave\" - Prophet Muhammad (PBUH)",
+                        type: "Quote"
+                    }
+                ]
+            },
+            {
+                category: "Topics",
+                items: [
+                    {
+                        title: "Islamic Finance",
+                        description: "Learn about halal investment and Islamic banking principles.",
+                        type: "Topic"
+                    },
+                    {
+                        title: "Family in Islam",
+                        description: "Understanding the importance of family bonds and relationships in Islam.",
+                        type: "Topic"
+                    },
+                    {
+                        title: "Ramadan Preparation",
+                        description: "How to prepare spiritually and physically for the holy month of Ramadan.",
+                        type: "Topic"
+                    }
+                ]
+            }
+        ];
+
+      // GSAP Animations
+gsap.registerPlugin();
+
+// Set global defaults for all GSAP animations
+gsap.defaults({
+    duration: 0.8,
+    ease: "power2.out"
+});
+
+// Loading Animation
+const tl = gsap.timeline();
+
+tl.to("#loadingText", {
+    opacity: 1,
+    duration: 1,
+    ease: "power2.out"
+})
+.to("#loadingText", {
+    scale: 1.1,
+    duration: 0.5,
+    yoyo: true,
+    repeat: 1,
+    ease: "power2.inOut"
+})
+.to("#loadingOverlay", {
+    opacity: 0,
+    duration: 0.8,
+    ease: "power2.inOut",
+    onComplete: () => {
+        document.getElementById('loadingOverlay').style.display = 'none';
+        initMainAnimations();
+    }
+});
+
+function initMainAnimations() {
+    // Navbar animation
+    gsap.from("#navbar", {
+        y: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+
+    // Hero text animation
+    gsap.to(".hero-text", {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        delay: 0.3,
+        ease: "power3.out"
+    });
+
+    // Hero image animation
+    gsap.to(".hero-image", {
+        opacity: 1,
+        x: 0,
+        duration: 1.2,
+        delay: 0.6,
+        ease: "power3.out"
+    });
+
+    // Stagger animation for nav items
+    gsap.from(".nav-menu > li", {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        stagger: 0.1,
+        delay: 0.8,
+        ease: "power2.out"
+    });
+
+    // Button hover animations
+    const ctaButton = document.querySelector('.cta-button');
+    ctaButton.addEventListener('mouseenter', () => {
+        gsap.to(ctaButton, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+
+    ctaButton.addEventListener('mouseleave', () => {
+        gsap.to(ctaButton, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+}
+
+// Content section animations
+const contentObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Animate stats cards
+            gsap.from(".stat-card", {
+                y: 50,
+                duration: 0.8,
+                stagger: 0.1,
+                ease: "power3.out"
+            });
+
+            // Animate minbar section
+            gsap.from(".minbar-content", {
+                opacity: 0,
+                x: -50,
+                duration: 1,
+                delay: 0.3,
+                ease: "power3.out"
+            });
+
+            gsap.from(".video-container", {
+                opacity: 0,
+                x: 50,
+                duration: 1,
+                delay: 0.5,
+                ease: "power3.out"
+            });
+
+            // Animate Instagram posts
+            gsap.from(".instagram-post", {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.6,
+                stagger: 0.1,
+                delay: 1,
+                ease: "power3.out"
+            });
+
+            // Animate quote section
+            gsap.from(".quote-section", {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 1.2,
+                ease: "power3.out"
+            });
+
+            // Animate blog highlights
+            gsap.from(".blog-highlights", {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                delay: 1.4,
+                ease: "power3.out"
+            });
+        }
+    });
+}, { threshold: 0.1 });
+
+// Filter button functionality
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Add click animation
+        gsap.to(btn, {
+            scale: 0.95,
+            duration: 0.1,
+            yoyo: true,
+            repeat: 1,
+            ease: "power2.out"
+        });
+    });
+});
+
+// Video play function
+function playVideo() {
+    console.log('Playing video...');
+    gsap.to(".play-button", {
+        scale: 0.8,
+        duration: 0.1,
+        yoyo: true,
+        repeat: 1,
+        ease: "power2.out"
+    });
+}
+
+// Instagram post functions
+function openInstagramPost(postId) {
+    console.log(`Opening Instagram post ${postId}`);
+}
+
+function openYouTube() {
+    console.log('Opening YouTube channel');
+}
+
+function openInstagram() {
+    console.log('Opening Instagram profile');
+}
+
+function openCommunity() {
+    console.log('Opening community page');
+}
+
+// Quote sharing functions
+function shareQuote(platform) {
+    const quote = "The heart will not find complete happiness, until it is connected with Allah. - Ibn al-Qayyim";
+
+    if (platform === 'copy') {
+        navigator.clipboard.writeText(quote).then(() => {
+            console.log('Quote copied to clipboard');
+        });
+    } else if (platform === 'instagram') {
+        console.log('Sharing quote on Instagram');
+    } else if (platform === 'share') {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Quote of the Day',
+                text: quote,
+                url: window.location.href
+            });
+        } else {
+            shareQuote('copy');
+        }
+    }
+}
+
+// Blog functions
+function openBlog(type) {
+    console.log(`Opening ${type} blog`);
+}
+
+// Search Functionality
+const searchBtn = document.getElementById('searchBtn');
+const searchOverlay = document.getElementById('searchOverlay');
+const closeSearch = document.getElementById('closeSearch');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+
+function openSearch() {
+    searchOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    gsap.fromTo(searchOverlay, 
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.out" }
+    );
+
+    gsap.fromTo(".search-container", 
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, delay: 0.1, ease: "power3.out" }
+    );
+
+    setTimeout(() => {
+        searchInput.focus();
+    }, 300);
+}
+
+function closeSearchOverlay() {
+    gsap.to(searchOverlay, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out",
+        onComplete: () => {
+            searchOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+            searchResults.classList.remove('show');
+        }
+    });
+}
+
+function performSearch(query) {
+    if (!query.trim()) {
+        searchResults.innerHTML = '';
+        searchResults.classList.remove('show');
+        return;
+    }
+
+    const filteredResults = searchData.map(category => {
+        const filteredItems = category.items.filter(item => 
+            item.title.toLowerCase().includes(query.toLowerCase()) ||
+            item.description.toLowerCase().includes(query.toLowerCase())
+        );
+
+        return filteredItems.length > 0 ? {
+            ...category,
+            items: filteredItems
+        } : null;
+    }).filter(Boolean);
+
+    displaySearchResults(filteredResults, query);
+}
+
+function displaySearchResults(results, query) {
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                <h3>No results found for "${query}"</h3>
+                <p>Try searching with different keywords</p>
+            </div>
+        `;
+    } else {
+        let html = '';
+        results.forEach(category => {
+            html += `
+                <div class="search-category">
+                    <h3 class="category-title">${category.category}</h3>
+                    ${category.items.map(item => `
+                        <div class="search-item" onclick="selectSearchItem('${item.title}')">
+                            <div class="item-title">${highlightText(item.title, query)}</div>
+                            <div class="item-description">${highlightText(item.description, query)}</div>
+                            <span class="item-type">${item.type}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        });
+        searchResults.innerHTML = html;
+    }
+
+    searchResults.classList.add('show');
+    gsap.from(".search-item", {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.out"
+    });
+}
+
+function highlightText(text, query) {
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<mark style="background: var(--gold); color: var(--deep-green); padding: 0 2px; border-radius: 2px;">$1</mark>');
+}
+
+function selectSearchItem(title) {
+    console.log(`Selected: ${title}`);
+    closeSearchOverlay();
+}
+
+searchBtn.addEventListener('click', openSearch);
+closeSearch.addEventListener('click', closeSearchOverlay);
+
+let searchTimeout;
+searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+        performSearch(e.target.value);
+    }, 300);
+});
+
+document.addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+    }
+
+    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+        closeSearchOverlay();
+    }
+});
+
+// Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
+let isMenuOpen = false;
+
+mobileMenuBtn.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+        navMenu.classList.add('active');
+        gsap.from(".nav-menu > li", {
+            opacity: 0,
+            y: 20,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: "power2.out"
+        });
+    } else {
+        navMenu.classList.remove('active');
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+});
+
+// Dropdown Toggle
+const supportDropdown = document.getElementById('supportDropdown');
+const dropdownToggle = supportDropdown.querySelector('.dropdown-toggle');
+
+function toggleDropdown(event) {
+    event.preventDefault();
+
+    const isMobile = window.innerWidth <= 768;
+    supportDropdown.classList.toggle('active');
+
+    const dropdownItems = supportDropdown.querySelectorAll('.dropdown-menu li');
+
+    if (supportDropdown.classList.contains('active')) {
+        if (!isMobile) {
+            gsap.fromTo(dropdownItems, 
+                { opacity: 0, y: 10 },
+                { opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" }
+            );
+        } else {
+            gsap.fromTo(dropdownItems, 
+                { opacity: 0, x: -10 },
+                { opacity: 1, x: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" }
+            );
+        }
+    }
+}
+
+dropdownToggle.addEventListener('click', toggleDropdown);
+
+document.addEventListener('click', (event) => {
+    if (!supportDropdown.contains(event.target)) {
+        supportDropdown.classList.remove('active');
+    }
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'rgba(15, 61, 46, 0.98)';
+    } else {
+        navbar.style.background = 'rgba(15, 61, 46, 0.95)';
+    }
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        if (this.classList.contains('dropdown-toggle')) return;
+
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        if (window.innerWidth <= 768) {
+            navMenu.classList.remove('active');
+            isMenuOpen = false;
+        }
+    });
+});
+
+// Parallax effect for hero image
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const heroImage = document.querySelector('.hero-image');
+    if (heroImage) {
+        gsap.to(heroImage, {
+            y: scrolled * 0.3,
+            duration: 0.3,
+            ease: "none"
+        });
+    }
+});
+
+// Observe content section
+contentObserver.observe(document.getElementById('content'));
+
+// Handle window resize for dropdown positioning
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && isMenuOpen) {
+        navMenu.classList.remove('active');
+        isMenuOpen = false;
+    }
+});
+
+  function shareQuote() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Quote of the Day - Ibn al-Qayyim',
+                    text: 'The heart will not find complete happiness, until it is connected with Allah. - Ibn al-Qayyim',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                copyQuote();
+            }
+        }
+
+        function copyQuote() {
+            const quoteText = 'The heart will not find complete happiness, until it is connected with Allah. - Ibn al-Qayyim';
+            navigator.clipboard.writeText(quoteText).then(() => {
+                alert('Quote copied to clipboard!');
+            }).catch(() => {
+                alert('Unable to copy to clipboard');
+            });
+        }
+
+        function openInstagram() {
+            window.open('https://instagram.com', '_blank');
+        }
+
+        function openBlog() {
+            alert('Opening blog highlights...');
+        }
+
+        function openMore() {
+            alert('More options coming soon...');
+        }
+
+        function shareToInstagram() {
+            // Instagram doesn't allow direct sharing via URL, so we'll copy the text
+            copyQuote();
+            alert('Quote copied! You can now paste it on Instagram.');
+        }
+
+        function shareGeneral() {
+            shareQuote();
+        }
+
+        function mainShare() {
+            shareQuote();
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const qotdFeaturedCard = document.querySelector('.qotd-featured-card');
+            const qotdSidebarPanel = document.querySelector('.qotd-sidebar-panel');
+            
+            // Add a subtle entrance animation
+            setTimeout(() => {
+                qotdSidebarPanel.style.opacity = '0';
+                qotdFeaturedCard.style.opacity = '0';
+                qotdSidebarPanel.style.transform = 'translateX(-20px)';
+                qotdFeaturedCard.style.transform = 'translateX(20px)';
+                qotdSidebarPanel.style.transition = 'all 0.6s ease';
+                qotdFeaturedCard.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    qotdSidebarPanel.style.opacity = '1';
+                    qotdFeaturedCard.style.opacity = '1';
+                    qotdSidebarPanel.style.transform = 'translateX(0)';
+                    qotdFeaturedCard.style.transform = 'translateX(0)';
+                }, 100);
+            }, 100);
+        });
+  </script>
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+</body>
+</html>
