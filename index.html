@@ -446,9 +446,9 @@
 
         .hero-image img {
             width: 100%;
-            height: auto;
+            height: 100%;
             border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);  */
         }
 
         /* Content Section */
@@ -1621,142 +1621,226 @@
         .footer-column:nth-child(4) { animation-delay: 0.4s; }
         .footer-column:nth-child(5) { animation-delay: 0.5s; }
 
-.zuhd-guidance-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 120px 20px;
-    position: relative;
-}
+.banner {
+            width: 100%;
+            max-width: 1200px;
+            height: 300px;
+            background: linear-gradient(135deg, #0F3D2E 0%, #1a5a42 50%, #0F3D2E 100%);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            margin: auto;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(15, 61, 46, 0.3);
+        }
 
-.zuhd-guidance-join-section {
-    text-align: center;
-     max-width: 1200px;
-    background: linear-gradient(135deg, #F7EFE5 0%, #FFFFFE 50%, #C8B88A 100%);
-    border-radius: 25px;
-    padding: 50px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-}
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 184, 138, 0.3), transparent);
+            animation: shine 3s infinite;
+        }
 
-.zuhd-guidance-join-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, #0F3D2E 0%, transparent 70%);
-    animation: zuhd-guidance-rotate 20s linear infinite;
-}
+        .banner-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
 
-.zuhd-guidance-join-content {
-    position: relative;
-    z-index: 2;
-}
+        .channel-name {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #F7EFE5;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
 
-.zuhd-guidance-join-title {
-    font-size: 2.5rem;
-    color: #C8B88A;
-    margin-bottom: 25px;
-    font-weight: bold;
-}
+        .update-text {
+            font-size: 1.5rem;
+            color: #C8B88A;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: pulse 2s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
 
-.zuhd-guidance-join-text {
-    font-size: 1.2rem;
-    color: #C8B88A;
-    line-height: 1.8;
-    margin-bottom: 35px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+        .subscribe-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #C8B88A, #d4c49a);
+            color: #0F3D2E;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(200, 184, 138, 0.3);
+            animation: bounce 3s infinite;
+            border: 2px solid transparent;
+        }
 
-.zuhd-guidance-cta-button {
-    display: inline-block;
-    background: linear-gradient(135deg, #0F3D2E, #C8B88A);
-    color: #FFFFFE;
-    padding: 15px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: all 0.4s ease;
-    box-shadow: 0 8px 25px rgba(15, 61, 46, 0.3);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    border: none;
-}
+        .subscribe-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(200, 184, 138, 0.5);
+            background: linear-gradient(45deg, #d4c49a, #C8B88A);
+            border-color: #F7EFE5;
+        }
 
-.zuhd-guidance-cta-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.6s ease;
-}
+        .decorative-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
 
-.zuhd-guidance-cta-button:hover::before {
-    left: 100%;
-}
+        .circle {
+            position: absolute;
+            border: 2px solid rgba(200, 184, 138, 0.3);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+        }
 
-.zuhd-guidance-cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(15, 61, 46, 0.4);
-}
+        .circle:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            top: 20px;
+            left: 50px;
+            animation-delay: 0s;
+        }
 
-.zuhd-guidance-floating-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-}
+        .circle:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            bottom: 30px;
+            right: 80px;
+            animation-delay: 2s;
+            animation-direction: reverse;
+        }
 
-.zuhd-guidance-floating-dot {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #C8B88A;
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: zuhd-guidance-float-dots 15s ease-in-out infinite;
-}
+        .circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 50%;
+            left: 80px;
+            animation-delay: 4s;
+        }
 
-.zuhd-guidance-floating-dot:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.zuhd-guidance-floating-dot:nth-child(2) { top: 60%; right: 15%; animation-delay: -5s; }
-.zuhd-guidance-floating-dot:nth-child(3) { bottom: 30%; left: 20%; animation-delay: -10s; }
-.zuhd-guidance-floating-dot:nth-child(4) { top: 40%; right: 30%; animation-delay: -7s; }
+        .floating-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #C8B88A;
+            border-radius: 50%;
+            animation: float 4s ease-in-out infinite;
+        }
 
-@keyframes zuhd-guidance-rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
+        .floating-dot:nth-child(4) {
+            top: 30%;
+            left: 15%;
+            animation-delay: 0s;
+        }
 
-@keyframes zuhd-guidance-float-dots {
-    0%, 100% { transform: translateY(0px) translateX(0px); }
-    25% { transform: translateY(-20px) translateX(10px); }
-    50% { transform: translateY(-10px) translateX(-5px); }
-    75% { transform: translateY(-15px) translateX(8px); }
-}
+        .floating-dot:nth-child(5) {
+            top: 70%;
+            right: 20%;
+            animation-delay: 1s;
+        }
 
-@keyframes zuhd-guidance-ripple {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
+        .floating-dot:nth-child(6) {
+            top: 20%;
+            right: 30%;
+            animation-delay: 2s;
+        }
 
-@media (max-width: 768px) {
-    .zuhd-guidance-join-section { padding: 30px; }
-    .zuhd-guidance-join-title { font-size: 2rem; }
-}
+        @keyframes glow {
+            from {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 10px rgba(200, 184, 138, 0.5);
+            }
+            to {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(200, 184, 138, 0.8);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(-15px);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-3px);
+            }
+            60% {
+                transform: translateY(-1px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .banner {
+                height: 200px;
+            }
+            
+            .channel-name {
+                font-size: 2.5rem;
+            }
+            
+            .update-text {
+                font-size: 1rem;
+            }
+            
+            .circle {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1850,7 +1934,7 @@
                 </div>
 
                 <div class="hero-image">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-0EG3WM6ZRf8FxoK2oarY77z4BolWsK.png" alt="Islamic Scholar Speaking" loading="lazy">
+                    <img src="/images/speaker.png" alt="Islamic Scholar Speaking" loading="lazy">
                 </div>
             </div>
         </div>
@@ -1916,49 +2000,6 @@
             <div class="instagram-section">
                <div class="elfsight-app-5834f7fa-9388-47b0-8e3b-52e6889264f8" data-elfsight-app-lazy></div>
                 </div>
-<!-- 
-                <div class="instagram-grid">
-                    <div class="instagram-post" onclick="openInstagramPost(1)">
-                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-C2wQAiLPal6x8cRJ3QfD1G3hignhww.png" alt="Islamic Architecture 1">
-                        <div class="instagram-overlay">
-                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="instagram-post" onclick="openInstagramPost(2)">
-                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Architecture 2">
-                        <div class="instagram-overlay">
-                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="instagram-post" onclick="openInstagramPost(3)">
-                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Architecture 3">
-                        <div class="instagram-overlay">
-                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="instagram-post" onclick="openInstagramPost(4)">
-                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Architecture 4">
-                        <div class="instagram-overlay">
-                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="instagram-post" onclick="openInstagramPost(5)">
-                        <img src="/placeholder.svg?height=150&width=150" alt="Islamic Calligraphy">
-                        <div class="instagram-overlay">
-                            <svg class="instagram-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div> -->
             </div>
 
             <!-- Quote and Blog Section -->
@@ -2011,13 +2052,6 @@
         </div>
     </section>
  <div class="donation-hero-container">
-        <!-- <div class="donation-decorative-elements">
-            <div class="donation-floating-icon">🇵🇸</div>
-            <div class="donation-floating-icon">🕌</div>
-            <div class="donation-floating-icon">💝</div>
-            <div class="donation-floating-icon">🤲</div>
-        </div> -->
-
         <div class="donation-content-wrapper">
             <p class="donation-support-subtitle">Support our humanitarian efforts</p>
             <h1 class="donation-main-heading">DONATE FOR<br>PALESTINE & MOSQUES</h1>
@@ -2052,19 +2086,21 @@
             </div>
         </div>
     </div>
-        <div class="zuhd-guidance-join-section">
-            <div class="zuhd-guidance-join-content">
-                <h2 class="zuhd-guidance-join-title">Sign Up for Our Newsletter</h2>
-                <p class="zuhd-guidance-join-text">
-                    Stay connected with our community. Receive inspirational reminders, updates on our programs, and tips for spiritual growth—straight to your inbox.
-                </p>
-                <form style="max-width: 500px; margin: 0 auto;">
-                    <input type="email" placeholder="Enter your email" required
-                        style="padding: 15px 20px; border-radius: 30px; border: 1px solid #C8B88A; width: 100%; font-size: 1rem; margin-bottom: 20px;">
-                    <br>
-                    <button type="submit" class="zuhd-guidance-cta-button">Subscribe Now</button>
-                </form>
-            </div>
+    </div>
+     <div class="banner">
+        <div class="decorative-elements">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+        </div>
+        
+        <div class="banner-content">
+            <h1 class="channel-name">Stay Tune</h1>
+            <p class="update-text">New Updates Coming</p>
+            <a href="#" class="subscribe-btn">Subscribe Our YouTube Channel</a>
         </div>
     </div>
  <footer class="footer">
@@ -2658,7 +2694,7 @@ window.addEventListener('scroll', () => {
     const heroImage = document.querySelector('.hero-image');
     if (heroImage) {
         gsap.to(heroImage, {
-            y: scrolled * 0.3,
+            y: scrolled * 0.1,
             duration: 0.3,
             ease: "none"
         });
