@@ -6,6 +6,7 @@
     <title>ZUHD GUIDANCE - Nourishing Hearts, Reviving Deen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
@@ -1620,7 +1621,142 @@
         .footer-column:nth-child(4) { animation-delay: 0.4s; }
         .footer-column:nth-child(5) { animation-delay: 0.5s; }
 
+.zuhd-guidance-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px;
+    position: relative;
+}
 
+.zuhd-guidance-join-section {
+    text-align: center;
+     max-width: 1200px;
+    background: linear-gradient(135deg, #F7EFE5 0%, #FFFFFE 50%, #C8B88A 100%);
+    border-radius: 25px;
+    padding: 50px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.zuhd-guidance-join-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, #0F3D2E 0%, transparent 70%);
+    animation: zuhd-guidance-rotate 20s linear infinite;
+}
+
+.zuhd-guidance-join-content {
+    position: relative;
+    z-index: 2;
+}
+
+.zuhd-guidance-join-title {
+    font-size: 2.5rem;
+    color: #C8B88A;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+.zuhd-guidance-join-text {
+    font-size: 1.2rem;
+    color: #C8B88A;
+    line-height: 1.8;
+    margin-bottom: 35px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.zuhd-guidance-cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #0F3D2E, #C8B88A);
+    color: #FFFFFE;
+    padding: 15px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 25px rgba(15, 61, 46, 0.3);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+}
+
+.zuhd-guidance-cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.zuhd-guidance-cta-button:hover::before {
+    left: 100%;
+}
+
+.zuhd-guidance-cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(15, 61, 46, 0.4);
+}
+
+.zuhd-guidance-floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.zuhd-guidance-floating-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: #C8B88A;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: zuhd-guidance-float-dots 15s ease-in-out infinite;
+}
+
+.zuhd-guidance-floating-dot:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.zuhd-guidance-floating-dot:nth-child(2) { top: 60%; right: 15%; animation-delay: -5s; }
+.zuhd-guidance-floating-dot:nth-child(3) { bottom: 30%; left: 20%; animation-delay: -10s; }
+.zuhd-guidance-floating-dot:nth-child(4) { top: 40%; right: 30%; animation-delay: -7s; }
+
+@keyframes zuhd-guidance-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes zuhd-guidance-float-dots {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-20px) translateX(10px); }
+    50% { transform: translateY(-10px) translateX(-5px); }
+    75% { transform: translateY(-15px) translateX(8px); }
+}
+
+@keyframes zuhd-guidance-ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .zuhd-guidance-join-section { padding: 30px; }
+    .zuhd-guidance-join-title { font-size: 2rem; }
+}
     </style>
 </head>
 <body>
@@ -1736,17 +1872,17 @@
                     <div class="stat-label">on YouTube</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">🏛️</div>
+                    <div class="stat-icon"><i class="fa-solid fa-building-columns"></i></div>
                     <div class="stat-number">Trusted by</div>
                     <div class="stat-label">Global Ulama</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">📱</div>
+                    <div class="stat-icon"><i class="fa-brands fa-square-instagram"></i></div>
                     <div class="stat-number">Daily Instagram</div>
                     <div class="stat-label">Carousels</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-icon">🏘️</div>
+                    <div class="stat-icon"><i class="fa-solid fa-group-arrows-rotate"></i></div>
                     <div class="stat-number">Community</div>
                     <div class="stat-label">Outreach & Ziyam</div>
                 </div>
@@ -1913,6 +2049,21 @@
                     <div class="donation-stat-number">92%</div>
                     <div class="donation-stat-label">Direct Aid</div>
                 </div>
+            </div>
+        </div>
+    </div>
+        <div class="zuhd-guidance-join-section">
+            <div class="zuhd-guidance-join-content">
+                <h2 class="zuhd-guidance-join-title">Sign Up for Our Newsletter</h2>
+                <p class="zuhd-guidance-join-text">
+                    Stay connected with our community. Receive inspirational reminders, updates on our programs, and tips for spiritual growth—straight to your inbox.
+                </p>
+                <form style="max-width: 500px; margin: 0 auto;">
+                    <input type="email" placeholder="Enter your email" required
+                        style="padding: 15px 20px; border-radius: 30px; border: 1px solid #C8B88A; width: 100%; font-size: 1rem; margin-bottom: 20px;">
+                    <br>
+                    <button type="submit" class="zuhd-guidance-cta-button">Subscribe Now</button>
+                </form>
             </div>
         </div>
     </div>
