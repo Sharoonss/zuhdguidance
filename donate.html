@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZUHD GUIDANCE – Nourishing Hearts, Reviving Deen</title>
-
-  <!-- Styles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate/Support - Zuhd</title>
+    <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/lecture.html">
 
@@ -22,12 +21,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
-
 <body>
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="loading-text" id="loadingText"><img src="/images/logo.png" alt="Overlaylogo"></div>
-    </div>
+         <!-- Loading Overlay -->
+       <div class="logo">
+                    <a href="/index.html">  <div class="logo-main"><img src="/images/logo.png" alt="logo"></div></a>  
+                </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -100,174 +98,138 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span>Nourishing Hearts,</span>
-                        <span>Reviving Deen</span>
-                    </h1>
-                    <button class="cta-button">Watch Our Latest Lecture</button>
-                </div>
-
-                <div class="hero-image">
-                    <img src="/images/speaker.png" alt="Islamic Scholar Speaking" loading="lazy">
-                </div>
+    <div class="zuhd-donation-container">
+        <!-- Hero Section -->
+        <section class="zuhd-hero-section">
+            <div class="zuhd-hero-background">
+                <img src="/images/donationbg.png" alt="Open Quran" class="zuhd-hero-image">
+                <div class="zuhd-hero-overlay"></div>
             </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <div>Scroll to explore</div>
-            <div class="scroll-arrow">↓</div>
-        </div>
-    </section>
-
-    <!-- Content Section -->
-    <section class="content-section" id="content">
-        <div class="container">
-            <!-- Statistics Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">1M</div>
-                    <div class="stat-number">1M+ Subscribers</div>
-                    <div class="stat-label">on YouTube</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-building-columns"></i></div>
-                    <div class="stat-number">Trusted by</div>
-                    <div class="stat-label">Global Ulama</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-brands fa-square-instagram"></i></div>
-                    <div class="stat-number">Daily Instagram</div>
-                    <div class="stat-label">Carousels</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-group-arrows-rotate"></i></div>
-                    <div class="stat-number">Community</div>
-                    <div class="stat-label">Outreach & Ziyam</div>
-                </div>
+            <div class="zuhd-hero-content">
+                <p class="zuhd-hero-subtitle">Consider supporting our work</p>
+                <h1 class="zuhd-hero-title">DONATE/<br>SUPPORT</h1>
+                <button class="zuhd-support-btn" onclick="scrollToPayment()">
+                    <span>SUPPORT NOW</span>
+                    <i class="fas fa-arrow-down"></i>
+                </button>
             </div>
+        </section>
 
-            <!-- From the Minbar Section -->
-            <div class="minbar-section">
-                <div class="minbar-content">
-                    <h2>From the Minbar</h2>
-                    <p class="minbar-subtitle">This Week's Khutbah</p>
+        <!-- Payment Section -->
+        <section class="zuhd-payment-section">
+            <div class="zuhd-payment-card">
+                <div class="zuhd-payment-header">
+                    <h2 class="zuhd-payment-title">Payment Method</h2>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="zuhd-payment-methods">
+                    <div class="zuhd-payment-option" data-method="stripe">
+                        <div class="zuhd-payment-logo">
+                            <i class="fab fa-stripe"></i>
+                            <span>stripe</span>
+                        </div>
+                    </div>
+                    <div class="zuhd-payment-option" data-method="paypal">
+                        <div class="zuhd-payment-logo">
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal</span>
+                        </div>
+                    </div>
+                    <div class="zuhd-payment-option" data-method="gofundme">
+                        <div class="zuhd-payment-logo">
+                            <i class="fas fa-heart"></i>
+                            <span>GoFundMe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation Causes -->
+                <div class="zuhd-donation-causes">
+                    <h3 class="zuhd-causes-title">Donate to</h3>
                     
-                    <div class="category-filters">
-                        <button class="filter-btn active">Seerah Series</button>
-                        <button class="filter-btn">Palestine Series</button>
-                        <button class="filter-btn">Parenting & Tarbiyah</button>
-                        <button class="filter-btn">Spiritual Growth</button>
+                    <div class="zuhd-cause-item" data-cause="palestine">
+                        <div class="zuhd-cause-header">
+                            <h4 class="zuhd-cause-name">Palestine</h4>
+                            <div class="zuhd-cause-toggle">
+                                <input type="radio" name="cause" id="palestine" value="palestine" checked>
+                                <label for="palestine" class="zuhd-radio-label"></label>
+                            </div>
+                        </div>
+                        <p class="zuhd-cause-description">
+                            Support relief efforts in Gaza and the West Bank.
+                        </p>
                     </div>
 
-                    <div class="mini-playlists">
-                        <h3>Mini Playlists</h3>
+                    <div class="zuhd-cause-item" data-cause="masjids">
+                        <div class="zuhd-cause-header">
+                            <h4 class="zuhd-cause-name">Help Masjids</h4>
+                            <div class="zuhd-cause-toggle">
+                                <input type="radio" name="cause" id="masjids" value="masjids">
+                                <label for="masjids" class="zuhd-radio-label"></label>
+                            </div>
+                        </div>
+                        <p class="zuhd-cause-description">
+                            Help maintain and expand our community mosques.
+                        </p>
                     </div>
                 </div>
 
-                <div class="video-container">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OAjr1jsVCJbChrkRw8marGaZBVmTiu.png" alt="This Week's Khutbah" class="video-thumbnail">
-                    <div class="play-button" onclick="playVideo()"></div>
+                <!-- Donation Amount -->
+                <div class="zuhd-amount-section">
+                    <h3 class="zuhd-amount-title">Select Amount</h3>
+                    <div class="zuhd-amount-options">
+                        <button class="zuhd-amount-btn" data-amount="25">$25</button>
+                        <button class="zuhd-amount-btn" data-amount="50">$50</button>
+                        <button class="zuhd-amount-btn zuhd-amount-active" data-amount="100">$100</button>
+                        <button class="zuhd-amount-btn" data-amount="250">$250</button>
+                        <input type="number" class="zuhd-custom-amount" placeholder="Custom amount" min="1">
+                    </div>
                 </div>
-            </div>
 
-            <!-- Instagram Posts Section -->
-            <div class="instagram-section">
-               <div class="elfsight-app-5834f7fa-9388-47b0-8e3b-52e6889264f8" data-elfsight-app-lazy></div>
-                </div>
-            </div>
-
-            <!-- Quote and Blog Section -->
-           <div class="qotd-main-wrapper">
-        <div class="qotd-sidebar-panel">
-            <h1 class="qotd-main-heading">Quote of the Day</h1>
-            <p class="qotd-scholar-name">Ibn al-Qayyim</p>
-            
-            <div class="qotd-action-buttons">
-                <button class="qotd-share-control" onclick="shareQuote()">
-                    📤 Share
-                </button>
-                <button class="qotd-share-control" onclick="copyQuote()">
-                    📋 Share
+                <!-- Donate Button -->
+                <button class="zuhd-donate-btn" onclick="processDonation()">
+                    <span>DONATE NOW</span>
+                    <i class="fas fa-heart"></i>
                 </button>
             </div>
-            
-            <h2 class="qotd-highlights-title">Blog Highlights</h2>
-            <div class="qotd-highlights-grid">
-                <div class="qotd-highlight-button" onclick="openInstagram()" title="Instagram">
-                    📷
-                </div>
-                <div class="qotd-highlight-button" onclick="openBlog()" title="Blog">
-                    📝
-                </div>
-                <div class="qotd-highlight-button" onclick="openMore()" title="More">
-                    👁️
-                </div>
-            </div>
-        </div>
-        
-        <div class="qotd-featured-card">
-            <div class="qotd-quote-symbol">❝❝</div>
-            <p class="qotd-wisdom-text">
-                The heart will not find complete happiness, until it is connected with Allah.
-            </p>
-            <p class="qotd-attribution-text">Ibn al-Qayyim</p>
-            
-            <div class="qotd-social-controls">
-                <div class="qotd-social-icon-circle" onclick="shareToInstagram()" title="Share to Instagram">
-                    📷
-                </div>
-                <div class="qotd-social-icon-circle" onclick="shareGeneral()" title="Share">
-                    📤
-                </div>
-                <button class="qotd-primary-share-btn" onclick="mainShare()">SHARE</button>
-            </div>
-        </div>
-    </div>
-        </div>
-    </section>
- <div class="donation-hero-container">
-        <div class="donation-content-wrapper">
-            <p class="donation-support-subtitle">Support our humanitarian efforts</p>
-            <h1 class="donation-main-heading">DONATE FOR<br>PALESTINE & MOSQUES</h1>
-            <p class="donation-description-text">
-                Join us in supporting Palestinian families in need and helping build and maintain 
-                mosques in our communities. Your donation provides essential aid, medical supplies, 
-                food, and supports places of worship that serve as centers of hope and community.
-            </p>
+        </section>
 
-            <div class="donation-buttons-container">
-                <a href="/donate.html"> <button class="donation-primary-btn" onclick="handleDonation()">
-                    Donate Now
-                </button></a>
-               
-                <button class="donation-secondary-btn" onclick="handleLearnMore()">
-                    Learn More
-                </button>
+        <!-- Cause Cards Section -->
+        <section class="zuhd-causes-section">
+            <div class="zuhd-cause-card" data-cause="palestine">
+                <div class="zuhd-cause-image-container">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Palestine Flag" class="zuhd-cause-image">
+                    <div class="zuhd-cause-overlay">
+                        <h3 class="zuhd-cause-card-title">PALESTINE</h3>
+                    </div>
+                </div>
             </div>
 
-            <div class="donation-impact-stats">
-                <div class="donation-stat-item">
-                    <div class="donation-stat-number">2,847</div>
-                    <div class="donation-stat-label">Families Helped</div>
+            <div class="zuhd-cause-card" data-cause="masjids">
+                <div class="zuhd-cause-image-container">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Mosque Interior" class="zuhd-cause-image">
+                    <div class="zuhd-cause-overlay">
+                        <h3 class="zuhd-cause-card-title">LOCAL MASJIDS</h3>
+                    </div>
                 </div>
-                <div class="donation-stat-item">
-                    <div class="donation-stat-number">15</div>
-                    <div class="donation-stat-label">Mosques Supported</div>
-                </div>
-                <div class="donation-stat-item">
-                    <div class="donation-stat-number">92%</div>
-                    <div class="donation-stat-label">Direct Aid</div>
+            </div>
+        </section>
+
+        <!-- Success Modal -->
+        <div class="zuhd-modal-overlay" id="successModal">
+            <div class="zuhd-modal">
+                <div class="zuhd-modal-content">
+                    <i class="fas fa-check-circle zuhd-success-icon"></i>
+                    <h3>Thank You!</h3>
+                    <p>Your donation has been processed successfully.</p>
+                    <button class="zuhd-modal-btn" onclick="closeModal()">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    </div>
-     <div class="banner">
+
+      <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -351,6 +313,5 @@
             </div>
         </div>
     </footer>
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 </body>
 </html>

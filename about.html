@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZUHD GUIDANCE – Nourishing Hearts, Reviving Deen</title>
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Zuhd</title>
+     <!-- Styles -->
+  <link rel="stylesheet" href="styles.css"/>
   <link rel="stylesheet" href="/lecture.html">
 
   <!-- GSAP core + ScrollTrigger CDN -->
@@ -21,13 +20,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
-
 <body>
-    <!-- Loading Overlay -->
+
+      <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-text" id="loadingText"><img src="/images/logo.png" alt="Overlaylogo"></div>
-    </div>
+    </div> 
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -40,7 +40,7 @@
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="/lecture.html">Lectures</a></li>
                     <li><a href="#quotes">Quotes</a></li>
-                    <li><a href="/about.html">About</a></li>
+                    <li><a href="#about">About</a></li>
                     <li class="dropdown" id="supportDropdown">
                         <a href="#" class="dropdown-toggle">
                             Support
@@ -49,7 +49,7 @@
                             </svg>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/donate.html">Donate</a></li>
+                            <li><a href="#donate">Donate</a></li>
                             <li><a href="#volunteer">Volunteer</a></li>
                             <li><a href="#contact">Contact Us</a></li>
                             <li><a href="#faq">FAQ</a></li>
@@ -99,175 +99,91 @@
             </div>
         </div>
     </div>
+    <div class="zuhd-about-container">
+        <!-- Header Section -->
+        <header class="zuhd-header-section">
+            <h1 class="zuhd-main-title">About Us</h1>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span>Nourishing Hearts,</span>
-                        <span>Reviving Deen</span>
-                    </h1>
-                    <button class="cta-button">Watch Our Latest Lecture</button>
-                </div>
+        <!-- Vision & History Section -->
+        <section class="zuhd-vision-section">
+            <h2 class="zuhd-section-title">Vision & History</h2>
+            <p class="zuhd-vision-text">
+                Zuhd aims to inspire hearts and minds through authentic 
+                Islamic content, rooted in the teachings of the Quran and sunnah. 
+                Founded in 2019, we have grown into a leading platform 
+                dedicated to fostering spiritual and educational growth for 
+                Muslims around the world.
+            </p>
+        </section>
 
-                <div class="hero-image">
-                    <img src="/images/speaker.png" alt="Islamic Scholar Speaking" loading="lazy">
+        <!-- Founders Section -->
+        <section class="zuhd-founders-section">
+            <h2 class="zuhd-section-title">Founders</h2>
+            <div class="zuhd-founder-card">
+                <div class="zuhd-founder-image-container">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RaH481Qp73280ZTW8eCBv7FhlBRYQc.png" alt="Dr. Sami Al-Hashmi" class="zuhd-founder-image">
                 </div>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <div>Scroll to explore</div>
-            <div class="scroll-arrow">↓</div>
-        </div>
-    </section>
-
-    <!-- Content Section -->
-    <section class="content-section" id="content">
-        <div class="container">
-            <!-- Statistics Grid -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-icon">1M</div>
-                    <div class="stat-number">1M+ Subscribers</div>
-                    <div class="stat-label">on YouTube</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-building-columns"></i></div>
-                    <div class="stat-number">Trusted by</div>
-                    <div class="stat-label">Global Ulama</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-brands fa-square-instagram"></i></div>
-                    <div class="stat-number">Daily Instagram</div>
-                    <div class="stat-label">Carousels</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon"><i class="fa-solid fa-group-arrows-rotate"></i></div>
-                    <div class="stat-number">Community</div>
-                    <div class="stat-label">Outreach & Ziyam</div>
+                <div class="zuhd-founder-info">
+                    <p class="zuhd-founder-description">
+                        <strong>Dr. Sami Al-Hashmi</strong>, an esteemed 
+                        Islamic scholar, founded Zuhd with a 
+                        vision to provide high-quality Islamic 
+                        lectures and resources.
+                    </p>
                 </div>
             </div>
+        </section>
 
-            <!-- From the Minbar Section -->
-            <div class="minbar-section">
-                <div class="minbar-content">
-                    <h2>From the Minbar</h2>
-                    <p class="minbar-subtitle">This Week's Khutbah</p>
-                    
-                    <div class="category-filters">
-                        <button class="filter-btn active">Seerah Series</button>
-                        <button class="filter-btn">Palestine Series</button>
-                        <button class="filter-btn">Parenting & Tarbiyah</button>
-                        <button class="filter-btn">Spiritual Growth</button>
-                    </div>
-
-                    <div class="mini-playlists">
-                        <h3>Mini Playlists</h3>
+        <!-- Timeline Section -->
+        <section class="zuhd-timeline-section">
+            <h2 class="zuhd-section-title">Timeline</h2>
+            <div class="zuhd-timeline-container">
+                <div class="zuhd-timeline-line"></div>
+                
+                <div class="zuhd-timeline-item" data-year="2019">
+                    <div class="zuhd-timeline-dot"></div>
+                    <div class="zuhd-timeline-content">
+                        <div class="zuhd-timeline-year">2019</div>
+                        <div class="zuhd-timeline-description">
+                            Zuhd is founded in Sydney, Australia
+                        </div>
                     </div>
                 </div>
 
-                <div class="video-container">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-OAjr1jsVCJbChrkRw8marGaZBVmTiu.png" alt="This Week's Khutbah" class="video-thumbnail">
-                    <div class="play-button" onclick="playVideo()"></div>
+                <div class="zuhd-timeline-item" data-year="2020">
+                    <div class="zuhd-timeline-dot"></div>
+                    <div class="zuhd-timeline-content">
+                        <div class="zuhd-timeline-year">2020</div>
+                        <div class="zuhd-timeline-description">
+                            YouTube channel hits 100,000 subscribers
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Instagram Posts Section -->
-            <div class="instagram-section">
-               <div class="elfsight-app-5834f7fa-9388-47b0-8e3b-52e6889264f8" data-elfsight-app-lazy></div>
+                <div class="zuhd-timeline-item" data-year="2021">
+                    <div class="zuhd-timeline-dot"></div>
+                    <div class="zuhd-timeline-content">
+                        <div class="zuhd-timeline-year">2021</div>
+                        <div class="zuhd-timeline-description">
+                            Launch of Instagram page
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Quote and Blog Section -->
-           <div class="qotd-main-wrapper">
-        <div class="qotd-sidebar-panel">
-            <h1 class="qotd-main-heading">Quote of the Day</h1>
-            <p class="qotd-scholar-name">Ibn al-Qayyim</p>
-            
-            <div class="qotd-action-buttons">
-                <button class="qotd-share-control" onclick="shareQuote()">
-                    📤 Share
-                </button>
-                <button class="qotd-share-control" onclick="copyQuote()">
-                    📋 Share
-                </button>
-            </div>
-            
-            <h2 class="qotd-highlights-title">Blog Highlights</h2>
-            <div class="qotd-highlights-grid">
-                <div class="qotd-highlight-button" onclick="openInstagram()" title="Instagram">
-                    📷
-                </div>
-                <div class="qotd-highlight-button" onclick="openBlog()" title="Blog">
-                    📝
-                </div>
-                <div class="qotd-highlight-button" onclick="openMore()" title="More">
-                    👁️
+                <div class="zuhd-timeline-item" data-year="2023">
+                    <div class="zuhd-timeline-dot"></div>
+                    <div class="zuhd-timeline-content">
+                        <div class="zuhd-timeline-year">2023</div>
+                        <div class="zuhd-timeline-description">
+                            Over 1 million YouTube subscribers
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="qotd-featured-card">
-            <div class="qotd-quote-symbol">❝❝</div>
-            <p class="qotd-wisdom-text">
-                The heart will not find complete happiness, until it is connected with Allah.
-            </p>
-            <p class="qotd-attribution-text">Ibn al-Qayyim</p>
-            
-            <div class="qotd-social-controls">
-                <div class="qotd-social-icon-circle" onclick="shareToInstagram()" title="Share to Instagram">
-                    📷
-                </div>
-                <div class="qotd-social-icon-circle" onclick="shareGeneral()" title="Share">
-                    📤
-                </div>
-                <button class="qotd-primary-share-btn" onclick="mainShare()">SHARE</button>
-            </div>
-        </div>
+        </section>
     </div>
-        </div>
-    </section>
- <div class="donation-hero-container">
-        <div class="donation-content-wrapper">
-            <p class="donation-support-subtitle">Support our humanitarian efforts</p>
-            <h1 class="donation-main-heading">DONATE FOR<br>PALESTINE & MOSQUES</h1>
-            <p class="donation-description-text">
-                Join us in supporting Palestinian families in need and helping build and maintain 
-                mosques in our communities. Your donation provides essential aid, medical supplies, 
-                food, and supports places of worship that serve as centers of hope and community.
-            </p>
-
-            <div class="donation-buttons-container">
-                <a href="/donate.html"> <button class="donation-primary-btn" onclick="handleDonation()">
-                    Donate Now
-                </button></a>
-               
-                <button class="donation-secondary-btn" onclick="handleLearnMore()">
-                    Learn More
-                </button>
-            </div>
-
-            <div class="donation-impact-stats">
-                <div class="donation-stat-item">
-                    <div class="donation-stat-number">2,847</div>
-                    <div class="donation-stat-label">Families Helped</div>
-                </div>
-                <div class="donation-stat-item">
-                    <div class="donation-stat-number">15</div>
-                    <div class="donation-stat-label">Mosques Supported</div>
-                </div>
-                <div class="donation-stat-item">
-                    <div class="donation-stat-number">92%</div>
-                    <div class="donation-stat-label">Direct Aid</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-     <div class="banner">
+  <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -351,6 +267,5 @@
             </div>
         </div>
     </footer>
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 </body>
 </html>

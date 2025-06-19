@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zuhd-Lectures</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GSAP core + ScrollTrigger CDN -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Your custom JS -->
+  <script defer src="script.js"></script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+   
+</head>
+<body>
+     <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-text" id="loadingText"><img src="/images/logo.png" alt="Overlaylogo"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="/index.html">  <div class="logo-main"><img src="/images/logo.png" alt="logo"></div></a>  
+                </div>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="/lecture.html">Lectures</a></li>
+                    <li><a href="#quotes">Quotes</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li class="dropdown" id="supportDropdown">
+                        <a href="#" class="dropdown-toggle">
+                            Support
+                            <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/donate.html">Donate</a></li>
+                            <li><a href="#volunteer">Volunteer</a></li>
+                            <li><a href="#contact">Contact Us</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <button class="search-btn" id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <span>SEARCH</span>
+                </button>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="close-search" id="closeSearch">&times;</button>
+        
+        <div class="search-container">
+            <div class="search-header">
+                <h2 class="search-title">Search ZUHD Guidance</h2>
+                <p class="search-subtitle">Find lectures, quotes, and Islamic guidance</p>
+            </div>
+
+            <div class="search-input-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for lectures, quotes, topics...">
+                <svg class="search-icon-input" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+
+            <div class="search-results" id="searchResults">
+                <!-- Search results will be populated here -->
+            </div>
+        </div>
+    </div>
+
+
+     <!-- Lectures Main Section -->
+    <main class="lectures-main">
+        <div class="container">
+            <!-- Lectures Header -->
+            <div class="lectures-header">
+                <h1 class="lectures-title">Lectures</h1>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <!-- Scholar Filter -->
+                <div class="filter-dropdown" id="scholarFilter">
+                    <button class="filter-button" id="scholarBtn">
+                        <span>All Scholars</span>
+                        <svg class="filter-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="filter-options" id="scholarOptions">
+                        <div class="filter-option" data-value="all">All Scholars</div>
+                        <div class="filter-option" data-value="yasir-qadhi">Dr. Yasir Qadhi</div>
+                        <div class="filter-option" data-value="omar-suleiman">Dr. Omar Suleiman</div>
+                        <div class="filter-option" data-value="nouman-khan">Nouman Ali Khan</div>
+                        <div class="filter-option" data-value="mufti-menk">Mufti Menk</div>
+                        <div class="filter-option" data-value="tariq-jameel">Maulana Tariq Jameel</div>
+                    </div>
+                </div>
+
+                <!-- Topic Filter -->
+                <div class="filter-dropdown" id="topicFilter">
+                    <button class="filter-button" id="topicBtn">
+                        <span>All Topics</span>
+                        <svg class="filter-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="filter-options" id="topicOptions">
+                        <div class="filter-option" data-value="all">All Topics</div>
+                        <div class="filter-option" data-value="faith">Faith & Belief</div>
+                        <div class="filter-option" data-value="prayer">Salah & Worship</div>
+                        <div class="filter-option" data-value="quran">Quran Studies</div>
+                        <div class="filter-option" data-value="hadith">Hadith & Sunnah</div>
+                        <div class="filter-option" data-value="character">Character & Morals</div>
+                        <div class="filter-option" data-value="family">Family & Marriage</div>
+                        <div class="filter-option" data-value="society">Society & Community</div>
+                    </div>
+                </div>
+
+                <!-- Series Filter -->
+                <div class="filter-dropdown" id="seriesFilter">
+                    <button class="filter-button" id="seriesBtn">
+                        <span>All Series</span>
+                        <svg class="filter-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="filter-options" id="seriesOptions">
+                        <div class="filter-option" data-value="all">All Series</div>
+                        <div class="filter-option" data-value="seerah">Seerah of Prophet</div>
+                        <div class="filter-option" data-value="ramadan">Ramadan Reflections</div>
+                        <div class="filter-option" data-value="tafsir">Tafsir Series</div>
+                        <div class="filter-option" data-value="hadith-series">40 Hadith Series</div>
+                        <div class="filter-option" data-value="youth">Youth Guidance</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Topic Tags -->
+            <div class="topic-tags">
+                <div class="topic-tag active" data-topic="all">All</div>
+                <div class="topic-tag" data-topic="seerah">Seerah</div>
+                <div class="topic-tag" data-topic="palestine">Palestine</div>
+                <div class="topic-tag" data-topic="akhirah">Akhirah</div>
+                <div class="topic-tag" data-topic="tarbiyyah">Tarbiyyah</div>
+                <div class="topic-tag" data-topic="quran">Quran</div>
+            </div>
+        </div>
+    </main>
+
+    <div class="islamic-platform-wrapper">
+        <!-- Main Hero Section -->
+        <div class="tarbiyyah-hero-banner">
+            <div class="hero-main-content">
+                <div class="hero-title-section">
+                    <h1>IMPORTANCE<br>OF TARBIYYAH</h1>
+                    <p class="palestine-series-label">Palestine Series</p>
+                </div>
+                <div class="scholar-featured-image">
+                    <img src="/placeholder.svg?height=200&width=300" alt="Islamic Scholar" />
+                    <div class="video-play-overlay" onclick="playVideo('main')">
+                        <svg width="60" height="60" viewBox="0 0 60 60">
+                            <circle cx="30" cy="30" r="30" fill="rgba(255,255,255,0.9)"/>
+                            <polygon points="24,18 24,42 42,30" fill="#0F3D2E"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="islamic-geometric-pattern"></div>
+        </div>
+
+        <!-- Section Title -->
+        <div class="content-section-title">
+            <h2>Importance of Tarbiyyah</h2>
+            <p class="series-description-text">Palestine Series</p>
+        </div>
+
+        <!-- Video Grid -->
+        <div class="educational-videos-grid">
+            <div class="islamic-video-card featured-video-card">
+                <div class="hijrah-video-thumbnail">
+                    <div class="desert-camel-silhouette"></div>
+                    <div class="video-play-overlay compact-play-btn" onclick="playVideo('hijrah')">
+                        <svg width="40" height="40" viewBox="0 0 40 40">
+                            <circle cx="20" cy="20" r="20" fill="rgba(255,255,255,0.9)"/>
+                            <polygon points="16,12 16,28 28,20" fill="#0F3D2E"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="video-details-section">
+                    <h3>Lessons from the Hijrah</h3>
+                    <p class="islamic-category-tag">Seerah</p>
+                </div>
+            </div>
+
+            <div class="islamic-video-card">
+                <div class="scholar-portrait-thumbnail elderly-scholar-bg">
+                    <div class="scholar-avatar-image elderly-scholar-style"></div>
+                </div>
+                <div class="video-details-section">
+                    <h3>The Heart in Islam</h3>
+                    <p class="islamic-category-tag">Akhlaq</p>
+                </div>
+            </div>
+
+            <div class="islamic-video-card">
+                <div class="scholar-portrait-thumbnail young-scholar-bg">
+                    <div class="scholar-avatar-image young-scholar-style"></div>
+                </div>
+                <div class="video-details-section">
+                    <h3>How to Nurture Children Spiritually</h3>
+                    <p class="islamic-category-tag">Tarbiyyah</p>
+                </div>
+            </div>
+
+            <div class="islamic-video-card">
+                <div class="multiple-scholars-thumbnail">
+                    <div class="scholars-group-container">
+                        <div class="mini-scholar-avatar"></div>
+                        <div class="mini-scholar-avatar"></div>
+                        <div class="mini-scholar-avatar"></div>
+                    </div>
+                </div>
+                <div class="video-details-section">
+                    <h3>Al-Isra' wal-Mi'raj</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="quotes-container">
+        <!-- Filter Section -->
+        <div class="filter-section">
+            <div class="filter-controls">
+                <select class="filter-dropdown1" id="scholarFilter">
+                    <option value="">Scholar</option>
+                    <option value="ibn-qayyim">Ibn Qayyim</option>
+                    <option value="abu-huraira">Abu Huraira</option>
+                    <option value="hassan-al-basri">Hassan Al-Basri</option>
+                    <option value="abu-bakr-as-siddiq">Abu Bakr As-Siddiq</option>
+                    <option value="umar-al-khattab">Umar Al-Khattab</option>
+                    <option value="prophet-muhammad">Prophet Muhammad ﷺ</option>
+                </select>
+                
+                <select class="filter-dropdown1" id="categoryFilter">
+                    <option value="">Category</option>
+                    <option value="knowledge">Knowledge</option>
+                    <option value="patience">Patience</option>
+                    <option value="justice">Justice</option>
+                    <option value="character">Character</option>
+                    <option value="worship">Worship</option>
+                </select>
+                
+                <button class="filter-btn" onclick="applyFilters()">Filter</button>
+            </div>
+        </div>
+
+        <!-- Quotes Grid -->
+        <div class="quotes-grid" id="quotesGrid">
+            <div class="quote-card" data-scholar="ibn-qayyim" data-category="character">
+                <p class="quote-text">The most beloved of people to Allah are those who are most beneficial to people.</p>
+                <div class="quote-footer">
+                    <span class="author">— Ibn Qayyim</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="abu-huraira" data-category="worship">
+                <p class="quote-text">Riches are not from an abundance of worldly goods, but from a contented mind.</p>
+                <div class="quote-footer">
+                    <span class="author">— Abu Huraira</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="hassan-al-basri" data-category="worship">
+                <p class="quote-text">Call yourself to account before you are taken to account.</p>
+                <div class="quote-footer">
+                    <span class="author">— Hassan Al-Basri</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="prophet-muhammad" data-category="justice">
+                <p class="quote-text">Beware of injustice, for injustice will be darkness on the Day of Resurrection.</p>
+                <div class="quote-footer">
+                    <span class="author">— Prophet Muhammad ﷺ</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="abu-bakr-as-siddiq" data-category="patience">
+                <p class="quote-text">Allah does not burden a soul beyond that it can bear.</p>
+                <div class="quote-footer">
+                    <span class="author">— Abu Bakr As-Siddiq</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="umar-al-khattab" data-category="knowledge">
+                <p class="quote-text">Acquire knowledge, and through it acquire calmness and dignity.</p>
+                <div class="quote-footer">
+                    <span class="author">— Umar Al-Khattab</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="ibn-qayyim" data-category="knowledge">
+                <p class="quote-text">Acquire knowledge, and through it acquire calmness and dignity.</p>
+                <div class="quote-footer">
+                    <span class="author">— Ibn Qayyim</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-card" data-scholar="prophet-muhammad" data-category="character">
+                <p class="quote-text">The best of those among you are those who have the best character.</p>
+                <div class="quote-footer">
+                    <span class="author">— Prophet Muhammad ﷺ</span>
+                    <div class="social-icons">
+                        <i class="fab fa-twitter" onclick="shareQuote('twitter', this)"></i>
+                        <i class="fab fa-facebook-f" onclick="shareQuote('facebook', this)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div class="banner">
+        <div class="decorative-elements">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+            <div class="floating-dot"></div>
+        </div>
+        
+        <div class="banner-content">
+            <h1 class="channel-name">Stay Tune</h1>
+            <p class="update-text">New Updates Coming</p>
+            <a href="#" class="subscribe-btn">Subscribe Our YouTube Channel</a>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column footer-logo">
+                    <div class="logo-main"><img src="/images/logo.png" alt="logo"></div>
+                    <p class="logo-text">Your brand tagline or description goes here. Creating amazing experiences since 2020.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>ABOUT ACADEMY</h3>
+                    <ul>
+                        <li><a href="#" onclick="linkClick('Just the Matcha')">About ZUHD</a></li>
+                        <li><a href="#" onclick="linkClick('The Trial Kit')">ZUHD Lectures</a></li>
+                        <li><a href="#" onclick="linkClick('Wholesale & Bulk')">After School Classes</a></li>
+                        <li><a href="#" onclick="linkClick('Teaware')">Terms and conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="#" onclick="linkClick('Matcha Recipes')">Matcha Recipes</a></li>
+                        <li><a href="#" onclick="linkClick('Caffeine Content')">Caffeine Content</a></li>
+                        <li><a href="#" onclick="linkClick('Health Benefits')">Health Benefits</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="#" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="#" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="#" onclick="linkClick('Affiliate')">Affiliate</a></li>
+                        <li><a href="#" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <li><a href="#" onclick="linkClick('FAQ')">FAQ's</a></li>
+                        <li><a href="#" onclick="linkClick('Sign In')">Sign In</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column newsletter">
+                    <h3>Let's Stay Connected</h3>
+                    <p>Enter your email to unlock 10% OFF.</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">SUBMIT</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" class="social-link" onclick="socialClick('Pinterest')" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-link" onclick="socialClick('Facebook')" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="social-link" onclick="socialClick('Instagram')" title="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="#" class="social-link" onclick="socialClick('Twitter')" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Your Company. All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
