@@ -1105,3 +1105,477 @@ const zuhdObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.zuhd-vision-section, .zuhd-founders-section, .zuhd-timeline-section').forEach(section => {
     zuhdObserver.observe(section);
 });
+
+// zayarat js 
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Ziyarat page loaded');
+    
+    // Initialize all functionality
+    initializeNavigation();
+    initializeCards();
+    initializeMapMarkers();
+    initializeScrollAnimations();
+    initializeVideoModal();
+    initializeAccessibility();
+    
+    // Add loading completion
+    setTimeout(() => {
+        document.body.classList.add('ziyarat-loaded');
+    }, 100);
+});
+
+// Navigation Functionality
+function initializeNavigation() {
+    const navButtons = document.querySelectorAll('.ziyarat-nav-btn');
+    const cards = document.querySelectorAll('.ziyarat-card');
+    
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            
+            // Update active button
+            navButtons.forEach(btn => btn.classList.remove('ziyarat-active'));
+            button.classList.add('ziyarat-active');
+            
+            // Add click animation
+            button.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                button.style.transform = '';
+            }, 150);
+            
+            // Filter cards
+            filterCards(category);
+            
+            console.log(`Filtered by category: ${category}`);
+        });
+        
+        // Add keyboard support
+        button.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                button.click();
+            }
+        });
+    });
+}
+
+function filterCards(category) {
+    const cards = document.querySelectorAll('.ziyarat-card');
+    
+    cards.forEach((card, index) => {
+        const cardCategory = card.dataset.category;
+        
+        if (category === 'all' || cardCategory === category) {
+            card.classList.remove('ziyarat-hidden', 'ziyarat-filtered');
+            
+            // Stagger animation for showing cards
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        } else {
+            card.classList.add('ziyarat-filtered');
+            
+            // Hide after animation
+            setTimeout(() => {
+                card.classList.add('ziyarat-hidden');
+            }, 300);
+        }
+    });
+}
+
+// Card Interactions
+function initializeCards() {
+    const cards = document.querySelectorAll('.ziyarat-card');
+    
+    cards.forEach(card => {
+        // Click handler
+        card.addEventListener('click', () => {
+            const title = card.querySelector('.ziyarat-card-title').textContent;
+            const category = card.dataset.category;
+            
+            // Add click animation
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                card.style.transform = '';
+            }, 150);
+            
+            console.log(`Clicked card: ${title} (${category})`);
+            
+            // You can add navigation to detailed page here
+            showCardDetails(card);
+        });
+        
+        // Hover effects
+        card.addEventListener('mouseenter', () => {
+            const overlay = card.querySelector('.ziyarat-card-overlay');
+            if (overlay) {
+                overlay.style.transform = 'scale(1.1)';
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const overlay = card.querySelector('.ziyarat-card-overlay');
+            if (overlay) {
+                overlay.style.transform = '';
+            }
+        });
+        
+        // Add tabindex for keyboard navigation
+        card.setAttribute('tabindex', '0');
+        
+        // Keyboard support
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+}
+
+function showCardDetails(card) {
+    const title = card.querySelector('.ziyarat-card-title').textContent;
+    const description = card.querySelector('.ziyarat-card-description').textContent;
+    
+    // Create a simple modal or notification
+    const notification = document.createElement('div');
+    notification.className = 'ziyarat-notification';
+    notification.innerHTML = `
+        <div class="ziyarat-notification-content">
+            <h3>${title}</h3>
+            <p>${description}</p>
+            <button onclick="this.parentElement.parentElement.remove()">Close</button>
+        </div>
+    `;
+    
+    notification.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        animation: ziyaratFadeInUp 0.3s ease-out;
+    `;
+    
+    const content = notification.querySelector('.ziyarat-notification-content');
+    content.style.cssText = `
+        background: var(--off-white);
+        padding: 30px;
+        border-radius: 15px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        color: var(--deep-green);
+    `;
+    
+    const button = content.querySelector('button');
+    button.style.cssText = `
+        background: var(--deep-green);
+        color: var(--off-white);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Close on click outside
+    notification.addEventListener('click', (e) => {
+        if (e.target === notification) {
+            notification.remove();
+        }
+    });
+}
+
+// Map Markers
+function initializeMapMarkers() {
+    const markers = document.querySelectorAll('.ziyarat-map-marker');
+    
+    markers.forEach(marker => {
+        marker.addEventListener('click', () => {
+            const location = marker.dataset.location;
+            
+            // Add click animation
+            marker.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                marker.style.transform = '';
+            }, 300);
+            
+            // Show location info
+            showLocationInfo(location);
+            
+            console.log(`Clicked location: ${location}`);
+        });
+        
+        // Add keyboard support
+        marker.setAttribute('tabindex', '0');
+        marker.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                marker.click();
+            }
+        });
+    });
+}
+
+function showLocationInfo(location) {
+    const locationData = {
+        makkah: {
+            name: 'Makkah',
+            description: 'The holiest city in Islam, home to the Kaaba and Masjid al-Haram.',
+            significance: 'Direction of prayer for Muslims worldwide'
+        },
+        medina: {
+            name: 'Medina',
+            description: 'The second holiest city in Islam, home to the Prophet\'s Mosque.',
+            significance: 'The city where Prophet Muhammad (pbuh) is buried'
+        }
+    };
+    
+    const info = locationData[location];
+    if (info) {
+        // Create info popup
+        const popup = document.createElement('div');
+        popup.className = 'ziyarat-location-popup';
+        popup.innerHTML = `
+            <div class="ziyarat-popup-content">
+                <h3>${info.name}</h3>
+                <p>${info.description}</p>
+                <small>${info.significance}</small>
+                <button onclick="this.parentElement.parentElement.remove()">×</button>
+            </div>
+        `;
+        
+        popup.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--off-white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            max-width: 300px;
+            animation: ziyaratScaleIn 0.3s ease-out;
+        `;
+        
+        const content = popup.querySelector('.ziyarat-popup-content');
+        content.style.cssText = `
+            color: var(--deep-green);
+            text-align: center;
+            position: relative;
+        `;
+        
+        const button = content.querySelector('button');
+        button.style.cssText = `
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--deep-green);
+            color: var(--off-white);
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 14px;
+        `;
+        
+        document.body.appendChild(popup);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (popup.parentElement) {
+                popup.remove();
+            }
+        }, 5000);
+    }
+}
+
+// Scroll Animations
+function initializeScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('ziyarat-animate-in');
+                
+                // Special handling for cards
+                if (entry.target.classList.contains('ziyarat-card')) {
+                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.opacity = '1';
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements
+    const elementsToObserve = document.querySelectorAll(
+        '.ziyarat-featured, .ziyarat-card, .ziyarat-map'
+    );
+    
+    elementsToObserve.forEach(element => observer.observe(element));
+}
+
+// Video Modal
+function initializeVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const video = modal.querySelector('.ziyarat-video');
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeVideo();
+        }
+    });
+    
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('ziyarat-show')) {
+            closeVideo();
+        }
+    });
+}
+
+function playVideo() {
+    const modal = document.getElementById('videoModal');
+    const video = modal.querySelector('.ziyarat-video');
+    
+    // Show modal
+    modal.classList.add('ziyarat-show');
+    
+    // Set video source (placeholder for now)
+    video.src = '/placeholder-video.mp4';
+    
+    // Play video
+    video.play().catch(e => {
+        console.log('Video play failed:', e);
+    });
+    
+    console.log('Playing Makkah experience video');
+}
+
+function closeVideo() {
+    const modal = document.getElementById('videoModal');
+    const video = modal.querySelector('.ziyarat-video');
+    
+    // Hide modal
+    modal.classList.remove('ziyarat-show');
+    
+    // Pause and reset video
+    video.pause();
+    video.currentTime = 0;
+    
+    console.log('Video modal closed');
+}
+
+// Accessibility
+function initializeAccessibility() {
+    // Add ARIA labels
+    const playBtn = document.querySelector('.ziyarat-play-btn');
+    if (playBtn) {
+        playBtn.setAttribute('aria-label', 'Play Makkah experience video');
+    }
+    
+    const navButtons = document.querySelectorAll('.ziyarat-nav-btn');
+    navButtons.forEach(btn => {
+        btn.setAttribute('aria-label', `Filter by ${btn.textContent}`);
+    });
+    
+    const cards = document.querySelectorAll('.ziyarat-card');
+    cards.forEach(card => {
+        const title = card.querySelector('.ziyarat-card-title').textContent;
+        card.setAttribute('aria-label', `Learn more about ${title}`);
+    });
+    
+    // Keyboard navigation improvements
+    document.addEventListener('keydown', (e) => {
+        // Tab navigation enhancements
+        if (e.key === 'Tab') {
+            document.body.classList.add('ziyarat-keyboard-navigation');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('ziyarat-keyboard-navigation');
+    });
+}
+
+// Utility Functions
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Performance monitoring
+const performanceObserver = new PerformanceObserver((list) => {
+    for (const entry of list.getEntries()) {
+        if (entry.entryType === 'measure') {
+            console.log(`${entry.name}: ${entry.duration}ms`);
+        }
+    }
+});
+
+if ('PerformanceObserver' in window) {
+    performanceObserver.observe({ entryTypes: ['measure'] });
+}
+
+// Error handling
+window.addEventListener('error', (e) => {
+    console.error('JavaScript error:', e.error);
+});
+
+// Loading completion
+window.addEventListener('load', () => {
+    console.log('Ziyarat page fully loaded');
+    
+    // Add subtle animations after load
+    setTimeout(() => {
+        const mapMarkers = document.querySelectorAll('.ziyarat-map-marker');
+        mapMarkers.forEach((marker, index) => {
+            setTimeout(() => {
+                marker.style.animation = `ziyaratFloat 3s ease-in-out infinite`;
+                marker.style.animationDelay = `${index * 0.5}s`;
+            }, 2000 + (index * 500));
+        });
+    }, 1000);
+});
+
+// Responsive handling
+const handleResize = debounce(() => {
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+        // Adjust animations for mobile
+        const cards = document.querySelectorAll('.ziyarat-card');
+        cards.forEach(card => {
+            card.style.animationDuration = '0.6s';
+        });
+    }
+}, 250);
+
+window.addEventListener('resize', handleResize);
+
+// Initialize resize check
+handleResize();

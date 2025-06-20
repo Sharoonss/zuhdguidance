@@ -3608,6 +3608,559 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
     }
 }
 
+/* Animation Keyframes */
+@keyframes ziyaratFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ziyaratFadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ziyaratFadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ziyaratScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes ziyaratPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes ziyaratFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes ziyaratGlow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(200, 184, 138, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(200, 184, 138, 0.6);
+    }
+}
+
+.ziyarat-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Header Section */
+.ziyarat-header {
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: ziyaratFadeInUp 1s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+.ziyarat-title {
+    padding-top: 120px;
+    font-size:100px;
+    color: var(--off-white);
+    margin-bottom: 20px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.ziyarat-nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ziyarat-nav-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--off-white);
+    background: transparent;
+    color: var(--off-white);
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: ziyaratFadeInUp 0.6s ease-out forwards;
+}
+
+.ziyarat-nav-btn:nth-child(1) { animation-delay: 0.4s; }
+.ziyarat-nav-btn:nth-child(2) { animation-delay: 0.5s; }
+.ziyarat-nav-btn:nth-child(3) { animation-delay: 0.6s; }
+
+.ziyarat-nav-btn:hover {
+    background: var(--deep-green);
+    color: var(--off-white);
+    transform: translateY(-2px);
+}
+
+.ziyarat-nav-btn.ziyarat-active {
+    background: var(--deep-green);
+    color: var(--off-white);
+}
+
+/* Main Content */
+.ziyarat-main {
+    display: grid;
+    grid-template-columns: 2fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Featured Section */
+.ziyarat-featured {
+    background: var(--off-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(15, 61, 46, 0.1);
+    opacity: 0;
+    animation: ziyaratScaleIn 1s ease-out forwards;
+    animation-delay: 0.8s;
+    transition: transform 0.3s ease;
+}
+
+.ziyarat-featured:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(15, 61, 46, 0.15);
+}
+
+.ziyarat-featured-content {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+}
+
+.ziyarat-video-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.ziyarat-video-container {
+    position: relative;
+    width: 100%;
+    height:300px;
+    overflow: hidden;
+}
+
+.ziyarat-featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.ziyarat-featured:hover .ziyarat-featured-image {
+    transform: scale(1.05);
+}
+
+.ziyarat-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 61, 46, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    border: 1px solid var(--off-white);
+}
+
+.ziyarat-video-container:hover .ziyarat-video-overlay {
+    background: rgba(15, 61, 46, 0.3);
+}
+
+.ziyarat-play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(34, 139, 34, 0.9);
+    border: none;
+    color: var(--off-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ziyarat-play-btn:hover {
+    background: rgba(34, 139, 34, 1);
+    transform: scale(1.1);
+}
+
+.ziyarat-featured-info {
+    padding: 25px;
+    background: var(--off-white);
+}
+
+.ziyarat-featured-title {
+    font-size: 2.8rem;
+    color: var(--deep-green);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.ziyarat-featured-description {
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.ziyarat-map-section {
+    flex: 1;
+    background: var(--sand-beige);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+.ziyarat-map-section { padding: 1rem 0; }
+  .ziyarat-map           { position: relative; display: inline-block; width: 100%; max-width: 700px; }
+  .ziyarat-map-image     { width: 100%; height: auto; display: block; }
+
+  /* shared pin style */
+  .ziyarat-map-marker {
+    position: absolute;
+    transform: translate(-50%, -100%);   /* center horizontally, sit just above pin tip */
+    text-align: center;
+    color: #c92b2b;                      /* red pin */
+    font-size: 1.8rem;                   /* pin size */
+  }
+  .ziyarat-map-marker .ziyarat-location-label {
+    display: block;
+    margin-top: 0.15rem;
+    padding: 0.1rem 0.4rem;
+    background: rgba(0,0,0,.75);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* ✨ location-specific positions (tweak if you use a different base map) */
+  .ziyarat-map-marker[data-location="makkah"]  { top: 68%; left: 27%; }
+  .ziyarat-map-marker[data-location="medina"]  { top: 50%; left: 26%; }
+
+  /* country label */
+  .ziyarat-country-label {
+    position: absolute;
+    bottom: 4%;
+    right: 4%;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,.8);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+
+/* Responsive adjustments for featured section */
+@media (max-width: 768px) {
+    .ziyarat-featured-content {
+        flex-direction: column;
+    }
+    
+    .ziyarat-map-section {
+        height: 200px;
+        padding: 15px;
+    }
+    
+    .ziyarat-map {
+        width: 150px;
+        height: 180px;
+    }
+    
+    .ziyarat-video-container {
+        height: 200px;
+    }
+    
+    .ziyarat-play-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Sidebar */
+.ziyarat-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.ziyarat-card {
+    height: 200px;
+    background: var(--off-white);
+    border-radius: 12px;
+    overflow: hidden;
+    /* box-shadow: 0 5px 20px rgba(15, 61, 46, 0.08); */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    opacity: 0;
+    display: flex;
+    animation: ziyaratFadeInRight 0.8s ease-out forwards;
+}
+
+.ziyarat-card:nth-child(1) { animation-delay: 1s; }
+.ziyarat-card:nth-child(2) { animation-delay: 1.2s; }
+.ziyarat-card:nth-child(3) { animation-delay: 1.4s; }
+.ziyarat-card:nth-child(4) { animation-delay: 1.6s; }
+
+.ziyarat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(15, 61, 46, 0.15);
+}
+
+.ziyarat-card-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.ziyarat-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.ziyarat-card:hover .ziyarat-card-image {
+    transform: scale(1.1);
+}
+
+.ziyarat-card-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--deep-green);
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.ziyarat-card:hover .ziyarat-card-overlay {
+    opacity: 1;
+    animation: ziyaratGlow 2s ease-in-out infinite;
+}
+
+.ziyarat-card-content {
+    padding: 20px;
+}
+
+.ziyarat-card-title {
+    font-size: 2.1rem;
+    color: var(--deep-green);
+    margin-bottom: 10px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.ziyarat-card-description {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Video Modal */
+.ziyarat-video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.ziyarat-video-modal.ziyarat-show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ziyarat-modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    background: var(--off-white);
+    border-radius: 15px;
+    overflow: hidden;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.ziyarat-video-modal.ziyarat-show .ziyarat-modal-content {
+    transform: scale(1);
+}
+
+.ziyarat-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    z-index: 1001;
+    transition: background 0.3s ease;
+}
+
+.ziyarat-close-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.ziyarat-video-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.ziyarat-video {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+}
+
+/* Filter States */
+.ziyarat-card.ziyarat-hidden {
+    display: none;
+}
+
+.ziyarat-card.ziyarat-filtered {
+    opacity: 0.3;
+    transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ziyarat-main {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ziyarat-container {
+        padding: 15px;
+    }
+
+    .ziyarat-nav {
+        justify-content: center;
+    }
+
+    .ziyarat-featured-info {
+        padding: 20px;
+    }
+
+    .ziyarat-featured-title {
+        font-size: 1.5rem;
+    }
+
+    .ziyarat-video-container {
+        height: 250px;
+    }
+
+    .ziyarat-play-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .ziyarat-map-image {
+        width: 120px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ziyarat-title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .ziyarat-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ziyarat-nav-btn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .ziyarat-card-content {
+        padding: 15px;
+    }
+
+    .ziyarat-card-title {
+        font-size: 1rem;
+    }
+
+    .ziyarat-video-container {
+        height: 200px;
+    }
+}
+
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     *,
@@ -3617,4 +4170,18 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* Loading states */
+.ziyarat-loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Focus states for accessibility */
+.ziyarat-nav-btn:focus,
+.ziyarat-play-btn:focus,
+.ziyarat-card:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
 }

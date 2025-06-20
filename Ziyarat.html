@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate/Support - Zuhd</title>
+    <title>Ziyarat - Sacred Journey</title>
     <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/lecture.html">
@@ -20,12 +20,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-      <!-- Loading Overlay -->
+     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-text" id="loadingText"><img src="/images/logo.png" alt="Overlaylogo"></div>
-    </div> 
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -98,138 +99,187 @@
         </div>
     </div>
 
-    <div class="zuhd-donation-container">
-        <!-- Hero Section -->
-        <section class="zuhd-hero-section">
-            <div class="zuhd-hero-background">
-                <img src="/images/donationbg.png" alt="Open Quran" class="zuhd-hero-image">
-                <div class="zuhd-hero-overlay"></div>
-            </div>
-            <div class="zuhd-hero-content">
-                <p class="zuhd-hero-subtitle">Consider supporting our work</p>
-                <h1 class="zuhd-hero-title">DONATE/<br>SUPPORT</h1>
-                <button class="zuhd-support-btn" onclick="scrollToPayment()">
-                    <span>SUPPORT NOW</span>
-                    <i class="fas fa-arrow-down"></i>
+    <div class="ziyarat-container">
+        <!-- Header Section -->
+        <header class="ziyarat-header">
+            <h1 class="ziyarat-title">Ziyarat</h1>
+            <nav class="ziyarat-nav">
+                <button class="ziyarat-nav-btn ziyarat-active" data-category="all">All</button>
+                <button class="ziyarat-nav-btn" data-category="makkah">Makkah</button>
+                <button class="ziyarat-nav-btn" data-category="medina">Medina</button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="ziyarat-main">
+            <!-- Featured Section -->
+            <div class="ziyarat-featured-content">
+    <div class="ziyarat-video-section">
+        <div class="ziyarat-video-container">
+            <img src="/images/makkahmadina.png" alt="Makkah Kaaba" class="ziyarat-featured-image">
+            <div class="ziyarat-video-overlay">
+                <button class="ziyarat-play-btn" onclick="playVideo()">
+                    <i class="fas fa-play"></i>
                 </button>
             </div>
-        </section>
+        </div>
+        <div class="ziyarat-featured-info">
+            <h2 class="ziyarat-featured-title">Experience Makkah</h2>
+            <p class="ziyarat-featured-description">
+                A journey through the sacred city of Makkah, capturing its spiritual atmosphere.
+            </p>
+        </div>
+    </div>
+    
+   <!-- Map & Marker Section -->
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        <!-- Payment Section -->
-        <section class="zuhd-payment-section">
-            <div class="zuhd-payment-card">
-                <div class="zuhd-payment-header">
-                    <h2 class="zuhd-payment-title">Payment Method</h2>
-                </div>
+<style>
+  .ziyarat-map-section { padding: 1rem 0; }
+  .ziyarat-map           { position: relative; display: inline-block; width: 100%; max-width: 700px; }
+  .ziyarat-map-image     { width: 100%; height: auto; display: block; }
 
-                <!-- Payment Methods -->
-                <div class="zuhd-payment-methods">
-                    <div class="zuhd-payment-option" data-method="stripe">
-                        <div class="zuhd-payment-logo">
-                            <i class="fab fa-stripe"></i>
-                            <span>stripe</span>
+  /* shared pin style */
+  .ziyarat-map-marker {
+    position: absolute;
+    transform: translate(-50%, -100%);   /* center horizontally, sit just above pin tip */
+    text-align: center;
+    color: #c92b2b;                      /* red pin */
+    font-size: 1.8rem;                   /* pin size */
+  }
+  .ziyarat-map-marker .ziyarat-location-label {
+    display: block;
+    margin-top: 0.15rem;
+    padding: 0.1rem 0.4rem;
+    background: rgba(0,0,0,.75);
+    color: #fff;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* ✨ location-specific positions (tweak if you use a different base map) */
+  .ziyarat-map-marker[data-location="makkah"]  { top: 68%; left: 27%; }
+  .ziyarat-map-marker[data-location="medina"]  { top: 50%; left: 26%; }
+
+  /* country label */
+  .ziyarat-country-label {
+    position: absolute;
+    bottom: 4%;
+    right: 4%;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,.8);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+</style>
+
+<div class="ziyarat-map-section">
+  <div class="ziyarat-map-container">
+    <div class="ziyarat-map">
+      <!-- public-domain SVG map of Saudi Arabia -->
+     <img src="/images/map.png"
+     alt="Saudi Arabia Map"
+     class="ziyarat-map-image">
+
+      <!-- markers -->
+      <!-- <div class="ziyarat-map-marker" data-location="makkah">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="ziyarat-location-label">Makkah</span>
+      </div>
+      <div class="ziyarat-map-marker ziyarat-medina-marker" data-location="medina">
+        <i class="fas fa-map-marker-alt"></i>
+        <span class="ziyarat-location-label">Medina</span>
+      </div>
+
+      <span class="ziyarat-country-label">Saudi&nbsp;Arabia</span> -->
+    </div>
+  </div>
+</div>
+
+</div>
+
+            <!-- Side Content -->
+            <aside class="ziyarat-sidebar">
+                <article class="ziyarat-card" data-category="medina">
+                    <div class="ziyarat-card-image-container">
+                        <img src="images/madina1.png" alt="Prophet's Mosque" class="ziyarat-card-image">
+                        <div class="ziyarat-card-overlay">
+                            <i class="fas fa-mosque"></i>
                         </div>
                     </div>
-                    <div class="zuhd-payment-option" data-method="paypal">
-                        <div class="zuhd-payment-logo">
-                            <i class="fab fa-paypal"></i>
-                            <span>PayPal</span>
-                        </div>
-                    </div>
-                    <div class="zuhd-payment-option" data-method="gofundme">
-                        <div class="zuhd-payment-logo">
-                            <i class="fas fa-heart"></i>
-                            <span>GoFundMe</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Donation Causes -->
-                <div class="zuhd-donation-causes">
-                    <h3 class="zuhd-causes-title">Donate to</h3>
-                    
-                    <div class="zuhd-cause-item" data-cause="palestine">
-                        <div class="zuhd-cause-header">
-                            <h4 class="zuhd-cause-name">Palestine</h4>
-                            <div class="zuhd-cause-toggle">
-                                <input type="radio" name="cause" id="palestine" value="palestine" checked>
-                                <label for="palestine" class="zuhd-radio-label"></label>
-                            </div>
-                        </div>
-                        <p class="zuhd-cause-description">
-                            Support relief efforts in Gaza and the West Bank.
+                    <div class="ziyarat-card-content">
+                        <h3 class="ziyarat-card-title">Visiting the Prophet's (pbuh) Mosque</h3>
+                        <p class="ziyarat-card-description">
+                            A visit to Masjid an-Nabawi in Medina, reflecting on its historical significance.
                         </p>
                     </div>
+                </article>
 
-                    <div class="zuhd-cause-item" data-cause="masjids">
-                        <div class="zuhd-cause-header">
-                            <h4 class="zuhd-cause-name">Help Masjids</h4>
-                            <div class="zuhd-cause-toggle">
-                                <input type="radio" name="cause" id="masjids" value="masjids">
-                                <label for="masjids" class="zuhd-radio-label"></label>
-                            </div>
+                <article class="ziyarat-card" data-category="makkah">
+                    <div class="ziyarat-card-image-container">
+                        <img src="/images/umrahimg.png" alt="Performing Umrah" class="ziyarat-card-image">
+                        <div class="ziyarat-card-overlay">
+                            <i class="fas fa-kaaba"></i>
                         </div>
-                        <p class="zuhd-cause-description">
-                            Help maintain and expand our community mosques.
+                    </div>
+                    <div class="ziyarat-card-content">
+                        <h3 class="ziyarat-card-title">Performing Umrah</h3>
+                        <p class="ziyarat-card-description">
+                            A step-by-step guide to performing the blessed pilgrimage in Makkah.
                         </p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Donation Amount -->
-                <div class="zuhd-amount-section">
-                    <h3 class="zuhd-amount-title">Select Amount</h3>
-                    <div class="zuhd-amount-options">
-                        <button class="zuhd-amount-btn" data-amount="25">$25</button>
-                        <button class="zuhd-amount-btn" data-amount="50">$50</button>
-                        <button class="zuhd-amount-btn zuhd-amount-active" data-amount="100">$100</button>
-                        <button class="zuhd-amount-btn" data-amount="250">$250</button>
-                        <input type="number" class="zuhd-custom-amount" placeholder="Custom amount" min="1">
+                <article class="ziyarat-card" data-category="medina">
+                    <div class="ziyarat-card-image-container">
+                        <img src="/images/madinabeauty.png" alt="Beauty of Medina" class="ziyarat-card-image">
+                        <div class="ziyarat-card-overlay">
+                            <i class="fas fa-city"></i>
+                        </div>
                     </div>
-                </div>
+                    <div class="ziyarat-card-content">
+                        <h3 class="ziyarat-card-title">The Beauty of Medina</h3>
+                        <p class="ziyarat-card-description">
+                            Exploring the serene and beautiful city of Medina, rich in history and culture.
+                        </p>
+                    </div>
+                </article>
 
-                <!-- Donate Button -->
-                <button class="zuhd-donate-btn" onclick="processDonation()">
-                    <span>DONATE NOW</span>
-                    <i class="fas fa-heart"></i>
+                <article class="ziyarat-card" data-category="medina">
+                    <div class="ziyarat-card-image-container">
+                        <img src="/images/madinavisit.png" alt="Medina Streets" class="ziyarat-card-image">
+                        <div class="ziyarat-card-overlay">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                    </div>
+                    <div class="ziyarat-card-content">
+                        <h3 class="ziyarat-card-title">Exploring the serene and beautiful city of Medina</h3>
+                        <p class="ziyarat-card-description">
+                            Discover the peaceful streets and spiritual atmosphere of the Prophet's city.
+                        </p>
+                    </div>
+                </article>
+            </aside>
+        </main>
+
+        <!-- Video Modal -->
+        <div class="ziyarat-video-modal" id="videoModal">
+            <div class="ziyarat-modal-content">
+                <button class="ziyarat-close-btn" onclick="closeVideo()">
+                    <i class="fas fa-times"></i>
                 </button>
-            </div>
-        </section>
-
-        <!-- Cause Cards Section -->
-        <section class="zuhd-causes-section">
-            <div class="zuhd-cause-card" data-cause="palestine">
-                <div class="zuhd-cause-image-container">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Palestine Flag" class="zuhd-cause-image">
-                    <div class="zuhd-cause-overlay">
-                        <h3 class="zuhd-cause-card-title">PALESTINE</h3>
-                    </div>
-                </div>
-            </div>
-
-            <div class="zuhd-cause-card" data-cause="masjids">
-                <div class="zuhd-cause-image-container">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Mosque Interior" class="zuhd-cause-image">
-                    <div class="zuhd-cause-overlay">
-                        <h3 class="zuhd-cause-card-title">LOCAL MASJIDS</h3>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Success Modal -->
-        <div class="zuhd-modal-overlay" id="successModal">
-            <div class="zuhd-modal">
-                <div class="zuhd-modal-content">
-                    <i class="fas fa-check-circle zuhd-success-icon"></i>
-                    <h3>Thank You!</h3>
-                    <p>Your donation has been processed successfully.</p>
-                    <button class="zuhd-modal-btn" onclick="closeModal()">Close</button>
+                <div class="ziyarat-video-wrapper">
+                    <video class="ziyarat-video" controls>
+                        <source src="#" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
     </div>
-
-      <div class="banner">
+ <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
             <div class="circle"></div>
