@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Zuhd</title>
-     <!-- Styles -->
-  <link rel="stylesheet" href="styles.css"/>
+    <title>Zuhd Maktab - After-school Islamic Classes</title>
+    <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/lecture.html">
 
   <!-- GSAP core + ScrollTrigger CDN -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  
 
   <!-- Your custom JS -->
   <script defer src="script.js"></script>
@@ -19,93 +23,73 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-     <nav>
+<nav>
       <div id="navbar"></div>
    </nav>
-    <div class="zuhd-about-container">
-        <!-- Header Section -->
-        <header class="zuhd-header-section">
-            <h1 class="zuhd-main-title">About Us</h1>
-        </header>
+       <!-- Banner Section -->
+    <section class="banner-wrapper">
+        <div class="banner-overlay"></div>
+        <div class="banner-text">
+            <h1 class="main-heading">ZUHD MAKTAB</h1>
+            <p class="sub-heading">AFTER-SCHOOL ISLAMIC CLASSES</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd28zYx4yYo1FRDzKutAoKG8c49nIL6sVuGy6oLAedu_IwwHA/viewform">  <button class="primary-btn" onclick="scrollToAction()">ENROLL NOW</button></a>
+          
+        </div>
+    </section>
 
-        <!-- Vision & History Section -->
-        <section class="zuhd-vision-section">
-            <h2 class="zuhd-section-title">Vision & History</h2>
-            <p class="zuhd-vision-text">
-              At Zuhd Academy, we offer a wide range of courses, including Quranic studies, Hadith studies, Islamic history, Islamic jurisprudence, and much more. Our courses are taught by experienced and knowledgeable instructors who have dedicated their lives to the study and practice of Islam.
+    <!-- Content Section -->
+    <section class="content-wrapper">
+        <div class="content-container">
+            <h2 class="content-title">Islamic Education for Young Muslims</h2>
+            <p class="content-description">
+                Our maktab classes provide essential Islamic education for school-aged 
+                children in a supportive and nurturing environment. We focus on building strong foundations in Quranic recitation, Islamic studies, and 
+                ethics.
             </p>
-        </section>
 
-        <!-- Founders Section -->
-        <section class="zuhd-founders-section">
-            <h2 class="zuhd-section-title">Founders</h2>
-            <div class="zuhd-founder-card">
-                <div class="zuhd-founder-image-container">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RaH481Qp73280ZTW8eCBv7FhlBRYQc.png" alt="Dr. Sami Al-Hashmi" class="zuhd-founder-image">
+            <!-- Services Grid -->
+            <div class="services-layout">
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">QURAN READING<br>& MEMORIZATION</h3>
+                    <p class="service-info">Learn to read and memorize the Quran with proper tajweed</p>
                 </div>
-                <div class="zuhd-founder-info">
-                    <p class="zuhd-founder-description">
-                        <strong>Dr. Sami Al-Hashmi</strong>, an esteemed 
-                        Islamic scholar, founded Zuhd with a 
-                        vision to provide high-quality Islamic 
-                        lectures and resources.
-                    </p>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 21h18"/>
+                            <path d="M5 21V7l8-4v18"/>
+                            <path d="M19 21V11l-6-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">ISLAMIC STUDIES</h3>
+                    <p class="service-info">Explore the core teachings and practices of Islam</p>
+                </div>
+
+                <div class="service-box">
+                    <div class="service-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">ISLAMIC ETHICS</h3>
+                    <p class="service-info">Develop good character and moral values</p>
                 </div>
             </div>
+
+            <!-- Action Button -->
+            
+        </div>   
         </section>
-
-        <!-- Timeline Section -->
-        <section class="zuhd-timeline-section">
-            <h2 class="zuhd-section-title">Timeline</h2>
-            <div class="zuhd-timeline-container">
-                <div class="zuhd-timeline-line"></div>
-                
-                <div class="zuhd-timeline-item" data-year="2019">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2019</div>
-                        <div class="zuhd-timeline-description">
-                            Zuhd is founded in Sydney, Australia
-                        </div>
-                    </div>
-                </div>
-
-                <div class="zuhd-timeline-item" data-year="2020">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2020</div>
-                        <div class="zuhd-timeline-description">
-                            YouTube channel hits 100,000 subscribers
-                        </div>
-                    </div>
-                </div>
-
-                <div class="zuhd-timeline-item" data-year="2021">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2021</div>
-                        <div class="zuhd-timeline-description">
-                            Launch of Instagram page
-                        </div>
-                    </div>
-                </div>
-
-                <div class="zuhd-timeline-item" data-year="2023">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2023</div>
-                        <div class="zuhd-timeline-description">
-                            Over 1 million YouTube subscribers
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-  <div class="banner">
+       <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -207,7 +191,7 @@
             </div>
         </div>
     </footer>
-         <script src="navbar.js"></script>
-
+             <script src="navbar.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZUHD Academy – Responsive Navigation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ------------------------
+           COLOR TOKENS
+        -------------------------*/
+        :root {
+            --gold: #c8b88a;
+            --off-white: #f8f6f0;
+            --dark-green: rgba(15, 61, 46, 0.95);
+        }
+
+        /* ------------------------
+           RESET + BASICS
+        -------------------------*/
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        body { 
+            font-family: "Inter"; 
+            /* background: #f8f9fa;  */
+            line-height: 1.6; 
+            padding-top: 80px; /* Account for fixed navbar */
+        }
+        
+        a { 
+            text-decoration: none; 
+            color: inherit; 
+        }
+        
+        button { 
+            cursor: pointer; 
+            border: none; 
+            background: none; 
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+
+        /* ------------------------
+           NAVBAR
+        -------------------------*/
+        .navbar {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark-green);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            background: rgba(15, 61, 46, 0.98);
+        }
+
+        .nav-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        /* LOGO */
+        .logo-main { 
+            /* color: var(--off-white);  */
+            font-weight: 700; 
+            font-size: 1.05rem; 
+            letter-spacing: 0.5px; 
+        }
+        
+        .logo-main img {
+            height:70px;
+            width: auto;
+        }
+
+        /* NAV MENU */
+        .nav-menu {
+            list-style: none;
+            display: flex; 
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu li { 
+            position: relative; 
+        }
+        
+        .nav-menu a { 
+            color: var(--off-white); 
+            font-weight: 400; 
+            display: flex; 
+            align-items: center; 
+            gap: 0.25rem; 
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-menu a:hover { 
+            color: var(--gold); 
+        }
+        
+        .nav-menu a::after {
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            bottom: -5px;
+            width: 0; 
+            height: 2px; 
+            background: var(--gold); 
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover::after { 
+            width: 100%; 
+        }
+
+        /* SUPPORT DROPDOWN */
+        .dropdown-toggle { 
+            user-select: none; 
+            cursor: pointer;
+        }
+        
+        .dropdown-toggle .arrow { 
+            transition: transform 0.3s; 
+            margin-left: 0.5rem;
+        }
+        
+        .dropdown.active .arrow { 
+            transform: rotate(180deg); 
+        }
+        
+        .dropdown-menu {
+            position: absolute; 
+            left: 50%; 
+            top: 100%; 
+            transform: translate(-50%, 10px);
+            background: var(--dark-green); 
+            border: 1px solid var(--gold); 
+            border-radius: 4px;
+            min-width: 180px; 
+            opacity: 0; 
+            visibility: hidden; 
+            padding: 0.5rem 0; 
+            z-index: 1001; 
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-menu::before {
+            content: ""; 
+            position: absolute; 
+            top: -6px; 
+            left: 50%; 
+            transform: translateX(-50%) rotate(45deg);
+            width: 12px; 
+            height: 12px; 
+            background: var(--dark-green); 
+            border-left: 1px solid var(--gold); 
+            border-top: 1px solid var(--gold);
+        }
+        
+        .dropdown-menu li { 
+            width: 100%; 
+        }
+        
+        .dropdown-menu a { 
+            padding: 0.75rem 1.5rem; 
+            display: block; 
+            text-align: center; 
+        }
+        
+        .dropdown-menu a:hover { 
+            background: rgba(200, 184, 138, 0.1); 
+        }
+        
+        .dropdown.active .dropdown-menu { 
+            opacity: 1; 
+            visibility: visible; 
+            transform: translate(-50%, 0); 
+        }
+
+        /* SEARCH BUTTON */
+        .search-btn { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.4rem; 
+            color: var(--off-white); 
+            font-size: 0.875rem; 
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        
+        .search-btn:hover { 
+            color: var(--gold); 
+        }
+
+        /* MOBILE MENU BUTTON */
+        .mobile-menu-btn { 
+            display: none; 
+            color: var(--off-white); 
+            font-size: 1.5rem; 
+        }
+
+        /* SIDEBAR HEADER - HIDDEN ON DESKTOP */
+        .sidebar-header {
+            display: none;
+        }
+
+        /* ------------------------
+           SEARCH OVERLAY
+        -------------------------*/
+        .search-overlay {
+            position: fixed; 
+            inset: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            background: rgba(15, 61, 46, 0.98); 
+            backdrop-filter: blur(10px);
+            padding: 2rem; 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.3s ease; 
+            z-index: 2000;
+        }
+        
+        .search-overlay.active { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+
+        .close-search {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .close-search:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        
+        .close-search:active {
+            transform: scale(0.95);
+        }
+
+        .search-container { 
+            width: 100%; 
+            max-width: 600px; 
+            margin-top: 10vh; 
+        }
+        
+        .search-title { 
+            font-size: 2rem; 
+            font-weight: 700; 
+            color: var(--gold); 
+            margin-bottom: 0.5rem; 
+            font-family: "Amiri", serif; 
+            text-align: center; 
+        }
+        
+        .search-subtitle { 
+            color: var(--off-white); 
+            opacity: 0.8; 
+            text-align: center; 
+            margin-bottom: 2rem; 
+        }
+
+        .search-input-container { 
+            position: relative; 
+            margin-bottom: 1rem; 
+        }
+        
+        .search-input {
+            width: 100%; 
+            padding: 1.25rem 3rem 1.25rem 1.25rem; 
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.07); 
+            border: 2px solid var(--gold); 
+            border-radius: 8px; 
+            color: var(--off-white);
+        }
+        
+        .search-input::placeholder { 
+            color: rgba(255, 255, 255, 0.6); 
+        }
+        
+        .search-input:focus { 
+            outline: none; 
+            background: rgba(255, 255, 255, 0.12); 
+            box-shadow: 0 0 20px rgba(200, 184, 138, 0.25); 
+        }
+        
+        .search-icon-input { 
+            position: absolute; 
+            right: 1rem; 
+            top: 50%; 
+            transform: translateY(-50%); 
+            color: var(--gold); 
+        }
+
+        .search-results { 
+            max-height: 60vh; 
+            overflow-y: auto; 
+            margin-top: 1rem; 
+            opacity: 0; 
+            transform: translateY(10px); 
+            transition: all 0.3s ease; 
+        }
+        
+        .search-results.show { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .search-category + .search-category { 
+            margin-top: 1.5rem; 
+        }
+        
+        .category-title { 
+            font-size: 1.125rem; 
+            font-weight: 600; 
+            color: var(--gold); 
+            margin-bottom: 0.75rem; 
+            text-align: center; 
+        }
+        
+        .search-item { 
+            padding: 0.75rem; 
+            background: rgba(255, 255, 255, 0.05); 
+            border-radius: 6px; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
+            gap: 0.4rem; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            border-left: 3px solid transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .search-item:hover { 
+            background: rgba(200, 184, 138, 0.12); 
+            border-left-color: var(--gold); 
+            transform: translateX(4px); 
+        }
+        
+        .item-title { 
+            font-weight: 600; 
+            color: var(--off-white); 
+        }
+        
+        .item-description { 
+            font-size: 0.8rem; 
+            color: rgba(255, 255, 255, 0.7); 
+            line-height: 1.4; 
+        }
+        
+        .item-type { 
+            align-self: flex-start; 
+            padding: 0.25rem 0.75rem; 
+            background: var(--gold); 
+            color: #0f3d2e; 
+            font-size: 0.7rem; 
+            font-weight: 600; 
+            border-radius: 12px; 
+        }
+        
+        .no-results { 
+            text-align: center; 
+            padding: 2rem; 
+            color: rgba(255, 255, 255, 0.6); 
+        }
+
+        /* ------------------------
+           OVERLAY BACKDROP FOR MOBILE MENU
+        -------------------------*/
+        .overlay { 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0, 0, 0, 0.5); 
+            opacity: 0; 
+            visibility: hidden; 
+            transition: all 0.3s ease; 
+            z-index: 900; 
+        }
+        
+        .overlay.active { 
+            opacity: 1; 
+            visibility: visible; 
+        }
+
+        /* ------------------------
+           DEMO CONTENT
+        -------------------------*/
+        .demo-content {
+            padding: 4rem 0;
+            min-height: 100vh;
+        }
+        
+        .demo-section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ------------------------
+           MEDIA QUERIES – MOBILE
+        -------------------------*/
+        @media (max-width: 768px) {
+            .mobile-menu-btn { 
+                display: block; 
+            }
+
+            .nav-menu {
+                position: fixed; 
+                top: -100%;
+                left: 0;
+                width: 100%;
+                max-width: none;
+                height: auto;
+                min-height: 100vh;
+                background: var(--dark-green); 
+                flex-direction: column; 
+                align-items: flex-start; 
+                padding: 1.5rem;
+                border-bottom: 1px solid var(--gold);
+                gap: 1rem; 
+                transition: top 0.3s ease;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active { 
+                top: 0; 
+            }
+
+            .sidebar-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem;
+                border-bottom: 1px solid rgba(200, 184, 138, 0.25);
+            }
+
+            .sidebar-title {
+                color: var(--off-white);
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            .close-sidebar {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.1);
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                color: white;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .close-sidebar:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.4);
+                transform: scale(1.1);
+            }
+
+            .nav-menu li { 
+                width: 100%; 
+            }
+            
+            .nav-menu li + li { 
+                border-top: 1px solid rgba(200, 184, 138, 0.25); 
+                padding-top: 1rem; 
+            }
+            
+            .nav-menu a { 
+                width: 100%; 
+                padding: 0.5rem 0;
+            }
+
+            /* MOBILE DROPDOWN FIXES */
+            .dropdown-menu {
+                position: static; 
+                transform: none; 
+                opacity: 1; 
+                visibility: visible; 
+                border: none; 
+                background: transparent; 
+                padding: 0; 
+                box-shadow: none; 
+                margin-top: 0.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .dropdown.active .dropdown-menu {
+                max-height: 300px;
+            }
+            
+            .dropdown-menu::before {
+                display: none;
+            }
+            .dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-9%, 0);
+}
+            .dropdown-menu li { 
+                width: 100%; 
+                padding-left: 1rem;
+            }
+            
+            .dropdown-menu li + li { 
+                border-top: 1px solid rgba(200, 184, 138, 0.15); 
+                margin-top: 0.5rem;
+                padding-top: 0.5rem;
+            }
+            
+            .dropdown-menu a { 
+                padding: 0.5rem 0; 
+                text-align: left; 
+                font-size: 0.9rem;
+                color: rgba(248, 246, 240, 0.9);
+            }
+            
+            .dropdown-menu a:hover {
+                color: var(--gold);
+                background: transparent;
+            }
+            
+            .dropdown-toggle .arrow { 
+                display: inline-block;
+                margin-left: auto;
+            }
+
+            .search-btn.desktop { 
+                display: none; 
+            }
+
+            .close-search {
+                top: 1.5rem;
+                right: 1.5rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .search-container {
+                margin-top: 8vh;
+                padding: 0 1rem;
+            }
+
+            .search-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .close-search {
+                top: 1rem;
+                right: 1rem;
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+
+            .close-sidebar {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+
+            .search-container {
+                margin-top: 6vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-content">
+            <div class="logo">
+                <a href="/index.html">
+                    <div class="logo-main">
+                        <img src="/images/logo.png" alt="ZUHD Academy Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                        <span style="display: none;">ZUHD Academy</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <!-- SIDEBAR HEADER WITH CLOSE BUTTON (only visible on mobile) -->
+                <div class="sidebar-header">
+                    <span class="sidebar-title">Menu</span>
+                    <button class="close-sidebar" id="closeSidebar">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <li><a href="/index.html">Home </li>
+               <li><a href="/about.html">About</a></li>
+                  <li><a href="/consultation.html"> Islamic Consultation</a></li> 
+                <li><a href="/lecture.html">Lectures</a></li>
+                  <li><a href="/maktab.html">Maktab</a></li> 
+                <li><a href="/Ziyarat.html">Ziyarat</a></li>
+                
+                <!-- Support dropdown -->
+                <li class="dropdown" id="supportDropdown">
+                    <a href="#" class="dropdown-toggle">
+                        Support 
+                        <svg class="arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/donate.html">Donate</a></li>
+                         <li><a href="/qna.html">FAQ</a></li> 
+
+                    </ul>
+                </li>
+                
+                <li>
+                    <a href="/store.html">
+                        Zuhd Store <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+
+                <!-- Mobile Search Button -->
+                <li class="mobile-search" style="display: none;">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                        <span>Search</span>
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Desktop Search Button -->
+            <button class="search-btn desktop">
+                <i class="fas fa-search"></i>
+                <span>Search</span>
+            </button>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="close-search" id="closeSearch">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="search-container">
+            <h2 class="search-title">Search ZUHD Academy</h2>
+            <p class="search-subtitle">Find lectures, quotes, and resources</p>
+            <div class="search-input-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="What are you looking for?" />
+                <i class="fas fa-search search-icon-input"></i>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    <div class="overlay" id="overlay"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            /* --------------------------
+               ELEMENT REFERENCES
+            ---------------------------*/
+            const navbar          = document.getElementById("navbar");
+            const navMenu         = document.getElementById("navMenu");
+            const overlay         = document.getElementById("overlay");
+            const mobileMenuBtn   = document.getElementById("mobileMenuBtn");
+            const closeSidebar    = document.getElementById("closeSidebar");
+            const supportDropdown = document.getElementById("supportDropdown");
+            const dropdownToggle  = supportDropdown?.querySelector(".dropdown-toggle");
+            const searchBtns      = document.querySelectorAll(".search-btn");
+            const searchOverlay   = document.getElementById("searchOverlay");
+            const closeSearch     = document.getElementById("closeSearch");
+            const searchInput     = document.getElementById("searchInput");
+            const searchResults   = document.getElementById("searchResults");
+
+            /* --------------------------
+               SAMPLE SEARCH DATA
+            ---------------------------*/
+            const searchData = [
+                { title: "Introduction to Islamic Philosophy", description: "Basic concepts and principles of Islamic philosophical thought", type: "Lecture", category: "Lectures" },
+                { title: "The importance of prayer in daily life", description: "Understanding the spiritual significance of Salah", type: "Lecture", category: "Lectures" },
+                { title: "Patience in trials", description: "Be patient, for your patience is with the help of Allah", type: "Quote", category: "Quotes" },
+                { title: "Knowledge and wisdom", description: "Seek knowledge from the cradle to the grave", type: "Quote", category: "Quotes" },
+                { title: "About ZUHD Academy", description: "Learn about our mission and educational approach", type: "Page", category: "About" },
+                { title: "Kaaba in Mecca", description: "Sacred site and center of Islamic pilgrimage", type: "Location", category: "Ziyarat" }
+            ];
+
+            /* --------------------------
+               MENU HELPERS
+            ---------------------------*/
+            function openMobileMenu() {
+                if (navMenu && overlay) {
+                    navMenu.classList.add("active");
+                    overlay.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                }
+            }
+
+            function closeMobileMenu() {
+                if (navMenu && overlay) {
+                    navMenu.classList.remove("active");
+                    overlay.classList.remove("active");
+                    document.body.style.overflow = "";
+                }
+            }
+
+            /* --------------------------
+               SEARCH HELPERS
+            ---------------------------*/
+            function openSearch() {
+                if (searchOverlay) {
+                    searchOverlay.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                    setTimeout(() => {
+                        if (searchInput) searchInput.focus();
+                    }, 300);
+                }
+            }
+
+            function closeSearchOverlay() {
+                if (searchOverlay && searchInput && searchResults) {
+                    searchOverlay.classList.remove("active");
+                    document.body.style.overflow = "";
+                    searchInput.value = "";
+                    searchResults.innerHTML = "";
+                    searchResults.classList.remove("show");
+                }
+            }
+
+            function performSearch(query) {
+                if (!query.trim() || !searchResults) {
+                    if (searchResults) {
+                        searchResults.innerHTML = "";
+                        searchResults.classList.remove("show");
+                    }
+                    return;
+                }
+
+                const filtered = searchData.filter(item => 
+                    [item.title, item.description, item.type].some(text => 
+                        text.toLowerCase().includes(query.toLowerCase())
+                    )
+                );
+                
+                renderSearchResults(filtered);
+            }
+
+            function renderSearchResults(results) {
+                if (!searchResults) return;
+
+                if (!results.length) {
+                    searchResults.innerHTML = '<div class="no-results">No results found. Try different keywords.</div>';
+                    searchResults.classList.add("show");
+                    return;
+                }
+
+                const grouped = results.reduce((acc, item) => {
+                    (acc[item.category] = acc[item.category] || []).push(item);
+                    return acc;
+                }, {});
+
+                searchResults.innerHTML = Object.entries(grouped).map(([category, items]) => `
+                    <div class="search-category">
+                        <h3 class="category-title">${category}</h3>
+                        ${items.map(item => `
+                            <div class="search-item" data-title="${item.title.replace(/"/g, '&quot;')}">
+                                <div class="item-title">${item.title}</div>
+                                <div class="item-description">${item.description}</div>
+                                <span class="item-type">${item.type}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+                `).join("");
+
+                searchResults.classList.add("show");
+
+                // Attach click handlers to search items
+                searchResults.querySelectorAll(".search-item").forEach(el => {
+                    el.addEventListener("click", () => {
+                        const title = el.dataset.title;
+                        alert(`You selected: ${title}`);
+                        closeSearchOverlay();
+                    });
+                });
+            }
+
+            /* --------------------------
+               EVENT BINDINGS
+            ---------------------------*/
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener("click", openMobileMenu);
+            }
+
+            if (closeSidebar) {
+                closeSidebar.addEventListener("click", closeMobileMenu);
+            }
+
+            if (overlay) {
+                overlay.addEventListener("click", closeMobileMenu);
+            }
+
+            if (dropdownToggle) {
+                dropdownToggle.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    if (supportDropdown) {
+                        supportDropdown.classList.toggle("active");
+                    }
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", (e) => {
+                if (supportDropdown && !supportDropdown.contains(e.target)) {
+                    supportDropdown.classList.remove("active");
+                }
+            });
+
+            // Search button event listeners
+            searchBtns.forEach(btn => {
+                btn.addEventListener("click", openSearch);
+            });
+
+            if (closeSearch) {
+                closeSearch.addEventListener("click", closeSearchOverlay);
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener("input", (e) => {
+                    performSearch(e.target.value);
+                });
+            }
+
+            // Keyboard shortcuts
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                    if (searchOverlay && searchOverlay.classList.contains("active")) {
+                        closeSearchOverlay();
+                    }
+                    closeMobileMenu();
+                    if (supportDropdown) {
+                        supportDropdown.classList.remove("active");
+                    }
+                }
+            });
+
+            /* --------------------------
+               SCROLL EFFECT (NAVBAR SHADOW)
+            ---------------------------*/
+            window.addEventListener("scroll", () => {
+                if (navbar) {
+                    if (window.scrollY > 60) {
+                        navbar.classList.add("scrolled");
+                    } else {
+                        navbar.classList.remove("scrolled");
+                    }
+                }
+            });
+
+            // Show mobile search in mobile menu
+            const mobileSearch = document.querySelector('.mobile-search');
+            function checkMobileView() {
+                if (window.innerWidth <= 768) {
+                    if (mobileSearch) mobileSearch.style.display = 'block';
+                } else {
+                    if (mobileSearch) mobileSearch.style.display = 'none';
+                }
+            }
+
+            checkMobileView();
+            window.addEventListener('resize', checkMobileView);
+        });
+    </script>
+</body>
+</html>
