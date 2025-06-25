@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Islamic Center</title>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/lecture.html">
+
+  <!-- GSAP core + ScrollTrigger CDN -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  
+
+  <!-- Your custom JS -->
+  <script defer src="script.js"></script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+   <nav>
+      <div id="navbar"></div>
+   </nav>
+<body class="contact-body">
+
+    <!-- Header -->
+    <header class="contact-header">
+        <div class="contact-header-content">
+            <h1 class="contact-main-title">Contact Us</h1>
+            <p class="contact-main-subtitle">We'd love to hear from you! Whether you have questions, need assistance, or want to learn more about our community, feel free to reach out.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="contact-main-content">
+        <div class="contact-container">
+            <!-- Quick Contact Bar -->
+            <div class="contact-quick-contact">
+                <div class="contact-quick-contact-grid">
+                    <div class="contact-quick-contact-item" onclick="window.location.href='tel:+15551234567'">
+                        <span class="contact-quick-contact-icon"><i class="fa-solid fa-phone"></i></span>
+                        <div class="contact-quick-contact-title">Call Us</div>
+                        <div class="contact-quick-contact-desc">(555) 123-4567</div>
+                    </div>
+                    <div class="contact-quick-contact-item" onclick="window.location.href='mailto:info@islamiccenter.org'">
+                        <span class="contact-quick-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+                        <div class="contact-quick-contact-title">Email Us</div>
+                        <div class="contact-quick-contact-desc">info@islamiccenter.org</div>
+                    </div>
+                    <div class="contact-quick-contact-item" onclick="showContactDirections()">
+                        <span class="contact-quick-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <div class="contact-quick-contact-title">Visit Us</div>
+                        <div class="contact-quick-contact-desc">Get Directions</div>
+                    </div>
+                    <div class="contact-quick-contact-item" onclick="showContactEmergencyContact()">
+                        <span class="contact-quick-contact-icon"><i class="fa-solid fa-tower-broadcast"></i></span>
+                        <div class="contact-quick-contact-title">Emergency</div>
+                        <div class="contact-quick-contact-desc">24/7 Support</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div class="contact-form-section">
+                <!-- Contact Form -->
+                <div class="contact-form">
+                    <h2 class="contact-form-title">
+                        <span><i class="fa-solid fa-envelope"></i></span>
+                        Send Us a Message
+                    </h2>
+                    <form id="contactForm" onsubmit="submitContactForm(event)">
+                        <div class="contact-form-group">
+                            <label for="contact-name" class="contact-form-label">Full Name *</label>
+                            <input type="text" id="contact-name" name="name" class="contact-form-input" required>
+                        </div>
+                        <div class="contact-form-group">
+                            <label for="contact-email" class="contact-form-label">Email Address *</label>
+                            <input type="email" id="contact-email" name="email" class="contact-form-input" required>
+                        </div>
+                        <div class="contact-form-group">
+                            <label for="contact-phone" class="contact-form-label">Phone Number</label>
+                            <input type="tel" id="contact-phone" name="phone" class="contact-form-input">
+                        </div>
+                        <div class="contact-form-group">
+                            <label for="contact-subject" class="contact-form-label">Subject *</label>
+                            <select id="contact-subject" name="subject" class="contact-form-select" required>
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="scholar">Speak with a Scholar</option>
+                                <option value="classes">Islamic Classes</option>
+                                <option value="events">Community Events</option>
+                                <option value="services">Religious Services</option>
+                                <option value="donation">Donations & Zakat</option>
+                                <option value="volunteer">Volunteer Opportunities</option>
+                            </select>
+                        </div>
+                        <div class="contact-form-group">
+                            <label for="contact-message" class="contact-form-label">Message *</label>
+                            <textarea id="contact-message" name="message" class="contact-form-textarea" placeholder="Please share your message or inquiry..." required></textarea>
+                        </div>
+                        <button type="submit" class="contact-submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <div class="contact-info-content">
+                        <h2 class="contact-info-title">
+                            <span><i class="fa-solid fa-mosque"></i></span>
+                            Get in Touch
+                        </h2>
+                        
+                        <div class="contact-info-item">
+                            <span class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <div class="contact-info-content-text">
+                                <h4>Our Location</h4>
+                                <p>123 Islamic Center Way<br>City, State 12345<br>United States</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-icon"><i class="fa-solid fa-phone"></i></span>
+                            <div class="contact-info-content-text">
+                                <h4>Phone Numbers</h4>
+                                <p>Main:+61 291000100
+
+<br>Emergency: +61 291000100
+
+<br>Fax: +61 291000100
+
+</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-icon"><i class="fa-solid fa-envelope"></i></span>
+                            <div class="contact-info-content-text">
+                                <h4>Email Addresses</h4>
+                                <p>General:  info@zuhd.au<br>Scholars: info@zuhd.au<br>Events:  info@zuhd.au</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-icon"><i class="fa-solid fa-clock"></i></span>
+                            <div class="contact-info-content-text">
+                                <h4>Office Hours</h4>
+                                <p>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday - Sunday: 10:00 AM - 3:00 PM<br>Prayer times: Always open</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Section -->
+            <div class="contact-services-section">
+                <h2 class="contact-services-title">Our Services</h2>
+                <div class="contact-services-grid">
+                    <div class="contact-service-card">
+                        <span class="contact-service-icon"><i class="fa-solid fa-book-open"></i></span>
+                        <h3 class="contact-service-title">Islamic Education</h3>
+                        <p class="contact-service-desc">Comprehensive Islamic education programs for all ages, including Quran study, Arabic language, and Islamic history.</p>
+                    </div>
+                    <div class="contact-service-card">
+                        <span class="contact-service-icon"><i class="fa-solid fa-mosque"></i></span>
+                        <h3 class="contact-service-title">Religious Services</h3>
+                        <p class="contact-service-desc">Marriage ceremonies, funeral services, baby naming, and other important Islamic life events.</p>
+                    </div>
+                    <div class="contact-service-card">
+                        <span class="contact-service-icon"><i class="fa-solid fa-user-group"></i></span>
+                        <h3 class="contact-service-title">Community Outreach</h3>
+                        <p class="contact-service-desc">Interfaith dialogue, charity programs, and community service initiatives to build bridges.</p>
+                    </div>
+                    <div class="contact-service-card">
+                        <span class="contact-service-icon"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                        <h3 class="contact-service-title">Zakat & Donations</h3>
+                        <p class="contact-service-desc">Guidance on Zakat calculation and distribution, as well as general donation management.</p>
+                    </div>
+                    <div class="contact-service-card">
+                        <span class="contact-service-icon"><i class="fa-solid fa-people-roof"></i></span>
+                        <h3 class="contact-service-title">Counseling Services</h3>
+                        <p class="contact-service-desc">Islamic counseling for individuals, families, and couples facing personal or spiritual challenges.</p>
+                    </div>
+                    <div class="contact-service-card">
+                        <span class="contact-service-icon"><i class="fa-regular fa-calendar"></i></span>
+                        <h3 class="contact-service-title">Community Events</h3>
+                        <p class="contact-service-desc">Regular community gatherings, Islamic celebrations, and educational workshops throughout the year.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+           <div class="banner-content">
+            <h2 class="channel-name">1 Million Subscribers</h2>
+            <p class="update-text">New Updates Coming</p>
+            <a href="https://www.youtube.com/@zuhdau/videos" class="subscribe-btn">Subscribe Our YouTube Channel</a>
+        </div>
+    </div>
+ <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column footer-logo">
+                    <div class="logo-main"><img src="/images/logo.png" alt="logo"></div>
+                    <p class="logo-text">Be the first to receive Islamic guidance, inspiring articles, and special offers—only from ZUHD.
+
+</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>ABOUT ACADEMY</h3>
+                    <ul>
+                        <li><a href="/about.html" onclick="linkClick('Just the Matcha')">About ZUHD</a></li>
+                        <li><a href="/lecture.html" onclick="linkClick('The Trial Kit')">ZUHD Lectures</a></li>
+                        <li><a href="/maktab.html" onclick="linkClick('Wholesale & Bulk')">After School Classes</a></li>
+                        <li><a href="/" onclick="linkClick('Teaware')">Terms and conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="https://zuhd.store/" onclick="linkClick('Matcha Recipes')">zuhd Store</a></li>
+                        <li><a href="/donate.html" onclick="linkClick('Caffeine Content')">Donate Now</a></li>
+                        <li><a href="/Ziyarat.html" onclick="linkClick('Health Benefits')">Ziyarat</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="/about.html" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="#" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="about.html" onclick="linkClick('Affiliate')">About Us</a></li>
+                        <li><a href="#" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <li><a href="/qna.html" onclick="linkClick('FAQ')">FAQ's</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column newsletter">
+                    <h3>Let's Stay Connected</h3>
+                    <p>Enter your email</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">SUBMIT</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@zuhdau" class="social-link" onclick="socialClick('Pinterest')" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/zuhd.au" class="social-link" onclick="socialClick('Facebook')" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/zuhd_au/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#" class="social-link" onclick="socialClick('Instagram')" title="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="https://x.com/zuhd.au" class="social-link" onclick="socialClick('Twitter')" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+<a  href="https://www.linkdin.com/zuhd.au"
+    class="social-link"
+    title="Share on LinkedIn"
+    onclick="socialClick('LinkedIn')"
+    target="_blank"
+    rel="noopener">
+  <i class="fa-brands fa-linkedin"></i>
+</a>
+<a  href="https://www.tiktok.com/@zuhd.store?_t=ZS-8w1A4y4ZWO9&_r=1"
+    class="social-link"
+    title="Follow on TikTok"
+    onclick="socialClick('TikTok')"
+    target="_blank"
+    rel="noopener">
+  <i class="fa-brands fa-tiktok"></i>
+</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Zuhd Guidance All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </main>
+
+    <script>
+        function submitContactForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            
+            // Simulate form submission
+            alert(`Thank you ${name}!\n\nYour message has been received. We will respond to ${email} within 24 hours.\n\nSubject: ${subject}`);
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        function showContactDirections() {
+            alert('🗺️ Directions to Islamic Center:\n\n123 Islamic Center Way\nCity, State 12345\n\nBy Car: Take Highway 101 to Exit 15\nBy Bus: Routes 12, 34, and 56\nParking: Free parking available on-site');
+        }
+
+        function showContactEmergencyContact() {
+            alert('🚨 Emergency Contact Information:\n\nEmergency Hotline: (555) 999-8888\n\nAvailable 24/7 for:\n• Last rites and funeral arrangements\n• Spiritual counseling in crisis\n• Religious guidance for urgent matters\n• Community emergencies');
+        }
+    </script>
+                 <script src="navbar.js"></script>
+
+</body>
+</html>

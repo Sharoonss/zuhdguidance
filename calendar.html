@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Calendar 1446 AH - Islamic Center</title>
+    <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/lecture.html">
+
+  <!-- GSAP core + ScrollTrigger CDN -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+
+  <!-- ccccccccc -->
+
+  <!-- Your custom JS -->
+  <script defer src="script.js"></script>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #0d4f3c;
+            --secondary-green: #1a6b4f;
+            --accent-gold: #c9a96e;
+            --light-gold: #f4e8c1;
+            --cream: #faf8f3;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #6c757d;
+            --shadow-light: rgba(13, 79, 60, 0.08);
+            --shadow-medium: rgba(13, 79, 60, 0.15);
+            --shadow-heavy: rgba(13, 79, 60, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .calendar-body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .calendar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .calendar-navbar {
+            background: var(--white);
+            box-shadow: 0 2px 20px var(--shadow-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .calendar-nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .calendar-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+
+        .calendar-nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .calendar-nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+
+        .calendar-nav-links a:hover,
+        .calendar-nav-links a.calendar-nav-active {
+            color: var(--primary-green);
+            background: var(--light-gold);
+        }
+
+        /* Header */
+        .calendar-header {
+            margin-top: 80px;
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calendar-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .calendar-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .calendar-main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .calendar-main-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Main Content */
+        .calendar-main-content {
+            padding: 80px 0;
+        }
+
+        /* Current Date Display */
+        .calendar-current-date-banner {
+            background: linear-gradient(135deg, var(--accent-gold), #d4b876);
+            color: var(--primary-green);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 12px 40px var(--shadow-light);
+        }
+
+        .calendar-hijri-date {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .calendar-gregorian-date {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Calendar Grid */
+        .calendar-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .calendar-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 12px 40px var(--shadow-light);
+            border: 1px solid rgba(201, 169, 110, 0.15);
+        }
+
+        .calendar-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .calendar-card-icon {
+            font-size: 2.5rem;
+        }
+
+        /* Prayer Times */
+        .calendar-prayer-times-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .calendar-prayer-time-card {
+            background: var(--cream);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .calendar-prayer-time-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+
+        .calendar-prayer-name {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .calendar-prayer-time {
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .calendar-prayer-arabic {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 5px;
+        }
+
+        /* Islamic Events */
+        .calendar-events-list {
+            list-style: none;
+        }
+
+        .calendar-event-item {
+            background: var(--cream);
+            padding: 25px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--accent-gold);
+            transition: all 0.3s ease;
+        }
+
+        .calendar-event-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+
+        .calendar-event-date {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .calendar-event-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .calendar-event-description {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Download Section */
+        .calendar-download-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: var(--white);
+            padding: 60px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .calendar-download-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .calendar-download-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .calendar-download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .calendar-download-btn {
+            background: var(--accent-gold);
+            color: var(--primary-green);
+            border: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calendar-download-btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(201, 169, 110, 0.4);
+        }
+
+        /* Islamic Months Overview */
+        .calendar-months-overview {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 12px 40px var(--shadow-light);
+            margin-top: 40px;
+        }
+
+        .calendar-months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .calendar-month-card {
+            background: var(--cream);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .calendar-month-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-light);
+        }
+
+        .calendar-month-card.calendar-current {
+            background: var(--light-gold);
+            border-color: var(--accent-gold);
+        }
+
+        .calendar-month-name {
+            font-weight: 600;
+            color: var(--primary-green);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .calendar-month-status {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .calendar-month-card.calendar-current .calendar-month-status {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .calendar-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .calendar-nav-links {
+                display: none;
+            }
+
+            .calendar-main-title {
+                font-size: 3rem;
+            }
+
+            .calendar-hijri-date {
+                font-size: 2rem;
+            }
+
+            .calendar-card {
+                padding: 30px 20px;
+            }
+
+            .calendar-download-section {
+                padding: 40px 20px;
+            }
+
+            .calendar-download-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .calendar-prayer-times-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calendar-container {
+                padding: 0 15px;
+            }
+
+            .calendar-main-title {
+                font-size: 2.5rem;
+            }
+
+            .calendar-prayer-times-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="calendar-body">
+ <!-- Navigation -->
+     <nav>
+      <div id="navbar"></div>
+   </nav>
+    <!-- Header -->
+    <header class="calendar-header">
+        <div class="calendar-container">
+            <div class="calendar-header-content">
+                <h1 class="calendar-main-title">Zuhd Islamic Calendar</h1>
+                <p class="calendar-main-subtitle">Complete Hijri calendar with prayer times, Islamic events, and important religious dates</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="calendar-main-content">
+        <div class="calendar-container">
+            <!-- Current Date Banner -->
+            <div class="calendar-current-date-banner">
+                <div class="calendar-hijri-date">15 Jumada al-Awwal 1446 AH</div>
+                <div class="calendar-gregorian-date">Corresponding to December 16, 2024 CE</div>
+            </div>
+
+            <!-- Calendar Section -->
+            <div class="calendar-section">
+                <!-- Prayer Times Card -->
+                <div class="calendar-card">
+                    <h3 class="calendar-card-title">
+                        <span class="calendar-card-icon">🕐</span>
+                        Today's Prayer Times
+                    </h3>
+                    <div class="calendar-prayer-times-grid">
+                        <div class="calendar-prayer-time-card">
+                            <div class="calendar-prayer-name">Fajr</div>
+                            <div class="calendar-prayer-time">5:45 AM</div>
+                            <div class="calendar-prayer-arabic">الفجر</div>
+                        </div>
+                        <div class="calendar-prayer-time-card">
+                            <div class="calendar-prayer-name">Dhuhr</div>
+                            <div class="calendar-prayer-time">12:15 PM</div>
+                            <div class="calendar-prayer-arabic">الظهر</div>
+                        </div>
+                        <div class="calendar-prayer-time-card">
+                            <div class="calendar-prayer-name">Asr</div>
+                            <div class="calendar-prayer-time">2:30 PM</div>
+                            <div class="calendar-prayer-arabic">العصر</div>
+                        </div>
+                        <div class="calendar-prayer-time-card">
+                            <div class="calendar-prayer-name">Maghrib</div>
+                            <div class="calendar-prayer-time">5:10 PM</div>
+                            <div class="calendar-prayer-arabic">المغرب</div>
+                        </div>
+                        <div class="calendar-prayer-time-card">
+                            <div class="calendar-prayer-name">Isha</div>
+                            <div class="calendar-prayer-time">6:45 PM</div>
+                            <div class="calendar-prayer-arabic">العشاء</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Islamic Events Card -->
+                <div class="calendar-card">
+                    <h3 class="calendar-card-title">
+                        <span class="calendar-card-icon">🌙</span>
+                        Upcoming Islamic Events
+                    </h3>
+                    <ul class="calendar-events-list">
+                        <li class="calendar-event-item">
+                            <div class="calendar-event-date">12 Rabi' al-Awwal 1446</div>
+                            <div class="calendar-event-name">Mawlid an-Nabi</div>
+                            <div class="calendar-event-description">Birth of Prophet Muhammad (PBUH) - September 15, 2024</div>
+                        </li>
+                        <li class="calendar-event-item">
+                            <div class="calendar-event-date">27 Rajab 1446</div>
+                            <div class="calendar-event-name">Isra and Mi'raj</div>
+                            <div class="calendar-event-description">Night Journey and Ascension - January 28, 2025</div>
+                        </li>
+                        <li class="calendar-event-item">
+                            <div class="calendar-event-date">1 Ramadan 1446</div>
+                            <div class="calendar-event-name">Ramadan Begins</div>
+                            <div class="calendar-event-description">Holy month of fasting begins - February 28, 2025</div>
+                        </li>
+                        <li class="calendar-event-item">
+                            <div class="calendar-event-date">1 Shawwal 1446</div>
+                            <div class="calendar-event-name">Eid al-Fitr</div>
+                            <div class="calendar-event-description">Festival of Breaking the Fast - March 30, 2025</div>
+                        </li>
+                        <li class="calendar-event-item">
+                            <div class="calendar-event-date">10 Dhul Hijjah 1446</div>
+                            <div class="calendar-event-name">Eid al-Adha</div>
+                            <div class="calendar-event-description">Festival of Sacrifice - June 6, 2025</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Download Section -->
+            <div class="calendar-download-section">
+                <h2 class="calendar-download-title">📥 Download Islamic Calendar</h2>
+                <p class="calendar-download-description">
+                    Get the complete Islamic calendar with prayer times, important dates, and religious observances. 
+                    Available in multiple formats for your convenience.
+                </p>
+                <div class="calendar-download-buttons">
+                    <button class="calendar-download-btn" onclick="downloadCalendarFile('pdf')">
+                        📄 Download PDF
+                    </button>
+                    <button class="calendar-download-btn" onclick="downloadCalendarFile('txt')">
+                        📝 Download Text
+                    </button>
+                    <button class="calendar-download-btn" onclick="downloadCalendarFile('ics')">
+                        📅 Add to Calendar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Islamic Months Overview -->
+            <div class="calendar-months-overview">
+                <h3 class="calendar-card-title">
+                    <span class="calendar-card-icon">🌙</span>
+                    Islamic Months 1446 AH
+                </h3>
+                <div class="calendar-months-grid">
+                    <div class="calendar-month-card">
+                        <div class="calendar-month-name">Muharram</div>
+                        <div class="calendar-month-status">Completed</div>
+                    </div>
+                    <div class="calendar-month-card">
+                        <div class="calendar-month-name">Safar</div>
+                        <div class="calendar-month-status">Completed</div>
+                    </div>
+                    <div class="calendar-month-card">
+                        <div class="calendar-month-name">Rabi' al-Awwal</div>
+                        <div class="calendar-month-status">Completed</div>
+                    </div>
+                    <div class="calendar-month-card">
+                        <div class="calendar-month-name">Rabi' al-Thani</div>
+                        <div class="calendar-month-status">Completed</div>
+                    </div>
+                    <div class="calendar-month-card calendar-current">
+                        <div class="calendar-month-name">Jumada al-Awwal</div>
+                        <div class="calendar-month-status">Current</div>
+                    </div>
+                    <div class="calendar-month-card">
+                        <div class="calendar-month-name">Jumada al-Thani</div>
+                        <div class="calendar-month-status">Upcoming</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+   <div class="banner-content">
+            <h2 class="channel-name">1 Million Subscribers</h2>
+            <p class="update-text">New Updates Coming</p>
+            <a href="https://www.youtube.com/@zuhdau/videos" class="subscribe-btn">Subscribe Our YouTube Channel</a>
+        </div>
+    </div>
+ <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-column footer-logo">
+                    <div class="logo-main"><img src="/images/logo.png" alt="logo"></div>
+                    <p class="logo-text">Be the first to receive Islamic guidance, inspiring articles, and special offers—only from ZUHD.
+
+</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>ABOUT ACADEMY</h3>
+                    <ul>
+                        <li><a href="/about.html" onclick="linkClick('Just the Matcha')">About ZUHD</a></li>
+                        <li><a href="/lecture.html" onclick="linkClick('The Trial Kit')">ZUHD Lectures</a></li>
+                        <li><a href="/maktab.html" onclick="linkClick('Wholesale & Bulk')">After School Classes</a></li>
+                        <li><a href="/" onclick="linkClick('Teaware')">Terms and conditions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="https://zuhd.store/" onclick="linkClick('Matcha Recipes')">zuhd Store</a></li>
+                        <li><a href="/donate.html" onclick="linkClick('Caffeine Content')">Donate Now</a></li>
+                        <li><a href="/Ziyarat.html" onclick="linkClick('Health Benefits')">Ziyarat</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="/about.html" onclick="linkClick('Our Story')">Our Story</a></li>
+                        <li><a href="#" onclick="linkClick('Blog')">Blog</a></li>
+                        <li><a href="about.html" onclick="linkClick('Affiliate')">About Us</a></li>
+                        <li><a href="#" onclick="linkClick('Contact Us')">Contact Us</a></li>
+                        <li><a href="/qna.html" onclick="linkClick('FAQ')">FAQ's</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column newsletter">
+                    <h3>Let's Stay Connected</h3>
+                    <p>Enter your email</p>
+                    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+                        <input type="email" placeholder="Your Email" required>
+                        <button type="submit">SUBMIT</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="https://www.youtube.com/@zuhdau" class="social-link" onclick="socialClick('Pinterest')" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/zuhd.au" class="social-link" onclick="socialClick('Facebook')" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/zuhd_au/?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw%3D%3D#" class="social-link" onclick="socialClick('Instagram')" title="Instagram"><i class="fa-brands fa-square-instagram"></i></a>
+                        <a href="https://x.com/zuhd.au" class="social-link" onclick="socialClick('Twitter')" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+<a  href="https://www.linkdin.com/zuhd.au"
+    class="social-link"
+    title="Share on LinkedIn"
+    onclick="socialClick('LinkedIn')"
+    target="_blank"
+    rel="noopener">
+  <i class="fa-brands fa-linkedin"></i>
+</a>
+<a  href="https://www.tiktok.com/@zuhd.store?_t=ZS-8w1A4y4ZWO9&_r=1"
+    class="social-link"
+    title="Follow on TikTok"
+    onclick="socialClick('TikTok')"
+    target="_blank"
+    rel="noopener">
+  <i class="fa-brands fa-tiktok"></i>
+</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Zuhd Guidance All rights reserved.
+                </div>
+                <div class="footer-links">
+                    <a href="#" onclick="linkClick('Terms of Service')">Terms of Service</a>
+                    <a href="#" onclick="linkClick('Privacy Policy')">Privacy Policy</a>
+                    <a href="#" onclick="linkClick('Refund Policy')">Refund Policy</a>
+                    <a href="#" onclick="linkClick('Accessibility Policy')">Accessibility Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function downloadCalendarFile(format) {
+            let content = '';
+            let filename = '';
+            let mimeType = '';
+
+            if (format === 'pdf') {
+                alert('📄 PDF download would be implemented with a PDF library like jsPDF');
+                return;
+            } else if (format === 'txt') {
+                content = `ISLAMIC CALENDAR 1446 AH (2024-2025 CE)
+===========================================
+
+CURRENT DATE: 15 Jumada al-Awwal 1446 AH (December 16, 2024 CE)
+
+DAILY PRAYER TIMES:
+- Fajr (الفجر): 5:45 AM
+- Dhuhr (الظهر): 12:15 PM  
+- Asr (العصر): 2:30 PM
+- Maghrib (المغرب): 5:10 PM
+- Isha (العشاء): 6:45 PM
+
+IMPORTANT ISLAMIC DATES:
+- Mawlid an-Nabi: 12 Rabi' al-Awwal 1446 (September 15, 2024)
+- Isra and Mi'raj: 27 Rajab 1446 (January 28, 2025)
+- Ramadan Begins: 1 Ramadan 1446 (February 28, 2025)
+- Eid al-Fitr: 1 Shawwal 1446 (March 30, 2025)
+- Eid al-Adha: 10 Dhul Hijjah 1446 (June 6, 2025)
+
+ISLAMIC CENTER CONTACT:
+Phone: (555) 123-4567
+Email: info@islamiccenter.org
+Address: 123 Islamic Center Way, City, State 12345
+
+Generated on: ${new Date().toLocaleDateString()}
+`;
+                filename = 'Islamic_Calendar_1446_AH.txt';
+                mimeType = 'text/plain';
+            } else if (format === 'ics') {
+                content = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Islamic Center//Islamic Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+
+BEGIN:VEVENT
+DTSTART:20240915T120000Z
+DTEND:20240915T130000Z
+SUMMARY:Mawlid an-Nabi
+DESCRIPTION:Birth of Prophet Muhammad (PBUH)
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20250128T120000Z
+DTEND:20250128T130000Z
+SUMMARY:Isra and Mi'raj
+DESCRIPTION:Night Journey and Ascension
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20250228T120000Z
+DTEND:20250228T130000Z
+SUMMARY:Ramadan Begins
+DESCRIPTION:Holy month of fasting begins
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20250330T120000Z
+DTEND:20250330T130000Z
+SUMMARY:Eid al-Fitr
+DESCRIPTION:Festival of Breaking the Fast
+END:VEVENT
+
+BEGIN:VEVENT
+DTSTART:20250606T120000Z
+DTEND:20250606T130000Z
+SUMMARY:Eid al-Adha
+DESCRIPTION:Festival of Sacrifice
+END:VEVENT
+
+END:VCALENDAR`;
+                filename = 'Islamic_Calendar_1446_AH.ics';
+                mimeType = 'text/calendar';
+            }
+
+            // Create and download file
+            const blob = new Blob([content], { type: mimeType });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+
+            alert(`📅 ${format.toUpperCase()} calendar downloaded successfully!`);
+        }
+    </script>
+               <script src="navbar.js"></script>
+
+</body>
+</html>
