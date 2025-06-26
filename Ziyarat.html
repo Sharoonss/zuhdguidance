@@ -21,8 +21,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+ 
+</style>
 </head>
 <body>
+    <nav>
+      <div id="navbar"></div>
+   </nav>
    <!-- Header Section -->
         <header class="ziyarat-header">
             <h1 class="ziyarat-title">Ziyarat</h1>
@@ -38,93 +44,95 @@
         <!-- Main Content -->
         <main class="ziyarat-main">
             <!-- Featured Section -->
-            <div class="ziyarat-featured-content">
-    <div class="ziyarat-video-section">
-        <div class="ziyarat-video-container">
-            <img src="/images/makkahmadina.png" alt="Makkah Kaaba" class="ziyarat-featured-image">
-            <div class="ziyarat-video-overlay">
-                <button class="ziyarat-play-btn" onclick="playVideo()">
-                    <i class="fas fa-play"></i>
-                </button>
+          <div class="ziyarat-featured-content">
+            <div class="ziyarat-video-section">
+                <div class="ziyarat-video-container">
+                    <!-- YouTube Video Iframe with the specific video you provided -->
+                    <iframe 
+                        class="ziyarat-youtube-iframe" 
+                        id="youtube-iframe"
+                        src="https://www.youtube.com/embed/fzgrTls3hwQ?enablejsapi=1&controls=1&rel=0&modestbranding=1"
+                        title="Walking the Path of the Prophet (ﷺ): Madina's Sacred Sites | Zuhd Guidance"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                    
+                    <!-- Video Overlay with Play Button -->
+                    <div class="ziyarat-video-overlay" id="video-overlay" onclick="playVideo()">
+                        <div class="ziyarat-play-btn"></div>
+                        <div class="ziyarat-video-title">
+                            🔥 Walking the Path of the Prophet (ﷺ): Madina's Sacred Sites
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="ziyarat-featured-info">
+                    <h2 class="ziyarat-featured-title">Sacred Journey</h2>
+                    
+                    <!-- Video Information Box -->
+                    <div class="ziyarat-video-info">
+                        <h4>Featured: Zuhd Guidance</h4>
+                        <p>Experience an authentic spiritual journey through Medina's most sacred sites, following the blessed footsteps of Prophet Muhammad (ﷺ).</p>
+                    </div>
+                    
+                    <p class="ziyarat-featured-description">
+                        Discover the spiritual heart of Islam through an immersive journey to the holy cities of Makkah and Medina. 
+                        Experience the profound atmosphere of devotion and witness the beauty of Islamic architecture 
+                        and traditions that have been preserved for over fourteen centuries.
+                    </p>
+                    
+                    <!-- Statistics Section -->
+                    <div class="ziyarat-stats">
+                        <div class="ziyarat-stat">
+                            <span class="ziyarat-stat-number">2M+</span>
+                            <div class="ziyarat-stat-label">Annual Pilgrims</div>
+                        </div>
+                        <div class="ziyarat-stat">
+                            <span class="ziyarat-stat-number">1400+</span>
+                            <div class="ziyarat-stat-label">Years of History</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ziyarat-map-section">
+                <div class="ziyarat-map-header">
+                    <h3 class="ziyarat-map-title">Sacred Locations</h3>
+                    <p class="ziyarat-map-subtitle">Explore the holy sites of Saudi Arabia</p>
+                </div>
+
+                <!-- Map Controls -->
+                <div class="ziyarat-map-controls">
+                    <button class="ziyarat-location-btn active" onclick="showLocation('makkah')">Makkah</button>
+                    <button class="ziyarat-location-btn" onclick="showLocation('medina')">Medina</button>
+                    <button class="ziyarat-location-btn" onclick="showLocation('overview')">Overview</button>
+                </div>
+
+                <!-- Google Maps Iframe Container -->
+                <div class="ziyarat-map-container">
+                    <iframe 
+                        class="ziyarat-google-map" 
+                        id="google-map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.674920267067!2d39.82663!3d21.42251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c204b74c5d1b91%3A0x3e5d8b8a5c5e5b5e!2sMasjid%20al-Haram!5e0!3m2!1sen!2sus!4v1635000000000!5m2!1sen!2sus"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Sacred Locations Map">
+                    </iframe>
+                </div>
+
+                <!-- Location Information -->
+                <div class="ziyarat-location-info" id="location-info">
+                    <h4>Masjid al-Haram, Makkah</h4>
+                    <p>The holiest mosque in Islam, surrounding the Kaaba. This is the direction of prayer for Muslims worldwide and the destination of the Hajj pilgrimage.</p>
+                </div>
             </div>
         </div>
-        <div class="ziyarat-featured-info">
-            <h2 class="ziyarat-featured-title">Experience Makkah</h2>
-            <p class="ziyarat-featured-description">
-                A journey through the sacred city of Makkah, capturing its spiritual atmosphere.
-            </p>
-        </div>
-    </div>
     
    <!-- Map & Marker Section -->
 <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-  .ziyarat-map-section { padding: 1rem 0; }
-  .ziyarat-map           { position: relative; display: inline-block; width: 100%; max-width: 700px; }
-  .ziyarat-map-image     { width: 100%; height: auto; display: block; }
-
-  /* shared pin style */
-  .ziyarat-map-marker {
-    position: absolute;
-    transform: translate(-50%, -100%);   /* center horizontally, sit just above pin tip */
-    text-align: center;
-    color: #c92b2b;                      /* red pin */
-    font-size: 1.8rem;                   /* pin size */
-  }
-  .ziyarat-map-marker .ziyarat-location-label {
-    display: block;
-    margin-top: 0.15rem;
-    padding: 0.1rem 0.4rem;
-    background: rgba(0,0,0,.75);
-    color: #fff;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    white-space: nowrap;
-  }
-
-  /* ✨ location-specific positions (tweak if you use a different base map) */
-  .ziyarat-map-marker[data-location="makkah"]  { top: 68%; left: 27%; }
-  .ziyarat-map-marker[data-location="medina"]  { top: 50%; left: 26%; }
-
-  /* country label */
-  .ziyarat-country-label {
-    position: absolute;
-    bottom: 4%;
-    right: 4%;
-    font-size: 0.9rem;
-    background: rgba(255,255,255,.8);
-    padding: 0.15rem 0.4rem;
-    border-radius: 3px;
-  }
-</style>
- <nav>
-      <div id="navbar"></div>
-   </nav>
-<div class="ziyarat-map-section">
-  <div class="ziyarat-map-container">
-    <div class="ziyarat-map">
-      <!-- public-domain SVG map of Saudi Arabia -->
-     <img src="/images/map.png"
-     alt="Saudi Arabia Map"
-     class="ziyarat-map-image">
-
-      <!-- markers -->
-      <!-- <div class="ziyarat-map-marker" data-location="makkah">
-        <i class="fas fa-map-marker-alt"></i>
-        <span class="ziyarat-location-label">Makkah</span>
-      </div>
-      <div class="ziyarat-map-marker ziyarat-medina-marker" data-location="medina">
-        <i class="fas fa-map-marker-alt"></i>
-        <span class="ziyarat-location-label">Medina</span>
-      </div>
-
-      <span class="ziyarat-country-label">Saudi&nbsp;Arabia</span> -->
-    </div>
-  </div>
-</div>
-
 </div>
 
             <!-- Side Content -->
@@ -318,6 +326,128 @@
             </div>
         </div>
     </footer>
+      <script>
+        // Location data with Google Maps embed URLs
+        const locationData = {
+            makkah: {
+                title: "Masjid al-Haram, Makkah",
+                description: "The holiest mosque in Islam, surrounding the Kaaba. This is the direction of prayer for Muslims worldwide and the destination of the Hajj pilgrimage.",
+                embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.674920267067!2d39.82663!3d21.42251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c204b74c5d1b91%3A0x3e5d8b8a5c5e5b5e!2sMasjid%20al-Haram!5e0!3m2!1sen!2sus!4v1635000000000!5m2!1sen!2sus"
+            },
+            medina: {
+                title: "Masjid an-Nabawi, Medina",
+                description: "The Prophet's Mosque in Medina, the second holiest mosque in Islam. This is where Prophet Muhammad (PBUH) is buried and where he established the first Muslim community.",
+                embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.8544766967845!2d39.61191!3d24.46791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15bd7b8c7b8c7b8c%3A0x7b8c7b8c7b8c7b8c!2sProphet's%20Mosque!5e0!3m2!1sen!2sus!4v1635000000000!5m2!1sen!2sus"
+            },
+            overview: {
+                title: "Saudi Arabia - Sacred Land",
+                description: "Overview of Saudi Arabia showing both holy cities of Makkah and Medina, the two most sacred places in Islam visited by millions of pilgrims annually.",
+                embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1897799.1234567890!2d42.0!3d23.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15e7b33fe7c5d1b91%3A0x3e5d8b8a5c5e5b5e!2sSaudi%20Arabia!5e0!3m2!1sen!2sus!4v1635000000000!5m2!1sen!2sus"
+            }
+        };
+
+        // YouTube video URLs (you can replace with actual Makkah videos)
+        const videoUrls = {
+            main: "dQw4w9WgXcQ", // Replace with actual Makkah video ID
+            makkah: "dQw4w9WgXcQ", // Replace with Makkah-specific video
+            medina: "dQw4w9WgXcQ"  // Replace with Medina-specific video
+        };
+
+        // Function to play video
+        function playVideo() {
+            const overlay = document.getElementById('video-overlay');
+            const iframe = document.getElementById('youtube-iframe');
+            
+            // Hide overlay
+            overlay.classList.add('hidden');
+            
+            // Auto-play the video by changing the src with autoplay parameter
+            const currentSrc = iframe.src;
+            if (!currentSrc.includes('autoplay=1')) {
+                iframe.src = currentSrc.replace('autoplay=0', 'autoplay=1').replace('?', '?autoplay=1&');
+            }
+        }
+
+        // Function to show different locations on map
+        function showLocation(location) {
+            const mapIframe = document.getElementById('google-map');
+            const locationInfo = document.getElementById('location-info');
+            const data = locationData[location];
+            
+            if (data) {
+                // Update map
+                mapIframe.src = data.embedUrl;
+                
+                // Update location info
+                locationInfo.innerHTML = `
+                    <h4>${data.title}</h4>
+                    <p>${data.description}</p>
+                `;
+                
+                // Add loading state
+                mapIframe.style.opacity = '0.5';
+                setTimeout(() => {
+                    mapIframe.style.opacity = '1';
+                }, 500);
+            }
+        }
+
+        // Function to change video based on location
+        function changeVideo(location) {
+            const iframe = document.getElementById('youtube-iframe');
+            const overlay = document.getElementById('video-overlay');
+            const videoId = videoUrls[location] || videoUrls.main;
+            
+            // Show overlay again
+            overlay.classList.remove('hidden');
+            
+            // Change video
+            iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1&controls=1&rel=0&modestbranding=1`;
+        }
+
+        // Enhanced location buttons with video integration
+        function showLocationWithVideo(location) {
+            showLocation(location);
+            changeVideo(location);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth transitions
+            const mapIframe = document.getElementById('google-map');
+            mapIframe.style.transition = 'opacity 0.5s ease';
+            
+            // Add click handlers to location buttons for enhanced functionality
+            const locationButtons = document.querySelectorAll('.ziyarat-location-btn');
+            locationButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    locationButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                });
+            });
+            
+            // Set initial active button
+            locationButtons[0].classList.add('active');
+        });
+
+        // Handle iframe load events
+        document.getElementById('google-map').addEventListener('load', function() {
+            this.style.opacity = '1';
+        });
+
+        // Add CSS for active button state
+        const style = document.createElement('style');
+        style.textContent = `
+            .ziyarat-location-btn.active {
+                background: var(--accent-green) !important;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
              <script src="navbar.js"></script>
 
 </body>
