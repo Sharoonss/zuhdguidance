@@ -3,6 +3,10 @@
             font-family: "Serotiva-Black";
             src: url(./font/OpenType-TT/Serotiva-Black.ttf);
         }
+         @font-face {
+            font-family: "Serotiva-Light";
+            src: url(./font/OpenType-TT/Serotiva-Light.ttf);
+        }
         * {
             margin: 0;
             padding: 0;
@@ -19,9 +23,12 @@ font-family: "Serotiva-Black";
 
         h2,h3{
             font-family: "Serotiva-Black";
-            font-weight:700;
-            font-size: 2rem;
+            font-size:2rem;
+            font-weight:100;
 
+        }
+        p{
+           font-family: "Serotiva-Light";
         }
 
         :root {
@@ -56,38 +63,99 @@ font-family: "Serotiva-Black";
             height:70px;
             width: auto;
         }
- /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            /* align-items: center; */
-            /* padding-top: 80px; */
+ .deen-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
-        .hero-content {
+        /* Hero Slider */
+        .nourish-hero-carousel {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faith-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            align-items: center;
+        }
+
+        .faith-slide.slide-active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .faith-slide.slide-previous {
+            transform: translateX(-100%);
+        }
+
+        /* Slide Backgrounds */
+        .hearts-slide {
+            /* background: linear-gradient(135deg, var(--off-white) 0%, #f0f0f0 100%); */
+        }
+
+        .wisdom-slide {
+            /* background: linear-gradient(135deg, var(--sand-beige) 0%, #e6d5a8 100%); */
+        }
+
+        .community-slide {
+            background: linear-gradient(135deg, var(--deep-green) 0%, #1e3a21 100%);
+            color: var(--off-white);
+        }
+
+        .guidance-slide {
+            /* background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); */
+            color: var(--off-white);
+        }
+
+        .revive-content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            width: 100%;
         }
 
-        .hero-text {
-            transform: translateY(50px);
+        .islamic-narrative {
+            animation: slideInLeft 1s ease-out 0.3s both;
         }
 
-        .hero-title {
+        .spiritual-headline {
             font-size: clamp(2.5rem, 5vw, 4rem);
-            /* font-weight: 700; */
+            font-weight: 700;
             line-height: 1.2;
-            margin-bottom:4rem;
+            margin-bottom: 2rem;
             /* font-family: 'Amiri', serif; */
         }
 
-        .hero-title span {
+        .spiritual-headline span {
             display: block;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
 
-        .cta-button {
+        .spiritual-headline span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .enlighten-description {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+            line-height: 1.6;
+        }
+
+        .sacred-action-btn {
             background: var(--sand-beige);
             color: var(--deep-green);
             border: none;
@@ -99,25 +167,181 @@ font-family: "Serotiva-Black";
             transition: all 0.3s ease;
             text-transform: uppercase;
             border-radius: 4px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
         }
 
-        .cta-button:hover {
+        .sacred-action-btn:hover {
             background: var(--gold);
             color: var(--off-white);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .hero-image {
-            position: relative;
-            transform: translateX(50px);
+        /* Button variants for different slides */
+        .community-slide .sacred-action-btn {
+            background: var(--gold);
+            color: var(--deep-green);
         }
 
-        .hero-image img {
+        .guidance-slide .sacred-action-btn {
+            background: var(--off-white);
+            color: var(--dark-text);
+        }
+
+        .scholar-visual {
+            position: relative;
+            animation: slideInRight 1s ease-out 0.5s both;
+        }
+
+        .scholar-visual img {
             width: 100%;
-            height: 100%;
+            height: 500px;
+            object-fit: cover;
             border-radius: 12px;
-            /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);  */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Slider Controls */
+        .carousel-navigator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .slide-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .slide-indicator.indicator-active {
+            background: var(--gold);
+            transform: scale(1.2);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .slide-arrow {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--dark-text);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .slide-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .arrow-previous {
+            left: 2rem;
+        }
+
+        .arrow-next {
+            right: 2rem;
+        }
+
+        .explore-prompt {
+            position: absolute;
+            bottom: 1rem;
+            right: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: inherit;
+            opacity: 0.7;
+            z-index: 100;
+        }
+
+        .bounce-indicator {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .revive-content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .spiritual-headline {
+                font-size: 2.5rem;
+            }
+
+            .carousel-controls {
+                display: none;
+            }
+
+            .deen-container {
+                padding: 0 1rem;
+            }
         }
 
         /* Content Section */
@@ -166,8 +390,9 @@ font-family: "Serotiva-Black";
         }
 
         .stat-number {
+      font-family: "Serotiva-Black";
             font-size: 1.5rem;
-            font-weight: 700;
+            font-weight:600;
             margin-bottom: 0.5rem;
             color: var(--deep-green);
         }
@@ -175,7 +400,8 @@ font-family: "Serotiva-Black";
         .stat-label {
             font-size: 0.875rem;
             color: rgba(15, 61, 46, 0.8);
-            font-weight: 500;
+            font-weight:300;
+          font-family: "Serotiva-Black";
         }
  /* From the Minbar Section */
         .minbar-section {
@@ -189,8 +415,6 @@ font-family: "Serotiva-Black";
         }
 
         .minbar-content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
             margin-bottom: 0.5rem;
             /* font-family: 'Amiri', serif; */
             color: var(--deep-green);
@@ -200,6 +424,9 @@ font-family: "Serotiva-Black";
             font-size: 1.125rem;
             color: rgba(15, 61, 46, 0.7);
             margin-bottom: 2rem;
+            font-weight:300;
+         font-family: "Serotiva-Black";
+
         }
 
         /* Category Filters */
@@ -218,6 +445,7 @@ font-family: "Serotiva-Black";
             color: var(--deep-green);
             font-size: 0.875rem;
             font-weight: 500;
+             font-family: "Serotiva-Black";
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -261,6 +489,7 @@ font-family: "Serotiva-Black";
         .mini-playlists h3 {
             font-size: 1.5rem;
             font-weight: 600;
+         font-family: "Serotiva-Black";
             margin-bottom: 1rem;
             color: var(--deep-green);
         }
@@ -334,18 +563,22 @@ font-family: "Serotiva-Black";
         .video-title {
             font-size: 0.875rem;
             font-weight: 600;
+          font-family: "Serotiva-Black";
             color: var(--deep-green);
             margin-bottom: 0.25rem;
             line-height: 1.3;
         }
 
         .video-author {
-            font-size: 0.75rem;
+             font-family: "Serotiva-Black";
+            font-size: 0.85rem;
             color: rgba(15, 61, 46, 0.6);
             margin-bottom: 0.25rem;
+            font-size: 300;
         }
 
         .video-duration {
+         font-family: "Serotiva-Black";
             font-size: 0.75rem;
             color: rgba(15, 61, 46, 0.5);
         }
@@ -468,13 +701,15 @@ font-family: "Serotiva-Black";
             font-size: 3rem;
             font-weight: 700;
             color: var(--deep-green);
-            /* font-family: 'Amiri', serif; */
+            font-family: "Serotiva-Black";
         }
 
         .instagram-subtitle {
             font-size: 1.125rem;
             color: rgba(15, 61, 46, 0.7);
             margin-left: 1rem;
+         font-family: "Serotiva-Black";
+
         }
 
         .social-icons {
@@ -584,9 +819,11 @@ font-family: "Serotiva-Black";
 
         .qotd-main-heading {
             font-size: 28px;
-            font-weight: bold;
+            font-weight:100;
             color: #0F3D2E;
             margin-bottom: 20px;
+        font-family: "Serotiva-Black";
+
         }
 
         .qotd-scholar-name {
@@ -655,7 +892,6 @@ font-family: "Serotiva-Black";
         .qotd-quote-symbol {
             font-size: 60px;
             color: #C8B88A;
-            /* font-family: serif; */
             margin-bottom: 20px;
         }
 
@@ -1234,6 +1470,7 @@ font-family: "Serotiva-Black";
         }
 
         .donation-support-subtitle {
+            font-family: "Serotiva-Black";
             font-size: 16px;
             color: #C8B88A;
             font-weight: 400;
@@ -1242,6 +1479,7 @@ font-family: "Serotiva-Black";
         }
 
         .donation-main-heading {
+            font-family: "Serotiva-Black";
             font-size: 48px;
             font-weight: bold;
             color: #F7EFE5;
@@ -1258,6 +1496,9 @@ font-family: "Serotiva-Black";
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
+            font-weight:300;
+            /* font-family: "Serotiva-Black"; */
+
         }
 
         .donation-buttons-container {

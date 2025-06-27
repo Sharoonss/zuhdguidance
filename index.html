@@ -34,26 +34,103 @@
    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span>Nourishing Hearts,</span>
-                        <span>Reviving Deen</span>
-                    </h1>
-                    <button class="cta-button">Watch Our Latest Lecture</button>
-                </div>
-
-                <div class="hero-image">
-                    <img src="/images/speaker.png" alt="Islamic Scholar Speaking" loading="lazy">
+   <section class="nourish-hero-carousel">
+        <!-- Slide 1 -->
+        <div class="faith-slide hearts-slide slide-active">
+            <div class="deen-container">
+                <div class="revive-content-grid">
+                    <div class="islamic-narrative">
+                        <h1 class="spiritual-headline">
+                            <span>Nourishing Hearts,</span>
+                            <span>Reviving Deen</span>
+                        </h1>
+                        <p class="enlighten-description">Join us in a journey of spiritual enlightenment and Islamic knowledge that transforms lives and strengthens faith.</p>
+                        <button class="sacred-action-btn">Watch Our Latest Lecture</button>
+                    </div>
+                    <div class="scholar-visual">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=500&fit=crop&crop=faces" alt="Islamic Scholar Speaking" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="scroll-indicator">
+        <!-- Slide 2 -->
+        <div class="faith-slide wisdom-slide">
+            <div class="deen-container">
+                <div class="revive-content-grid">
+                    <div class="islamic-narrative">
+                        <h1 class="spiritual-headline">
+                            <span>Wisdom Through</span>
+                            <span>Sacred Knowledge</span>
+                        </h1>
+                        <p class="enlighten-description">Discover the timeless teachings of Islam through comprehensive courses and enlightening discussions.</p>
+                        <button class="sacred-action-btn">Explore Our Courses</button>
+                    </div>
+                    <div class="scholar-visual">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=500&fit=crop&crop=faces" alt="Islamic Teaching" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="faith-slide community-slide">
+            <div class="deen-container">
+                <div class="revive-content-grid">
+                    <div class="islamic-narrative">
+                        <h1 class="spiritual-headline">
+                            <span>Building Strong</span>
+                            <span>Muslim Communities</span>
+                        </h1>
+                        <p class="enlighten-description">Connect with fellow believers and grow together in faith through our vibrant community programs.</p>
+                        <button class="sacred-action-btn">Join Our Community</button>
+                    </div>
+                    <div class="scholar-visual">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=500&fit=crop" alt="Islamic Community" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="faith-slide guidance-slide">
+            <div class="deen-container">
+                <div class="revive-content-grid">
+                    <div class="islamic-narrative">
+                        <h1 class="spiritual-headline">
+                            <span>Guidance for</span>
+                            <span>Modern Muslims</span>
+                        </h1>
+                        <p class="enlighten-description">Navigate contemporary challenges while staying true to Islamic principles and values.</p>
+                        <button class="sacred-action-btn">Get Guidance</button>
+                    </div>
+                    <div class="scholar-visual">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=500&fit=crop&crop=faces" alt="Modern Islamic Guidance" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="carousel-navigator">
+            <div class="slide-indicator indicator-active" data-slide="0"></div>
+            <div class="slide-indicator" data-slide="1"></div>
+            <div class="slide-indicator" data-slide="2"></div>
+            <div class="slide-indicator" data-slide="3"></div>
+        </div>
+
+        <!-- Arrow Navigation -->
+        <div class="carousel-controls">
+            <button class="slide-arrow arrow-previous">‹</button>
+        </div>
+        <div class="carousel-controls">
+            <button class="slide-arrow arrow-next">›</button>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="explore-prompt">
             <div>Scroll to explore</div>
-            <div class="scroll-arrow">↓</div>
+            <div class="bounce-indicator">↓</div>
         </div>
     </section>
 
@@ -332,7 +409,7 @@
             <!-- Quote and Blog Section -->
            <div class="qotd-main-wrapper">
         <div class="qotd-sidebar-panel">
-            <h1 class="qotd-main-heading">Quote of the Day</h1>
+            <h2 class="qotd-main-heading">Quote of the Day</h2>
             <p class="qotd-scholar-name">Ibn al-Qayyim</p>
             
             <h2 class="qotd-highlights-title">Blog Highlights</h2>
@@ -639,6 +716,143 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with default category
     filterVideosByCategory('seerah');
 });
+
+
+
+
+class IslamicHeroCarousel {
+    constructor() {
+        this.currentSlide = 0;
+        this.slides = document.querySelectorAll('.faith-slide');
+        this.indicators = document.querySelectorAll('.slide-indicator');
+        this.prevBtn = document.querySelector('.arrow-previous');
+        this.nextBtn = document.querySelector('.arrow-next');
+        this.carousel = document.querySelector('.nourish-hero-carousel');
+        this.totalSlides = this.slides.length;
+        this.autoSlideInterval = null;
+
+        if (this.slides.length && this.carousel) {
+            this.init();
+        } else {
+            console.warn("Carousel or slides not found. Please check your HTML structure.");
+        }
+    }
+
+    init() {
+        // Add event listeners
+        this.indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => this.goToSlide(index));
+        });
+
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => this.previousSlide());
+        }
+
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => this.nextSlide());
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') this.previousSlide();
+            if (e.key === 'ArrowRight') this.nextSlide();
+        });
+
+        // Touch navigation for mobile
+        this.addTouchNavigation();
+
+        // Start auto-slide
+        this.startAutoSlide();
+
+        // Pause auto-slide on hover
+        this.carousel.addEventListener('mouseenter', () => this.stopAutoSlide());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoSlide());
+    }
+
+    goToSlide(slideIndex) {
+        if (this.slides.length === 0) return;
+
+        this.slides[this.currentSlide].classList.remove('slide-active');
+        this.slides[this.currentSlide].classList.add('slide-previous');
+        if (this.indicators[this.currentSlide]) {
+            this.indicators[this.currentSlide].classList.remove('indicator-active');
+        }
+
+        this.currentSlide = slideIndex;
+
+        this.slides[this.currentSlide].classList.remove('slide-previous');
+        this.slides[this.currentSlide].classList.add('slide-active');
+        if (this.indicators[this.currentSlide]) {
+            this.indicators[this.currentSlide].classList.add('indicator-active');
+        }
+
+        setTimeout(() => {
+            this.slides.forEach(slide => {
+                if (!slide.classList.contains('slide-active')) {
+                    slide.classList.remove('slide-previous');
+                }
+            });
+        }, 800);
+    }
+
+    nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.totalSlides;
+        this.goToSlide(nextIndex);
+    }
+
+    previousSlide() {
+        const prevIndex = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.goToSlide(prevIndex);
+    }
+
+    startAutoSlide() {
+        this.autoSlideInterval = setInterval(() => {
+            this.nextSlide();
+        }, 3000); // changed to 3 seconds
+    }
+
+    stopAutoSlide() {
+        if (this.autoSlideInterval) {
+            clearInterval(this.autoSlideInterval);
+            this.autoSlideInterval = null;
+        }
+    }
+
+    addTouchNavigation() {
+        let startX, startY, dist, threshold = 150;
+
+        if (!this.carousel) return;
+
+        this.carousel.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+        });
+
+        this.carousel.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent scrolling
+        });
+
+        this.carousel.addEventListener('touchend', (e) => {
+            const touch = e.changedTouches[0];
+            dist = touch.clientX - startX;
+
+            if (Math.abs(dist) > threshold) {
+                if (dist > 0) {
+                    this.previousSlide();
+                } else {
+                    this.nextSlide();
+                }
+            }
+        });
+    }
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    new IslamicHeroCarousel();
+});
+
 
     </script>
            <script src="navbar.js"></script>
