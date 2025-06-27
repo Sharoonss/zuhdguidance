@@ -1,9 +1,19 @@
 
+        @font-face {
+            font-family: "Serotiva-Black";
+            src: url(./font/OpenType-TT/Serotiva-Black.ttf);
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter';
+
+        }
+
+        h1,h2,h3{
+            font-family: "Serotiva-Black";
+            font-weight:700;
+            font-size: 7rem;
 
         }
 

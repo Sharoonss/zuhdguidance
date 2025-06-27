@@ -21,8 +21,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
- 
+  <style>
+ .ziyarat-html5-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 </style>
 </head>
 <body>
@@ -47,25 +53,22 @@
           <div class="ziyarat-featured-content">
             <div class="ziyarat-video-section">
                 <div class="ziyarat-video-container">
-                    <!-- YouTube Video Iframe with the specific video you provided -->
-                    <iframe 
-                        class="ziyarat-youtube-iframe" 
-                        id="youtube-iframe"
-                        src="https://www.youtube.com/embed/fzgrTls3hwQ?enablejsapi=1&controls=1&rel=0&modestbranding=1"
-                        title="Walking the Path of the Prophet (ﷺ): Madina's Sacred Sites | Zuhd Guidance"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin"
-                        allowfullscreen>
-                    </iframe>
-                    
-                    <!-- Video Overlay with Play Button -->
-                    <div class="ziyarat-video-overlay" id="video-overlay" onclick="playVideo()">
-                        <div class="ziyarat-play-btn"></div>
-                        <div class="ziyarat-video-title">
-                            🔥 Walking the Path of the Prophet (ﷺ): Madina's Sacred Sites
-                        </div>
-                    </div>
-                </div>
+    <section class="ziyarat-video-section">
+        <video id="ziyarat-video" class="ziyarat-html5-video" controls>
+            <source src="/Madina Vlog Teaser_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </section>
+
+    <!-- Video Overlay with Play Button -->
+    <div class="ziyarat-video-overlay" id="video-overlay" onclick="playVideo()">
+        <div class="ziyarat-play-btn"></div>
+        <div class="ziyarat-video-title">
+            🔥 Walking the Path of the Prophet (ﷺ): Madina's Sacred Sites
+        </div>
+    </div>
+</div>
+
                 
                 <div class="ziyarat-featured-info">
                     <h2 class="ziyarat-featured-title">Sacred Journey</h2>
@@ -446,7 +449,6 @@
                 box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             }
         `;
-        document.head.appendChild(style);
     </script>
              <script src="navbar.js"></script>
 
