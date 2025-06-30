@@ -4,30 +4,291 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZUHD GUIDANCE – Nourishing Hearts, Reviving Deen</title>
-
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/lecture.html">
-
   <!-- GSAP core + ScrollTrigger CDN -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-
   
-
   <!-- Your custom JS -->
   <script defer src="script.js"></script>
-
   <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 <style>
-     
+    
+       .partners-section {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin:auto;
+
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--off-white);
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--sand-beige);
+            margin-bottom: 50px;
+            font-weight: 300;
+        }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: rgba(247, 239, 229, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(247, 239, 229, 0.2);
+            box-shadow: 0 20px 40px rgba(15, 61, 46, 0.2);
+        }
+        .slider-track {
+            display: flex;
+            width: max-content;
+            gap: 30px;
+            padding: 30px;
+            align-items: center;
+            animation: slideRightToLeft 30s linear infinite;
+            will-change: transform;
+        }
+        .partner-card {
+            min-width: 250px;
+            height: 220px;
+            background: rgba(247, 239, 229, 0.15);
+            border-radius: 16px;
+            border: 1px solid rgba(200, 184, 138, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(15px);
+            flex-shrink: 0;
+            text-decoration: none;
+            color: inherit;
+        }
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(200, 184, 138, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+        .partner-card:hover::before {
+            left: 100%;
+        }
+        .partner-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(15, 61, 46, 0.3);
+            border-color: var(--gold);
+            background: rgba(200, 184, 138, 0.2);
+        }
+        .partner-logo {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+        .partner-card:hover .partner-logo {
+            transform: scale(1.1);
+        }
+        .partner-logo img {
+            width:260px;
+            height:80px;
+            object-fit: cover;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+        .partner-card:hover .partner-logo img {
+            transform: scale(1.1);
+        }
+        .partner-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--off-white);
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(15, 61, 46, 0.5);
+            text-align: center;
+            line-height: 1.2;
+        }
+        .partner-type {
+            font-size: 0.9rem;
+            color: var(--sand-beige);
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .controls-hint {
+            color: rgba(247, 239, 229, 0.7);
+            font-size: 0.9rem;
+            margin-top: 30px;
+        }
+        .click-hint {
+            position: absolute;
+            bottom: 5px;
+            right: 8px;
+            font-size: 0.7rem;
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .partner-card:hover .click-hint {
+            opacity: 1;
+        }
+        @keyframes slideRightToLeft {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        /* Pause animation on hover */
+        .slider-container:hover .slider-track {
+            animation-play-state: paused;
+        }
+        /* Pause animation when spacebar is pressed */
+        .slider-track.paused {
+            animation-play-state: paused;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .slider-container {
+                height: 250px;
+            }
+            
+            .partner-card {
+                min-width: 200px;
+                height: 190px;
+                padding: 20px 15px;
+            }
+            
+            .partner-logo {
+                font-size: 2.8rem;
+            }
+            .partner-logo img {
+                width: 48px;
+                height: 48px;
+            }
+            
+            .partner-name {
+                font-size: 1.1rem;
+            }
+            
+            .slider-track {
+                gap: 20px;
+                padding: 30px 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .slider-container {
+                height: 220px;
+            }
+            
+            .partner-card {
+                min-width: 180px;
+                height: 160px;
+                padding: 15px 10px;
+            }
+            
+            .partner-logo {
+                font-size: 2.5rem;
+            }
+            .partner-logo img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        /* Smooth performance optimizations */
+        .slider-track {
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+        .partner-card {
+            backface-visibility: hidden;
+            transform: translateZ(0);
+        }
+        /* Add subtle gradient overlay */
+        .slider-container::before,
+        .slider-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .slider-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--deep-green), transparent);
+        }
+        .slider-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--gold), transparent);
+        }
+        /* Islamic cards special styling */
+        .islamic-card {
+            background: rgba(200, 184, 138, 0.2);
+            border: 1px solid rgba(200, 184, 138, 0.4);
+        }
+        .islamic-card:hover {
+            background: rgba(200, 184, 138, 0.3);
+            border-color: var(--gold);
+            box-shadow: 0 25px 50px rgba(200, 184, 138, 0.2);
+        }
+        /* External link indicator */
+        .external-link::after {
+            content: '↗';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 1rem;
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .external-link:hover::after {
+            opacity: 1;
+        }
+        .highlight-colored {
+            font-size:32px;
+  font-weight:800;
+  color: #c59510; /* gold/orange tone similar to the image */
+}
+
+.tagline {
+  font-size: 26px;
+  font-style: italic;
+  color: #ddd;
+}
 </style>
 </head>
 
 <body>
-
     <!-- Navigation -->
      <nav>
       <div id="navbar"></div>
@@ -41,14 +302,17 @@
                 <div class="revive-content-grid">
                     <div class="islamic-narrative">
                         <h1 class="spiritual-headline">
-                            <span>Nourishing Hearts,</span>
-                            <span>Reviving Deen</span>
+                            <span>Knowledge that</span>
+                            <span>Transforms</span>
                         </h1>
-                        <p class="enlighten-description">Join us in a journey of spiritual enlightenment and Islamic knowledge that transforms lives and strengthens faith.</p>
+                        <p class="enlighten-description"> From the Seerah to the Soul Guided by<br />
+    <span class="highlight-colored">Quran &amp; Sunnah</span></p>
+      <p class="tagline">Watch. Reflect. Grow.</p>
+
                         <button class="sacred-action-btn">Watch Our Latest Lecture</button>
                     </div>
                     <div class="scholar-visual">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&h=500&fit=crop&crop=faces" alt="Islamic Scholar Speaking" loading="lazy">
+                        <img src="/images/ZUHD AU New Banner-01.jpg" alt="Islamic Scholar Speaking" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -59,15 +323,17 @@
             <div class="deen-container">
                 <div class="revive-content-grid">
                     <div class="islamic-narrative">
+                          <p class="highlight-colored">Voices of the Ummah</p>
                         <h1 class="spiritual-headline">
-                            <span>Wisdom Through</span>
-                            <span>Sacred Knowledge</span>
+                            <span>Exclusive Talks by
+                            Leading Scholars Across the World.</span>
+
                         </h1>
-                        <p class="enlighten-description">Discover the timeless teachings of Islam through comprehensive courses and enlightening discussions.</p>
+  <p class="tagline">Available Only on Zuhd Guidance.</p>
                         <button class="sacred-action-btn">Explore Our Courses</button>
                     </div>
                     <div class="scholar-visual">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=500&fit=crop&crop=faces" alt="Islamic Teaching" loading="lazy">
+                        <img src="/images/ZUHD AU New Banner-02.jpg" alt="Islamic Teaching" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -78,15 +344,16 @@
             <div class="deen-container">
                 <div class="revive-content-grid">
                     <div class="islamic-narrative">
+                    <p class="highlight-colored">Quranic Lessons &bull; History<br />What You Can Do</p>
                         <h1 class="spiritual-headline">
-                            <span>Building Strong</span>
-                            <span>Muslim Communities</span>
+                            <span>Palestine Series</span>
+                            <span>Continues</span>
                         </h1>
                         <p class="enlighten-description">Connect with fellow believers and grow together in faith through our vibrant community programs.</p>
                         <button class="sacred-action-btn">Join Our Community</button>
                     </div>
                     <div class="scholar-visual">
-                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=600&h=500&fit=crop" alt="Islamic Community" loading="lazy">
+                        <img src="/images/ZUHD AU New Banner-04.jpg" alt="Islamic Community" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -98,14 +365,17 @@
                 <div class="revive-content-grid">
                     <div class="islamic-narrative">
                         <h1 class="spiritual-headline">
-                            <span>Guidance for</span>
-                            <span>Modern Muslims</span>
+                             Voices of the Ummah
                         </h1>
-                        <p class="enlighten-description">Navigate contemporary challenges while staying true to Islamic principles and values.</p>
+                        <p class="enlighten-description">Weekly Reminders. Daily Uplift. Timeless Truths.
+</p>
+<h4 class="highlight-colored">YouTube • Instagram • Everywhere.
+
+</h4>
                         <button class="sacred-action-btn">Get Guidance</button>
                     </div>
                     <div class="scholar-visual">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=500&fit=crop&crop=faces" alt="Modern Islamic Guidance" loading="lazy">
+                        <img src="/images/ZUHD AU New Banner-03.jpg" alt="Modern Islamic Guidance" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -160,6 +430,7 @@
                     <div class="stat-label">Outreach & Ziyam</div>
                 </div>
             </div>
+
 <!-- mainbar section -->
            <div class="minbar-section">
         <div class="minbar-content">
@@ -172,6 +443,7 @@
                 <button class="filter-btn" data-filter="parenting">Parenting & Tarbiyah</button>
                 <button class="filter-btn" data-filter="spiritual">Spiritual Growth</button>
             </div>
+
               <div class="mini-playlists">
                 <h3>Mini Playlists</h3>
                 <div class="playlist-videos">
@@ -213,7 +485,6 @@
     <div class="video-duration">30:10</div> <!-- Replace with real duration -->
   </div>
 </div>
-
 
                    <!-- Palestine Series Videos -->
 <div class="playlist-item" data-video-id="bAnl7bxlhk4" data-title="Prophet Musa Struggle & 5 Points to Check" data-category="palestine" style="display: none;">
@@ -263,7 +534,6 @@
         <div class="video-duration">--:--</div>
     </div>
 </div>
-
 
                   <!-- Parenting & Tarbiyah Videos (Righteous Leadership) -->
 <div class="playlist-item" data-video-id="2k7MY5JbUU4" data-title="Raising Righteous Leaders" data-category="parenting" style="display: none;">
@@ -328,7 +598,6 @@
     </div>
 </div>
 
-
                     <!-- Spiritual Growth Videos -->
                     <!-- Spiritual Growth Videos -->
 <div class="playlist-item" data-video-id="KIsBk76M8vA" data-title="Ultimate Goal of Knowledge" data-category="spiritual" style="display: none;">
@@ -349,7 +618,7 @@
         <div class="play-overlay"></div>
     </div>
     <div class="video-info">
-        <div class="video-title">The Hajj of Unity: Abu Bakr’s Leadership & Islam’s Triumph in 9AH</div>
+        <div class="video-title">The Hajj of Unity: Abu Bakr's Leadership & Islam's Triumph in 9AH</div>
         <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
         <div class="video-duration">--:--</div>
     </div>
@@ -361,12 +630,11 @@
         <div class="play-overlay"></div>
     </div>
     <div class="video-info">
-        <div class="video-title">Itikaaf Uncovered: Maximize the Last 10 Nights & Unlock Allah’s Mercy</div>
+        <div class="video-title">Itikaaf Uncovered: Maximize the Last 10 Nights & Unlock Allah's Mercy</div>
         <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
         <div class="video-duration">--:--</div>
     </div>
 </div>
-
 
                     <div class="playlist-item" data-video-id="Sagg08DrO5U" data-title="Night Prayer and Reflection" data-category="spiritual" style="display: none;">
                         <div class="video-thumbnail">
@@ -445,6 +713,7 @@
     </div>
         </div>
     </section>
+
  <div class="donation-hero-container">
         <div class="donation-content-wrapper">
             <p class="donation-support-subtitle">Support our humanitarian efforts</p>
@@ -454,7 +723,6 @@
                 mosques in our communities. Your donation provides essential aid, medical supplies, 
                 food, and supports places of worship that serve as centers of hope and community.
             </p>
-
             <div class="donation-buttons-container">
                 <a href="/donate.html"> <button class="donation-primary-btn" onclick="handleDonation()">
                     Donate Now
@@ -464,7 +732,6 @@
                     Learn More
                 </button>
             </div>
-
             <div class="donation-impact-stats">
                 <div class="donation-stat-item">
                     <div class="donation-stat-number">2,847</div>
@@ -481,7 +748,182 @@
             </div>
         </div>
     </div>
+
+    
+     <div class="partners-section">
+        <h2 class="section-title">Our  Partners</h2>
+        <p class="section-subtitle">Built on Islamic principles, trusted by leading organizations</p>
+        
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                <!-- Partner cards will be dynamically generated -->
+                <a href="https://example.com/partner1" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/390KrWKw/LOGOS-03.jpg" alt="DIO Partner 1" />
+                    </div>
+                    <div class="partner-name">DIO Partner 1</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://www.zamzamacademy.com/" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/TxyzvBzX/LOGOS-04.jpg" alt="DIO Partner 2" />
+                    </div>
+                    <div class="partner-name">Zam Zam Academy</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner3" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/WWm7JXfG/LOGOS-05.jpg" alt="DIO Partner 3" />
+                    </div>
+                    <div class="partner-name">DIO Partner 3</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://www.safaracademy.org/#1" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/kgWYdxC5/LOGOS-06.jpg" alt="DIO Partner 4" />
+                    </div>
+                    <div class="partner-name">Safar Academy</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://www.whitethread.org/" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/pBDdGcbM/LOGOS-07.jpg" alt="DIO Partner 5" />
+                    </div>
+                    <div class="partner-name">Whitethread</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner6" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/dJPH6nMB/LOGOS-08.jpg" alt="DIO Partner 6" />
+                    </div>
+                    <div class="partner-name">DIO Partner 6</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner7" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/ymBZmgR2/LOGOS-09.jpg" alt="DIO Partner 7" />
+                    </div>
+                    <div class="partner-name">DIO Partner 7</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner8" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/390KrWKw/LOGOS-03.jpg" alt="DIO Partner 8" />
+                    </div>
+                    <div class="partner-name">DIO Partner 8</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner9" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/TxyzvBzX/LOGOS-04.jpg" alt="DIO Partner 9" />
+                    </div>
+                    <div class="partner-name">DIO Partner 9</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <!-- Duplicate set for seamless loop
+                <a href="https://example.com/partner1" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/390KrWKw/LOGOS-03.jpg" alt="DIO Partner 1" />
+                    </div>
+                    <div class="partner-name">DIO Partner 1</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner2" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/TxyzvBzX/LOGOS-04.jpg" alt="DIO Partner 2" />
+                    </div>
+                    <div class="partner-name">DIO Partner 2</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner3" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/WWm7JXfG/LOGOS-05.jpg" alt="DIO Partner 3" />
+                    </div>
+                    <div class="partner-name">DIO Partner 3</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner4" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/kgWYdxC5/LOGOS-06.jpg" alt="DIO Partner 4" />
+                    </div>
+                    <div class="partner-name">DIO Partner 4</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner5" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/pBDdGcbM/LOGOS-07.jpg" alt="DIO Partner 5" />
+                    </div>
+                    <div class="partner-name">DIO Partner 5</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner6" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/dJPH6nMB/LOGOS-08.jpg" alt="DIO Partner 6" />
+                    </div>
+                    <div class="partner-name">DIO Partner 6</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner7" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/ymBZmgR2/LOGOS-09.jpg" alt="DIO Partner 7" />
+                    </div>
+                    <div class="partner-name">DIO Partner 7</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner8" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/390KrWKw/LOGOS-03.jpg" alt="DIO Partner 8" />
+                    </div>
+                    <div class="partner-name">DIO Partner 8</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a>
+
+                <a href="https://example.com/partner9" target="_blank" rel="noopener noreferrer" class="partner-card islamic-card external-link">
+                    <div class="partner-logo">
+                        <img src="https://i.ibb.co/TxyzvBzX/LOGOS-04.jpg" alt="DIO Partner 9" />
+                    </div>
+                    <div class="partner-name">DIO Partner 9</div>
+                    <div class="partner-type">Partner Organization</div>
+                    <div class="click-hint">Visit →</div>
+                </a> -->
+            </div>
+        </div>
+        <p class="controls-hint">Press spacebar to pause/resume • Hover to pause • Click logos to visit websites</p>
     </div>
+
      <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
@@ -498,16 +940,15 @@
             <a href="https://www.youtube.com/@zuhdau/videos" class="subscribe-btn">Subscribe Our YouTube Channel</a>
         </div>
     </div>
+
  <footer class="footer">
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-column footer-logo">
-                    <div class="logo-main"><img src="/images/logo.png" alt="logo"></div>
+                    <div class="logo-main"><img src="/placeholder.svg?height=60&width=150" alt="logo"></div>
                     <p class="logo-text">Be the first to receive Islamic guidance, inspiring articles, and special offers—only from ZUHD.
-
 </p>
                 </div>
-
                 <div class="footer-column">
                     <h3>ABOUT ACADEMY</h3>
                     <ul>
@@ -517,7 +958,6 @@
                         <li><a href="/" onclick="linkClick('Teaware')">Terms and conditions</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h3>QUICK LINKS</h3>
                     <ul>
@@ -526,7 +966,6 @@
                         <li><a href="/Ziyarat.html" onclick="linkClick('Health Benefits')">Ziyarat</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h3>Contact Us</h3>
                     <ul>
@@ -537,7 +976,6 @@
                         <li><a href="/qna.html" onclick="linkClick('FAQ')">FAQ's</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column newsletter">
                     <h3>Let's Stay Connected</h3>
                     <p>Enter your email</p>
@@ -566,11 +1004,9 @@
     rel="noopener">
   <i class="fa-brands fa-tiktok"></i>
 </a>
-
                     </div>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <div class="copyright">
                     © 2024 Zuhd Guidance All rights reserved.
@@ -603,7 +1039,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const latest = data.items[0];
                 const latestId = latest.id.videoId;
                 const latestTitle = latest.snippet.title;
-
                 mainVideoPlayer.src = `https://www.youtube.com/embed/${latestId}?rel=0&autoplay=1`;
                 mainVideoPlayer.title = latestTitle;
             }
@@ -617,7 +1052,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.playlist-item:not([style*="display: none"])').forEach(playlistItem => {
             playlistItem.classList.remove('active');
         });
-
         item.classList.add('active');
 
         const videoId = item.getAttribute('data-video-id');
@@ -637,14 +1071,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Category filter functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
-
     filterButtons.forEach(button => {
         button.addEventListener('click', function () {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             this.classList.add('active');
 
             const selectedCategory = this.getAttribute('data-filter');
-
             playlistContainer.classList.add('loading');
 
             setTimeout(() => {
@@ -662,11 +1094,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         allVideos.forEach(video => {
             const videoCategory = video.getAttribute('data-category');
-
             if (videoCategory === category) {
                 video.style.display = 'flex';
                 hasVisibleVideos = true;
-
                 if (!firstVisibleVideo) {
                     firstVisibleVideo = video;
                 }
@@ -686,7 +1116,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show/hide empty state
     function showEmptyState(show, category) {
         const existingEmptyState = document.querySelector('.empty-state');
-
         if (existingEmptyState) {
             existingEmptyState.remove();
         }
@@ -716,8 +1145,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize with default category
     filterVideosByCategory('seerah');
 });
-
-
 
 
 class IslamicHeroCarousel {
@@ -853,12 +1280,65 @@ document.addEventListener('DOMContentLoaded', () => {
     new IslamicHeroCarousel();
 });
 
+// Placeholder functions for existing functionality
+function openInstagram() {
+    window.open('https://www.instagram.com/zuhd_au/', '_blank');
+}
 
+function openBlog() {
+    console.log('Blog functionality to be implemented');
+}
+
+function openMore() {
+    console.log('More functionality to be implemented');
+}
+
+function shareToInstagram() {
+    console.log('Share to Instagram functionality');
+}
+
+function shareGeneral() {
+    console.log('General share functionality');
+}
+
+function mainShare() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'ZUHD Guidance - Quote of the Day',
+            text: 'The heart will not find complete happiness, until it is connected with Allah. - Ibn al-Qayyim',
+            url: window.location.href
+        });
+    } else {
+        console.log('Share functionality');
+    }
+}
+
+function handleDonation() {
+    console.log('Donation functionality');
+}
+
+function handleLearnMore() {
+    console.log('Learn more functionality');
+}
+
+function submitNewsletter(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    console.log('Newsletter subscription:', email);
+    alert('Thank you for subscribing to our newsletter!');
+}
+
+function linkClick(linkName) {
+    console.log('Link clicked:', linkName);
+}
+
+function socialClick(platform) {
+    console.log('Social link clicked:', platform);
+}
     </script>
-           <script src="navbar.js"></script>
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
-    
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
+             <script src="navbar.js"></script>
+
 </body>
 </html>
