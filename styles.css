@@ -4,6 +4,10 @@
             src: url(./font/OpenType-TT/Serotiva-Black.ttf);
         }
          @font-face {
+            font-family: "Serotiva-Bold";
+            src: url(./font/OpenType-TT/Serotiva-Bold.ttf);
+        }
+         @font-face {
             font-family: "Serotiva-Light";
             src: url(./font/OpenType-TT/Serotiva-Light.ttf);
         }
@@ -23,7 +27,7 @@ font-family: "Serotiva-Black";
         }
 
         h2,h3{
-            font-family: "Serotiva-Black";
+            font-family: "Serotiva-Bold";
             font-size:2rem;
             font-weight:100;
 
@@ -391,7 +395,7 @@ font-family: "Serotiva-Black";
         }
 
         .stat-number {
-      font-family: "Serotiva-Black";
+            font-family: "Serotiva-Bold";
             font-size: 1.5rem;
             font-weight:600;
             margin-bottom: 0.5rem;
