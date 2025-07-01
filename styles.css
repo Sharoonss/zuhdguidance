@@ -177,9 +177,10 @@ font-family: "Serotiva-Black";
 
 .tagline {
   font-size: 26px;
-  font-style: italic;
+            font-family: "Serotiva-Bold";
   color: #ddd;
   margin-bottom:10px;
+
 }
         .sacred-action-btn {
             background: var(--sand-beige);
