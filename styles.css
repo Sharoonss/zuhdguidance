@@ -11,6 +11,10 @@
             font-family: "Serotiva-Light";
             src: url(./font/OpenType-TT/Serotiva-Light.ttf);
         }
+         @font-face {
+            font-family: "Serotiva-Regular";
+            src: url(./font/OpenType-TT/Serotiva-Regular.ttf);
+        }
         * {
             margin: 0;
             padding: 0;
@@ -108,9 +112,12 @@ font-family: "Serotiva-Black";
             /* background: linear-gradient(135deg, var(--off-white) 0%, #f0f0f0 100%); */
         }
 
-        .wisdom-slide {
-            /* background: linear-gradient(135deg, var(--sand-beige) 0%, #e6d5a8 100%); */
-        }
+       .wisdom-slide {
+    background: url('/ZUHD\ AU\ New\ Banner-03.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+}
+
 
         .community-slide {
             background: linear-gradient(135deg, var(--deep-green) 0%, #1e3a21 100%);
@@ -137,8 +144,8 @@ font-family: "Serotiva-Black";
         .spiritual-headline {
             /* font-size: clamp(2.5rem, 5vw, 4rem); */
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 2rem;
+            line-height:45px;
+            margin-bottom: 12px;
             /* font-family: 'Amiri', serif; */
         }
 
@@ -154,12 +161,26 @@ font-family: "Serotiva-Black";
 
         .enlighten-description {
             font-size: 1.2rem;
-            margin-bottom: 3rem;
+            /* margin-bottom:1rem; */
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 0.4s forwards;
             line-height: 1.6;
         }
+.external-link:hover::after {
+            opacity: 1;
+        }
+        .highlight-colored {
+            font-size:32px;
+  font-weight:800;
+  color: #c59510; /* gold/orange tone similar to the image */
+}
 
+.tagline {
+  font-size: 26px;
+  font-style: italic;
+  color: #ddd;
+  margin-bottom:10px;
+}
         .sacred-action-btn {
             background: var(--sand-beige);
             color: var(--deep-green);
@@ -174,6 +195,7 @@ font-family: "Serotiva-Black";
             border-radius: 4px;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 0.6s forwards;
+            margin-top:10px;
         }
 
         .sacred-action-btn:hover {
@@ -398,7 +420,7 @@ font-family: "Serotiva-Black";
             font-family: "Serotiva-Bold";
             font-size: 1.5rem;
             font-weight:600;
-            margin-bottom: 0.5rem;
+            /* margin-bottom: 0.5rem; */
             color: var(--deep-green);
         }
 
@@ -406,7 +428,7 @@ font-family: "Serotiva-Black";
             font-size: 0.875rem;
             color: rgba(15, 61, 46, 0.8);
             font-weight:300;
-          font-family: "Serotiva-Black";
+            font-family: "Serotiva-Bold";
         }
  /* From the Minbar Section */
         .minbar-section {
@@ -430,7 +452,7 @@ font-family: "Serotiva-Black";
             color: rgba(15, 61, 46, 0.7);
             margin-bottom: 2rem;
             font-weight:300;
-         font-family: "Serotiva-Black";
+            font-family: "Serotiva-Bold";
 
         }
 
@@ -706,14 +728,14 @@ font-family: "Serotiva-Black";
             font-size: 3rem;
             font-weight: 700;
             color: var(--deep-green);
-            font-family: "Serotiva-Black";
+            font-family: "Serotiva-Bold";
         }
 
         .instagram-subtitle {
             font-size: 1.125rem;
             color: rgba(15, 61, 46, 0.7);
             margin-left: 1rem;
-         font-family: "Serotiva-Black";
+            font-family: "Serotiva-Regular";
 
         }
 
@@ -827,7 +849,7 @@ font-family: "Serotiva-Black";
             font-weight:100;
             color: #0F3D2E;
             margin-bottom: 20px;
-        font-family: "Serotiva-Black";
+        font-family: "Serotiva-Bold";
 
         }
 
@@ -1476,7 +1498,7 @@ font-family: "Serotiva-Black";
 
         .donation-support-subtitle {
             font-family: "Serotiva-Black";
-            font-size: 16px;
+            font-size:22px;
             color: #C8B88A;
             font-weight: 400;
             margin-bottom: 20px;
@@ -1484,11 +1506,11 @@ font-family: "Serotiva-Black";
         }
 
         .donation-main-heading {
-            font-family: "Serotiva-Black";
+            font-family: "Serotiva-bold";
             font-size: 48px;
             font-weight: bold;
             color: #F7EFE5;
-            margin-bottom: 30px;
+            margin-bottom:10px;
             line-height: 1.2;
         }
 
@@ -1740,6 +1762,8 @@ font-family: "Serotiva-Black";
     margin-bottom: 1rem;
     font-weight: 600;
     position: relative;
+ font-family: "Serotiva-Bold";
+
 }
 
 .footer-column h3::after {

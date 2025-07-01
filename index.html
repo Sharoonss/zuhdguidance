@@ -271,20 +271,170 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .external-link:hover::after {
-            opacity: 1;
-        }
-        .highlight-colored {
-            font-size:32px;
-  font-weight:800;
-  color: #c59510; /* gold/orange tone similar to the image */
-}
+        /* upse section video  */
 
-.tagline {
-  font-size: 26px;
-  font-style: italic;
-  color: #ddd;
-}
+
+         .why-zuhi-section {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--gold);
+      /* margin-bottom: 50px; */
+      letter-spacing: 3px;
+      padding:30px 0px;
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      /* border-radius: 20px; */
+      /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */
+    }
+
+    .video-slider {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .video-slide {
+      width:19%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .video-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /* border-radius: 20px; */
+      overflow: hidden;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+
+    .play-button:hover {
+      background: var(--gold);
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    .play-icon {
+      width: 0;
+      height: 0;
+      border-left: 20px solid var(--deep-green);
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      margin-left: 5px;
+    }
+
+    .video-title {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      color: white;
+      padding: 40px 20px 20px;
+      font-size: 1.1rem;
+      line-height: 1.4;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .video-slide:nth-child(1) .video-card { background: linear-gradient(135deg, var(--sand-beige), var(--gold)); }
+    .video-slide:nth-child(2) .video-card { background: linear-gradient(135deg, #e8f5e8, var(--deep-green)); }
+    .video-slide:nth-child(3) .video-card { background: linear-gradient(135deg, #ff6b6b, #d63031); }
+    .video-slide:nth-child(4) .video-card { background: linear-gradient(135deg, var(--deep-green), #2d3748); }
+    .video-slide:nth-child(5) .video-card { background: linear-gradient(135deg, #4a90e2, var(--deep-green)); }
+
+    .slider-arrow {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .video-slide {
+        flex: 0 0 100%;
+        margin: 0;
+      }
+
+      .slider-arrow {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: var(--deep-green);
+        z-index: 3;
+      }
+
+      .slider-arrow.prev {
+        left: 10px;
+      }
+
+      .slider-arrow.next {
+        right: 10px;
+      }
+
+      .video-slider {
+        transform: translateX(0%);
+      }
+
+      .play-button {
+        width: 60px;
+        height: 60px;
+      }
+
+      .play-icon {
+        border-left: 15px solid var(--deep-green);
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+      }
+
+      .video-title {
+        font-size: 0.9rem;
+        padding: 30px 15px 15px;
+      }
+    }
 </style>
 </head>
 
@@ -332,9 +482,9 @@
   <p class="tagline">Available Only on Zuhd Guidance.</p>
                         <button class="sacred-action-btn">Explore Our Courses</button>
                     </div>
-                    <div class="scholar-visual">
+                    <!-- <div class="scholar-visual">
                         <img src="/images/ZUHD AU New Banner-02.jpg" alt="Islamic Teaching" loading="lazy">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -369,7 +519,7 @@
                         </h1>
                         <p class="enlighten-description">Weekly Reminders. Daily Uplift. Timeless Truths.
 </p>
-<h4 class="highlight-colored">YouTube • Instagram • Everywhere.
+<h4 class="highlight">YouTube • Instagram • Everywhere.
 
 </h4>
                         <button class="sacred-action-btn">Get Guidance</button>
@@ -443,212 +593,6 @@
                 <button class="filter-btn" data-filter="parenting">Parenting & Tarbiyah</button>
                 <button class="filter-btn" data-filter="spiritual">Spiritual Growth</button>
             </div>
-
-              <div class="mini-playlists">
-                <h3>Mini Playlists</h3>
-                <div class="playlist-videos">
-                    <!-- Seerah Series Videos -->
-                    <div class="playlist-item active" data-video-id="0YSpZsDr678" data-title="Journey to Taif & First Pledge of the Sahabah" data-category="seerah">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/0YSpZsDr678/mqdefault.jpg" alt="Video thumbnail">
-                            <div class="play-overlay"></div>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">Journey to Taif & First Pledge of the Sahabah</div>
-                            <div class="video-author">Mawlana Sami Al Hashmi</div>
-                            <div class="video-duration">25:30</div>
-                        </div>
-                    </div>
-                    
-                   <!-- 1. The Day Giants Entered Islam -->
-<div class="playlist-item" data-video-id="LxfE-oFv_-0" data-title="The Day Giants Entered Islam | Year 8 AH | Seerah Series" data-category="seerah">
-  <div class="video-thumbnail">
-    <img src="https://img.youtube.com/vi/LxfE-oFv_-0/mqdefault.jpg" alt="Video thumbnail">
-    <div class="play-overlay"></div>
-  </div>
-  <div class="video-info">
-    <div class="video-title">The Day Giants Entered Islam</div>
-    <div class="video-author">Mawlana Sami Al Hashmi</div>
-    <div class="video-duration">27:20</div> <!-- Replace with real duration -->
-  </div>
-</div>
-
-<!-- 2. How Abu Bakr (RA) Was Chosen -->
-<div class="playlist-item" data-video-id="s7JhimUYUw8" data-title="How Abu Bakr (RA) Was Chosen – Unity in the Face of Crisis" data-category="seerah">
-  <div class="video-thumbnail">
-    <img src="https://img.youtube.com/vi/s7JhimUYUw8/mqdefault.jpg" alt="Video thumbnail">
-    <div class="play-overlay"></div>
-  </div>
-  <div class="video-info">
-    <div class="video-title">How Abu Bakr (RA) Was Chosen</div>
-    <div class="video-author">Mawlana Sami Al Hashmi</div>
-    <div class="video-duration">30:10</div> <!-- Replace with real duration -->
-  </div>
-</div>
-
-                   <!-- Palestine Series Videos -->
-<div class="playlist-item" data-video-id="bAnl7bxlhk4" data-title="Prophet Musa Struggle & 5 Points to Check" data-category="palestine" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/bAnl7bxlhk4/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Prophet Musa Struggle & 5 Points to Check</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="I9NU_xM2BIc" data-title="Dawah & Changing Public Opinion" data-category="palestine" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/I9NU_xM2BIc/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Dawah & Changing Public Opinion</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="y2azzf5A5wk" data-title="Oppressors 5 Stages, Lies & Failure" data-category="palestine" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/y2azzf5A5wk/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Oppressors 5 Stages, Lies & Failure</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="FC1_jAHT2ZU" data-title="Role of Iran, Power in Advocacy" data-category="palestine" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/FC1_jAHT2ZU/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Role of Iran, Power in Advocacy</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-                  <!-- Parenting & Tarbiyah Videos (Righteous Leadership) -->
-<div class="playlist-item" data-video-id="2k7MY5JbUU4" data-title="Raising Righteous Leaders" data-category="parenting" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/2k7MY5JbUU4/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Raising Righteous Leaders: The Legacy of Islamic Parenting</div>
-        <div class="video-author">Sheikh Shabbir Limbada</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<!-- Parenting & Tarbiyah Videos (Tarbiyyah Impact) -->
-<div class="playlist-item" data-video-id="LVnBZUqAjWI" data-title="Nurturing Growth - Tarbiyyah Impact" data-category="parenting" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/LVnBZUqAjWI/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Nurturing Growth: The Impact of Tarbiyyah on Our Lives</div>
-        <div class="video-author">Sheikh Shabbir Limbada</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<!-- Parenting & Tarbiyah Videos (Pre-Ramadan Workshop Series) -->
-<div class="playlist-item" data-video-id="NHkvBZ42bwo" data-title="Pre-Ramadan Workshop Part 1" data-category="parenting" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/NHkvBZ42bwo/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Pre-Ramadan Workshop (Part 1): Benefits & Utilizing Ramadan</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="cEARqhBcdII" data-title="Pre-Ramadan Workshop Part 2" data-category="parenting" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/cEARqhBcdII/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Pre-Ramadan Workshop (Part 2): Fiqh of Ramadan</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="V0bDVegibmc" data-title="Pre-Ramadan Workshop Part 3" data-category="parenting" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/V0bDVegibmc/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Pre-Ramadan Workshop (Part 3): Ramadan of The Pious</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-                    <!-- Spiritual Growth Videos -->
-                    <!-- Spiritual Growth Videos -->
-<div class="playlist-item" data-video-id="KIsBk76M8vA" data-title="Ultimate Goal of Knowledge" data-category="spiritual" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/KIsBk76M8vA/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">📖 The Ultimate Goal of Knowledge: Understanding Allah SWT</div>
-        <div class="video-author">Sheikh Yasir Al-Hanafi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="n5uLBmX-j0k" data-title="The Hajj of Unity" data-category="spiritual" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/n5uLBmX-j0k/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">The Hajj of Unity: Abu Bakr's Leadership & Islam's Triumph in 9AH</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-<div class="playlist-item" data-video-id="OYaY4aDjsXM" data-title="Itikaaf Uncovered" data-category="spiritual" style="display: none;">
-    <div class="video-thumbnail">
-        <img src="https://img.youtube.com/vi/OYaY4aDjsXM/mqdefault.jpg" alt="Video thumbnail">
-        <div class="play-overlay"></div>
-    </div>
-    <div class="video-info">
-        <div class="video-title">Itikaaf Uncovered: Maximize the Last 10 Nights & Unlock Allah's Mercy</div>
-        <div class="video-author">Dr. Maulana Sami Al-Hashmi</div>
-        <div class="video-duration">--:--</div>
-    </div>
-</div>
-
-                    <div class="playlist-item" data-video-id="Sagg08DrO5U" data-title="Night Prayer and Reflection" data-category="spiritual" style="display: none;">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/Sagg08DrO5U/mqdefault.jpg" alt="Video thumbnail">
-                            <div class="play-overlay"></div>
-                        </div>
-                        <div class="video-info">
-                            <div class="video-title">Night Prayer and Reflection</div>
-                            <div class="video-author">Mawlana Sami Al Hashmi</div>
-                            <div class="video-duration">24:55</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         
         <div class="main-video-ce">
@@ -713,7 +657,41 @@
     </div>
         </div>
     </section>
+<div class="why-zuhi-section">
+    <h2 class="section-title">Why Zuhd</h2>
 
+    <div class="slider-container">
+      <button class="slider-arrow prev" onclick="changeSlide(-1)">‹</button>
+      <button class="slider-arrow next" onclick="changeSlide(1)">›</button>
+
+      <div class="video-slider" id="videoSlider">
+        <div class="video-slide"><div class="video-card" onclick="playVideo(1)">
+          <div class="video-thumbnail"></div>
+          <div class="play-button"><div class="play-icon"></div></div>
+          <div class="video-title">Premium Handcrafted & Custom Bespoke Designs</div></div></div>
+
+        <div class="video-slide"><div class="video-card" onclick="playVideo(2)">
+          <div class="video-thumbnail"></div>
+          <div class="play-button"><div class="play-icon"></div></div>
+          <div class="video-title">100% Ethical, Purpose-Driven, and Community-Minded</div></div></div>
+
+        <div class="video-slide"><div class="video-card" onclick="playVideo(3)">
+          <div class="video-thumbnail"></div>
+          <div class="play-button"><div class="play-icon"></div></div>
+          <div class="video-title">Supporting Palestine with Every Purchase</div></div></div>
+
+        <div class="video-slide"><div class="video-card" onclick="playVideo(4)">
+          <div class="video-thumbnail"></div>
+          <div class="play-button"><div class="play-icon"></div></div>
+          <div class="video-title">Designed for the Whole Family's Everyday Adventures</div></div></div>
+
+        <div class="video-slide"><div class="video-card" onclick="playVideo(5)">
+          <div class="video-thumbnail"></div>
+          <div class="play-button"><div class="play-icon"></div></div>
+          <div class="video-title">Innovating Islamic Fashion with AI Sizing Technology</div></div></div>
+      </div>
+    </div>
+  </div>
  <div class="donation-hero-container">
         <div class="donation-content-wrapper">
             <p class="donation-support-subtitle">Support our humanitarian efforts</p>
@@ -1235,7 +1213,7 @@ class IslamicHeroCarousel {
     startAutoSlide() {
         this.autoSlideInterval = setInterval(() => {
             this.nextSlide();
-        }, 3000); // changed to 3 seconds
+        }, 5000); // changed to 3 seconds
     }
 
     stopAutoSlide() {
@@ -1335,6 +1313,41 @@ function linkClick(linkName) {
 function socialClick(platform) {
     console.log('Social link clicked:', platform);
 }
+
+
+// ups 
+  let currentSlide = 0;
+
+    function updateSlider() {
+      const slider = document.getElementById('videoSlider');
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        const width = slider.clientWidth;
+        slider.style.transform = `translateX(-${currentSlide * width}px)`;
+      }
+    }
+
+    function changeSlide(direction) {
+      const slides = document.querySelectorAll('.video-slide');
+      currentSlide += direction;
+      if (currentSlide < 0) currentSlide = slides.length - 1;
+      if (currentSlide >= slides.length) currentSlide = 0;
+      updateSlider();
+    }
+
+    function playVideo(num) {
+      const titles = [
+        "Premium Handcrafted & Custom Bespoke Designs",
+        "100% Ethical, Purpose-Driven, and Community-Minded",
+        "Supporting Palestine with Every Purchase",
+        "Designed for the Whole Family's Everyday Adventures",
+        "Innovating Islamic Fashion with AI Sizing Technology"
+      ];
+      alert("Playing: " + titles[num - 1]);
+    }
+
+    window.addEventListener('resize', updateSlider);
+    window.addEventListener('DOMContentLoaded', updateSlider);
     </script>
 
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
