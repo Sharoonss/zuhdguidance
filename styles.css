@@ -478,7 +478,7 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
             color: var(--deep-green);
             font-size: 0.875rem;
             font-weight: 500;
-             font-family: "Serotiva-Black";
+             font-family: "Serotiva-light";
             cursor: pointer;
             transition: all 0.3s ease;
         }
