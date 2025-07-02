@@ -272,169 +272,215 @@
             transition: opacity 0.3s ease;
         }
         /* upse section video  */
+        .main-upss{
+background-color: beige;    
+        }
+  .story-slider-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            
+        }
 
+        .story-slider {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
 
-         .why-zuhi-section {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        .story-slider::-webkit-scrollbar {
+            display: none;
+        }
 
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: var(--gold);
-      /* margin-bottom: 50px; */
-      letter-spacing: 3px;
-      padding:30px 0px;
-    }
+        .story-card {
+            flex: 0 0 280px;
+            height: 400px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--deep-green);
+        }
 
-    .slider-container {
-      position: relative;
-      width: 100%;
-      height: 400px;
-      overflow: hidden;
-      /* border-radius: 20px; */
-      /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */
-    }
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(15, 61, 46, 0.3);
+        }
 
-    .video-slider {
-      display: flex;
-      width: 100%;
-      height: 100%;
-      transition: transform 0.5s ease;
-    }
+        .story-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
 
-    .video-slide {
-      width:19%;
-      height: 100%;
-      position: relative;
-      flex-shrink: 0;
-    }
+        .story-card:hover .story-image {
+            transform: scale(1.05);
+        }
 
-    .video-card {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      /* border-radius: 20px; */
-      overflow: hidden;
-      cursor: pointer;
-      margin: 0 10px;
-    }
+        .story-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(15, 61, 46, 0.7) 0%,
+                rgba(200, 184, 138, 0.3) 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-    .video-thumbnail {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+        .story-card:hover .story-overlay {
+            opacity: 1;
+        }
 
-    .play-button {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      z-index: 2;
-    }
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--off-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
 
-    .play-button:hover {
-      background: var(--gold);
-      transform: translate(-50%, -50%) scale(1.1);
-    }
+        .play-button:hover {
+            transform: scale(1.1);
+        }
 
-    .play-icon {
-      width: 0;
-      height: 0;
-      border-left: 20px solid var(--deep-green);
-      border-top: 12px solid transparent;
-      border-bottom: 12px solid transparent;
-      margin-left: 5px;
-    }
+        .play-icon {
+            width: 0;
+            height: 0;
+            border-left: 25px solid var(--deep-green);
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            margin-left: 5px;
+        }
 
-    .video-title {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      color: white;
-      padding: 40px 20px 20px;
-      font-size: 1.1rem;
-      line-height: 1.4;
-      text-align: center;
-      z-index: 1;
-    }
+        .story-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px;
+            background: linear-gradient(
+                transparent,
+                rgba(15, 61, 46, 0.9)
+            );
+            color: var(--off-white);
+        }
 
-    .video-slide:nth-child(1) .video-card { background: linear-gradient(135deg, var(--sand-beige), var(--gold)); }
-    .video-slide:nth-child(2) .video-card { background: linear-gradient(135deg, #e8f5e8, var(--deep-green)); }
-    .video-slide:nth-child(3) .video-card { background: linear-gradient(135deg, #ff6b6b, #d63031); }
-    .video-slide:nth-child(4) .video-card { background: linear-gradient(135deg, var(--deep-green), #2d3748); }
-    .video-slide:nth-child(5) .video-card { background: linear-gradient(135deg, #4a90e2, var(--deep-green)); }
+        .story-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
 
-    .slider-arrow {
-      display: none;
-    }
+        .story-description {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
 
-    @media (max-width: 768px) {
-      .video-slide {
-        flex: 0 0 100%;
-        margin: 0;
-      }
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
 
-      .slider-arrow {
-        display: flex;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
-        border-radius: 50%;
-        cursor: pointer;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: var(--deep-green);
-        z-index: 3;
-      }
+        .nav-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            background: var(--off-white);
+            color: var(--deep-green);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
 
-      .slider-arrow.prev {
-        left: 10px;
-      }
+        .nav-button:hover {
+            background: var(--gold);
+            color: var(--off-white);
+            transform: scale(1.1);
+        }
 
-      .slider-arrow.next {
-        right: 10px;
-      }
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
 
-      .video-slider {
-        transform: translateX(0%);
-      }
+        .story-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
 
-      .play-button {
-        width: 60px;
-        height: 60px;
-      }
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0.3;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-      .play-icon {
-        border-left: 15px solid var(--deep-green);
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-      }
+        .indicator.active {
+            opacity: 1;
+            transform: scale(1.2);
+        }
 
-      .video-title {
-        font-size: 0.9rem;
-        padding: 30px 15px 15px;
-      }
-    }
+        @media (max-width: 768px) {
+            .story-card {
+                flex: 0 0 250px;
+                height: 350px;
+            }
+
+            .story-slider {
+                gap: 15px;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .play-icon {
+                border-left: 20px solid var(--deep-green);
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+            }
+        }
+        .story-video {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  border-radius: 8px; /* if needed */
+  display: block;
+}
+
 </style>
 </head>
 
@@ -552,7 +598,146 @@
             <div class="bounce-indicator">↓</div>
         </div>
     </section>
+<!-- ups section -->
+ <div class="main-upss">
+  <div class="story-slider-container">
+        <div class="story-slider" id="storySlider">
+            <div class="story-card" data-story="1">
+<video 
+  class="story-video" 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  poster="/placeholder.svg?height=400&width=280">
+  <source src="/02.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>                <div class="story-overlay">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="story-title">Premium Handcrafted & Custom Bespoke Designs</div>
+                    <div class="story-description">Discover our exclusive collection of artisan-made pieces</div>
+                </div>
+            </div>
 
+            <div class="story-card" data-story="2">
+<video 
+  class="story-video" 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  poster="/placeholder.svg?height=400&width=280">
+  <source src="/03.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>                <div class="story-overlay">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="story-title">100% Ethical, Person-Driven and Community-Minded</div>
+                    <div class="story-description">Join our sustainable community initiatives</div>
+                </div>
+            </div>
+
+            <div class="story-card" data-story="3">
+<video 
+  class="story-video" 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  poster="/placeholder.svg?height=400&width=280">
+  <source src="/Innovating Islamic Fashion with AI Sizing - USP.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>                <div class="story-overlay">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="story-title">Supporting Palestine with Every Purchase</div>
+                    <div class="story-description">Making a difference through conscious commerce</div>
+                </div>
+            </div>
+
+            <div class="story-card" data-story="4">
+<video 
+  class="story-video" 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  poster="/placeholder.svg?height=400&width=280">
+  <source src="/Designed for whole family - USP.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>                <div class="story-overlay">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="story-title">Designed for the Whole Family's Everyday Adventures</div>
+                    <div class="story-description">Products that bring families together</div>
+                </div>
+            </div>
+
+            <div class="story-card" data-story="5">
+<video 
+  class="story-video" 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  poster="/placeholder.svg?height=400&width=280">
+  <source src="/01.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>                <div class="story-overlay">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="story-title">Innovative Islamic Fashion with AI Sizing</div>
+                    <div class="story-description">Modern modest wear with perfect fit technology</div>
+                </div>
+            </div>
+
+            <div class="story-card" data-story="6">
+<video 
+  class="story-video" 
+  autoplay 
+  muted 
+  loop 
+  playsinline 
+  poster="/placeholder.svg?height=400&width=280">
+  <source src="/01.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+                <div class="story-overlay">
+                    <div class="play-button">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+                <div class="story-info">
+                    <div class="story-title">Eco-Friendly Lifestyle Solutions</div>
+                    <div class="story-description">Sustainable products for conscious living</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-button" id="prevBtn">‹</button>
+            <button class="nav-button" id="nextBtn">›</button>
+        </div>
+
+        <div class="story-indicators" id="indicators"></div>
+    </div>
+    </div>
     <!-- Content Section -->
     <section class="content-section" id="content">
         <div class="container">
@@ -580,6 +765,8 @@
                 </div>
             </div>
 
+  <!-- Main Slider Container -->
+ 
 <!-- mainbar section -->
            <div class="minbar-section">
         <div class="minbar-content">
@@ -656,41 +843,7 @@
     </div>
         </div>
     </section>
-<div class="why-zuhi-section">
-    <h2 class="section-title">Why Zuhd</h2>
 
-    <div class="slider-container">
-      <button class="slider-arrow prev" onclick="changeSlide(-1)">‹</button>
-      <button class="slider-arrow next" onclick="changeSlide(1)">›</button>
-
-      <div class="video-slider" id="videoSlider">
-        <div class="video-slide"><div class="video-card" onclick="playVideo(1)">
-          <div class="video-thumbnail"></div>
-          <div class="play-button"><div class="play-icon"></div></div>
-          <div class="video-title">Premium Handcrafted & Custom Bespoke Designs</div></div></div>
-
-        <div class="video-slide"><div class="video-card" onclick="playVideo(2)">
-          <div class="video-thumbnail"></div>
-          <div class="play-button"><div class="play-icon"></div></div>
-          <div class="video-title">100% Ethical, Purpose-Driven, and Community-Minded</div></div></div>
-
-        <div class="video-slide"><div class="video-card" onclick="playVideo(3)">
-          <div class="video-thumbnail"></div>
-          <div class="play-button"><div class="play-icon"></div></div>
-          <div class="video-title">Supporting Palestine with Every Purchase</div></div></div>
-
-        <div class="video-slide"><div class="video-card" onclick="playVideo(4)">
-          <div class="video-thumbnail"></div>
-          <div class="play-button"><div class="play-icon"></div></div>
-          <div class="video-title">Designed for the Whole Family's Everyday Adventures</div></div></div>
-
-        <div class="video-slide"><div class="video-card" onclick="playVideo(5)">
-          <div class="video-thumbnail"></div>
-          <div class="play-button"><div class="play-icon"></div></div>
-          <div class="video-title">Innovating Islamic Fashion with AI Sizing Technology</div></div></div>
-      </div>
-    </div>
-  </div>
  <div class="donation-hero-container">
         <div class="donation-content-wrapper">
             <p class="donation-support-subtitle">Support our humanitarian efforts</p>
@@ -1315,38 +1468,152 @@ function socialClick(platform) {
 
 
 // ups 
-  let currentSlide = 0;
 
-    function updateSlider() {
-      const slider = document.getElementById('videoSlider');
-      const isMobile = window.innerWidth <= 768;
-      if (isMobile) {
-        const width = slider.clientWidth;
-        slider.style.transform = `translateX(-${currentSlide * width}px)`;
-      }
-    }
 
-    function changeSlide(direction) {
-      const slides = document.querySelectorAll('.video-slide');
-      currentSlide += direction;
-      if (currentSlide < 0) currentSlide = slides.length - 1;
-      if (currentSlide >= slides.length) currentSlide = 0;
-      updateSlider();
-    }
+ class StorySlider {
+            constructor() {
+                this.slider = document.getElementById('storySlider');
+                this.prevBtn = document.getElementById('prevBtn');
+                this.nextBtn = document.getElementById('nextBtn');
+                this.indicatorsContainer = document.getElementById('indicators');
+                this.stories = document.querySelectorAll('.story-card');
+                this.currentIndex = 0;
+                this.cardWidth = 300; // 280px + 20px gap
+                
+                this.init();
+            }
 
-    function playVideo(num) {
-      const titles = [
-        "Premium Handcrafted & Custom Bespoke Designs",
-        "100% Ethical, Purpose-Driven, and Community-Minded",
-        "Supporting Palestine with Every Purchase",
-        "Designed for the Whole Family's Everyday Adventures",
-        "Innovating Islamic Fashion with AI Sizing Technology"
-      ];
-      alert("Playing: " + titles[num - 1]);
-    }
+            init() {
+                this.createIndicators();
+                this.updateNavigation();
+                this.bindEvents();
+                this.autoPlay();
+            }
 
-    window.addEventListener('resize', updateSlider);
-    window.addEventListener('DOMContentLoaded', updateSlider);
+            createIndicators() {
+                this.stories.forEach((_, index) => {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    if (index === 0) indicator.classList.add('active');
+                    indicator.addEventListener('click', () => this.goToSlide(index));
+                    this.indicatorsContainer.appendChild(indicator);
+                });
+            }
+
+            bindEvents() {
+                this.prevBtn.addEventListener('click', () => this.previousSlide());
+                this.nextBtn.addEventListener('click', () => this.nextSlide());
+                
+                // Touch/swipe support
+                let startX = 0;
+                let scrollLeft = 0;
+
+                this.slider.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX - this.slider.offsetLeft;
+                    scrollLeft = this.slider.scrollLeft;
+                });
+
+                this.slider.addEventListener('touchmove', (e) => {
+                    if (!startX) return;
+                    const x = e.touches[0].pageX - this.slider.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    this.slider.scrollLeft = scrollLeft - walk;
+                });
+
+                this.slider.addEventListener('touchend', () => {
+                    startX = 0;
+                    this.updateCurrentIndex();
+                });
+
+                // Story card click events
+                this.stories.forEach((story, index) => {
+                    story.addEventListener('click', () => {
+                        this.playStory(index);
+                    });
+                });
+
+                // Scroll event to update indicators
+                this.slider.addEventListener('scroll', () => {
+                    clearTimeout(this.scrollTimeout);
+                    this.scrollTimeout = setTimeout(() => {
+                        this.updateCurrentIndex();
+                    }, 100);
+                });
+            }
+
+            nextSlide() {
+                if (this.currentIndex < this.stories.length - 1) {
+                    this.currentIndex++;
+                    this.goToSlide(this.currentIndex);
+                }
+            }
+
+            previousSlide() {
+                if (this.currentIndex > 0) {
+                    this.currentIndex--;
+                    this.goToSlide(this.currentIndex);
+                }
+            }
+
+            goToSlide(index) {
+                this.currentIndex = index;
+                const scrollPosition = index * this.cardWidth;
+                this.slider.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+                this.updateIndicators();
+                this.updateNavigation();
+            }
+
+            updateCurrentIndex() {
+                const scrollPosition = this.slider.scrollLeft;
+                this.currentIndex = Math.round(scrollPosition / this.cardWidth);
+                this.updateIndicators();
+                this.updateNavigation();
+            }
+
+            updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            updateNavigation() {
+                this.prevBtn.disabled = this.currentIndex === 0;
+                this.nextBtn.disabled = this.currentIndex === this.stories.length - 1;
+            }
+
+            playStory(index) {
+                // Simulate story playback
+                const story = this.stories[index];
+                story.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    story.style.transform = '';
+                    // Here you would typically open a modal or navigate to story view
+                    console.log(`Playing story ${index + 1}`);
+                }, 200);
+            }
+
+            autoPlay() {
+                setInterval(() => {
+                    if (this.currentIndex < this.stories.length - 1) {
+                        this.nextSlide();
+                    } else {
+                        this.goToSlide(0);
+                    }
+                }, 5000); // Auto-advance every 5 seconds
+            }
+        }
+
+        // Initialize the slider when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new StorySlider();
+        });
+
+    
     </script>
 
     <script src="https://static.elfsight.com/platform/platform.js" async></script>

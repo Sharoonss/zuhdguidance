@@ -33,11 +33,11 @@ font-family: "Serotiva-Black";
         h2,h3{
             font-family: "Serotiva-Bold";
             font-size:2rem;
-            font-weight:100;
+            /* font-weight:100; */
 
         }
         p{
-           font-family: "Serotiva-Light";
+           font-family: "Serotiva-Regular";
         }
 
         :root {
@@ -145,11 +145,10 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
         }
 
         .spiritual-headline {
-            /* font-size: clamp(2.5rem, 5vw, 4rem); */
-            font-weight: 700;
+            
             line-height:55px;
             margin-bottom: 12px;
-            /* font-family: 'Amiri', serif; */
+            
         }
 
         .spiritual-headline span {
@@ -933,7 +932,7 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
             line-height: 1.6;
             color: #0F3D2E;
             margin-bottom: 20px;
-            font-style: italic;
+            /* font-style: italic; */
         }
 
         .qotd-attribution-text {
@@ -1507,7 +1506,7 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
             font-size:22px;
             color: #C8B88A;
             font-weight: 400;
-            margin-bottom: 20px;
+            margin-bottom:10px;
             letter-spacing: 1px;
         }
 
@@ -1524,8 +1523,8 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
             font-size: 18px;
             color: #F7EFE5;
             opacity: 0.9;
-            margin-bottom: 40px;
-            max-width:1200px;
+            margin-bottom:20px;
+            max-width:600px;
             margin-left: auto;
             margin-right: auto;
             line-height:20px;
@@ -8394,3 +8393,8 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
                 grid-template-columns: 1fr;
             }
         }
+
+
+        /* ups  */
+
+        
