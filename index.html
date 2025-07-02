@@ -730,12 +730,12 @@ background-color: beige;
             </div>
         </div>
 
-        <div class="navigation">
+        <!-- <div class="navigation">
             <button class="nav-button" id="prevBtn">‹</button>
             <button class="nav-button" id="nextBtn">›</button>
         </div>
 
-        <div class="story-indicators" id="indicators"></div>
+        <div class="story-indicators" id="indicators"></div> -->
     </div>
     </div>
     <!-- Content Section -->
@@ -1470,148 +1470,148 @@ function socialClick(platform) {
 // ups 
 
 
- class StorySlider {
-            constructor() {
-                this.slider = document.getElementById('storySlider');
-                this.prevBtn = document.getElementById('prevBtn');
-                this.nextBtn = document.getElementById('nextBtn');
-                this.indicatorsContainer = document.getElementById('indicators');
-                this.stories = document.querySelectorAll('.story-card');
-                this.currentIndex = 0;
-                this.cardWidth = 300; // 280px + 20px gap
+//  class StorySlider {
+//             constructor() {
+//                 this.slider = document.getElementById('storySlider');
+//                 this.prevBtn = document.getElementById('prevBtn');
+//                 this.nextBtn = document.getElementById('nextBtn');
+//                 this.indicatorsContainer = document.getElementById('indicators');
+//                 this.stories = document.querySelectorAll('.story-card');
+//                 this.currentIndex = 0;
+//                 this.cardWidth = 300; // 280px + 20px gap
                 
-                this.init();
-            }
+//                 this.init();
+//             }
 
-            init() {
-                this.createIndicators();
-                this.updateNavigation();
-                this.bindEvents();
-                this.autoPlay();
-            }
+//             init() {
+//                 this.createIndicators();
+//                 this.updateNavigation();
+//                 this.bindEvents();
+//                 this.autoPlay();
+//             }
 
-            createIndicators() {
-                this.stories.forEach((_, index) => {
-                    const indicator = document.createElement('div');
-                    indicator.className = 'indicator';
-                    if (index === 0) indicator.classList.add('active');
-                    indicator.addEventListener('click', () => this.goToSlide(index));
-                    this.indicatorsContainer.appendChild(indicator);
-                });
-            }
+//             createIndicators() {
+//                 this.stories.forEach((_, index) => {
+//                     const indicator = document.createElement('div');
+//                     indicator.className = 'indicator';
+//                     if (index === 0) indicator.classList.add('active');
+//                     indicator.addEventListener('click', () => this.goToSlide(index));
+//                     this.indicatorsContainer.appendChild(indicator);
+//                 });
+//             }
 
-            bindEvents() {
-                this.prevBtn.addEventListener('click', () => this.previousSlide());
-                this.nextBtn.addEventListener('click', () => this.nextSlide());
+//             bindEvents() {
+//                 this.prevBtn.addEventListener('click', () => this.previousSlide());
+//                 this.nextBtn.addEventListener('click', () => this.nextSlide());
                 
-                // Touch/swipe support
-                let startX = 0;
-                let scrollLeft = 0;
+//                 // Touch/swipe support
+//                 let startX = 0;
+//                 let scrollLeft = 0;
 
-                this.slider.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].pageX - this.slider.offsetLeft;
-                    scrollLeft = this.slider.scrollLeft;
-                });
+//                 this.slider.addEventListener('touchstart', (e) => {
+//                     startX = e.touches[0].pageX - this.slider.offsetLeft;
+//                     scrollLeft = this.slider.scrollLeft;
+//                 });
 
-                this.slider.addEventListener('touchmove', (e) => {
-                    if (!startX) return;
-                    const x = e.touches[0].pageX - this.slider.offsetLeft;
-                    const walk = (x - startX) * 2;
-                    this.slider.scrollLeft = scrollLeft - walk;
-                });
+//                 this.slider.addEventListener('touchmove', (e) => {
+//                     if (!startX) return;
+//                     const x = e.touches[0].pageX - this.slider.offsetLeft;
+//                     const walk = (x - startX) * 2;
+//                     this.slider.scrollLeft = scrollLeft - walk;
+//                 });
 
-                this.slider.addEventListener('touchend', () => {
-                    startX = 0;
-                    this.updateCurrentIndex();
-                });
+//                 this.slider.addEventListener('touchend', () => {
+//                     startX = 0;
+//                     this.updateCurrentIndex();
+//                 });
 
-                // Story card click events
-                this.stories.forEach((story, index) => {
-                    story.addEventListener('click', () => {
-                        this.playStory(index);
-                    });
-                });
+//                 // Story card click events
+//                 this.stories.forEach((story, index) => {
+//                     story.addEventListener('click', () => {
+//                         this.playStory(index);
+//                     });
+//                 });
 
-                // Scroll event to update indicators
-                this.slider.addEventListener('scroll', () => {
-                    clearTimeout(this.scrollTimeout);
-                    this.scrollTimeout = setTimeout(() => {
-                        this.updateCurrentIndex();
-                    }, 100);
-                });
-            }
+//                 // Scroll event to update indicators
+//                 this.slider.addEventListener('scroll', () => {
+//                     clearTimeout(this.scrollTimeout);
+//                     this.scrollTimeout = setTimeout(() => {
+//                         this.updateCurrentIndex();
+//                     }, 100);
+//                 });
+//             }
 
-            nextSlide() {
-                if (this.currentIndex < this.stories.length - 1) {
-                    this.currentIndex++;
-                    this.goToSlide(this.currentIndex);
-                }
-            }
+//             nextSlide() {
+//                 if (this.currentIndex < this.stories.length - 1) {
+//                     this.currentIndex++;
+//                     this.goToSlide(this.currentIndex);
+//                 }
+//             }
 
-            previousSlide() {
-                if (this.currentIndex > 0) {
-                    this.currentIndex--;
-                    this.goToSlide(this.currentIndex);
-                }
-            }
+//             previousSlide() {
+//                 if (this.currentIndex > 0) {
+//                     this.currentIndex--;
+//                     this.goToSlide(this.currentIndex);
+//                 }
+//             }
 
-            goToSlide(index) {
-                this.currentIndex = index;
-                const scrollPosition = index * this.cardWidth;
-                this.slider.scrollTo({
-                    left: scrollPosition,
-                    behavior: 'smooth'
-                });
-                this.updateIndicators();
-                this.updateNavigation();
-            }
+//             goToSlide(index) {
+//                 this.currentIndex = index;
+//                 const scrollPosition = index * this.cardWidth;
+//                 this.slider.scrollTo({
+//                     left: scrollPosition,
+//                     behavior: 'smooth'
+//                 });
+//                 this.updateIndicators();
+//                 this.updateNavigation();
+//             }
 
-            updateCurrentIndex() {
-                const scrollPosition = this.slider.scrollLeft;
-                this.currentIndex = Math.round(scrollPosition / this.cardWidth);
-                this.updateIndicators();
-                this.updateNavigation();
-            }
+//             updateCurrentIndex() {
+//                 const scrollPosition = this.slider.scrollLeft;
+//                 this.currentIndex = Math.round(scrollPosition / this.cardWidth);
+//                 this.updateIndicators();
+//                 this.updateNavigation();
+//             }
 
-            updateIndicators() {
-                const indicators = document.querySelectorAll('.indicator');
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === this.currentIndex);
-                });
-            }
+//             updateIndicators() {
+//                 const indicators = document.querySelectorAll('.indicator');
+//                 indicators.forEach((indicator, index) => {
+//                     indicator.classList.toggle('active', index === this.currentIndex);
+//                 });
+//             }
 
-            updateNavigation() {
-                this.prevBtn.disabled = this.currentIndex === 0;
-                this.nextBtn.disabled = this.currentIndex === this.stories.length - 1;
-            }
+//             updateNavigation() {
+//                 this.prevBtn.disabled = this.currentIndex === 0;
+//                 this.nextBtn.disabled = this.currentIndex === this.stories.length - 1;
+//             }
 
-            playStory(index) {
-                // Simulate story playback
-                const story = this.stories[index];
-                story.style.transform = 'scale(0.95)';
+//             playStory(index) {
+//                 // Simulate story playback
+//                 const story = this.stories[index];
+//                 story.style.transform = 'scale(0.95)';
                 
-                setTimeout(() => {
-                    story.style.transform = '';
-                    // Here you would typically open a modal or navigate to story view
-                    console.log(`Playing story ${index + 1}`);
-                }, 200);
-            }
+//                 setTimeout(() => {
+//                     story.style.transform = '';
+//                     // Here you would typically open a modal or navigate to story view
+//                     console.log(`Playing story ${index + 1}`);
+//                 }, 200);
+//             }
 
-            autoPlay() {
-                setInterval(() => {
-                    if (this.currentIndex < this.stories.length - 1) {
-                        this.nextSlide();
-                    } else {
-                        this.goToSlide(0);
-                    }
-                }, 5000); // Auto-advance every 5 seconds
-            }
-        }
+//             autoPlay() {
+//                 setInterval(() => {
+//                     if (this.currentIndex < this.stories.length - 1) {
+//                         this.nextSlide();
+//                     } else {
+//                         this.goToSlide(0);
+//                     }
+//                 }, 5000); // Auto-advance every 5 seconds
+//             }
+//         }
 
-        // Initialize the slider when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            new StorySlider();
-        });
+//         // Initialize the slider when the page loads
+//         document.addEventListener('DOMContentLoaded', () => {
+//             new StorySlider();
+//         });
 
     
     </script>
