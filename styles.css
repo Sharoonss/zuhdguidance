@@ -1561,13 +1561,13 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
         }
 
         .donation-description-text {
-            font-size: 18px;
+            font-size:21px;
             color: #F7EFE5;
             margin-bottom:32px;
-            max-width:644px;
+            max-width:750px;
             margin-left: auto;
             margin-right: auto;
-            line-height:20px;
+            line-height:25px;
             font-weight:300;
             /* font-family: "Serotiva-Black"; */
 
@@ -1976,6 +1976,7 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
     margin: 2rem auto;
     justify-content: center;
     box-shadow: 0 10px 30px rgba(15, 61, 46, 0.3);
+    border:1px solid #c8b88ab2;
 }
 
 .banner::before {
