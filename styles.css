@@ -374,6 +374,32 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
             .deen-container {
                 padding: 0 1rem;
             }
+
+  /* Slide Backgrounds */
+        .hearts-slide {
+background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;        }
+
+       .wisdom-slide {
+    background: url('/ZUHD\ AU\ New\ Banner-07.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+}
+
+
+        .community-slide {
+           background: url('/ZUHD\ AU\ New\ Banner-08.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+        }
+
+        .guidance-slide {
+           background: url('/ZUHD\ AU\ New\ Banner-09.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+        }
+
         }
 
         /* Content Section */
@@ -839,7 +865,7 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
 
         .qotd-featured-card {
             background-color: #F7EFE5;
-            padding: 40px;
+            padding: 20px 40px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(15, 61, 46, 0.15);
             flex: 1;
@@ -924,22 +950,23 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
         .qotd-quote-symbol {
             font-size: 60px;
             color: #C8B88A;
-            margin-bottom: 20px;
+            /* margin-bottom: 20px; */
         }
 
         .qotd-wisdom-text {
             font-size: 20px;
-            line-height: 1.6;
+            line-height: 1.2;
             color: #0F3D2E;
-            margin-bottom: 20px;
+             margin-bottom: 20px; 
             /* font-style: italic; */
         }
 
         .qotd-attribution-text {
             font-size: 16px;
             color: #0F3D2E;
-            margin-bottom: 30px;
-            opacity: 0.7;
+            margin-bottom:20px;
+            font-style: italic;
+           font-family: "Serotiva-Regular";
         }
 
         .qotd-social-controls {
@@ -1502,7 +1529,7 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
         }
 
         .donation-support-subtitle {
-            font-family: "Serotiva-Black";
+            font-family: "Serotiva-Bold";
             font-size:22px;
             color: #C8B88A;
             font-weight: 400;
@@ -1516,15 +1543,14 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
             font-weight: bold;
             color: #F7EFE5;
             margin-bottom:10px;
-            line-height: 1.2;
+            line-height: 1.0;
         }
 
         .donation-description-text {
             font-size: 18px;
             color: #F7EFE5;
-            opacity: 0.9;
-            margin-bottom:20px;
-            max-width:600px;
+            margin-bottom:32px;
+            max-width:644px;
             margin-left: auto;
             margin-right: auto;
             line-height:20px;
@@ -1613,7 +1639,7 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
         }
 
         .donation-impact-stats {
-            margin-top: 50px;
+            margin-top:40px;
             display: flex;
             justify-content: center;
             gap: 40px;
@@ -3387,8 +3413,8 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
 }
 
 .zuhd-vision-text {
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    line-height: 1.8;
+    font-size:20px;
+    line-height: 1.2;
     color: white;
     max-width: 800px;
     opacity: 0;
@@ -3445,8 +3471,8 @@ background: url('/ZUHD\ AU\ New\ Banner-01.jpg') no-repeat center center;
 }
 
 .zuhd-founder-description {
-    font-size: clamp(1rem, 2.5vw, 1.1rem);
-    line-height: 1.7;
+    font-size:20px;
+    line-height: 1.2;
     color: white;
 }
 
