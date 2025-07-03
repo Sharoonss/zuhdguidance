@@ -854,6 +854,10 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
         }
 
         /* Quote Section */
+        .qotd-main{
+            width: 100%;
+            background-color:white;
+        }
 .qotd-main-wrapper {
             display: flex;
             gap: 20px;
@@ -8693,7 +8697,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         /* upse section video  */
         .main-upss{
             padding-top: 80px;
-    background-color:#F7EFE5;
+    background-color:white;
 
         }
   .story-slider-container {
