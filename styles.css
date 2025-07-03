@@ -3428,10 +3428,10 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
 }
 
 .zuhd-founder-card {
-    display: flex;
-    align-items: flex-start;
+     display: flex; 
+    /* align-items: flex-start; */
     gap: 30px;
-    max-width: 600px;
+    max-width: 1200px;
     opacity: 0;
     animation: zuhdFadeInLeft 1s ease-out forwards;
     animation-delay: 2.3s;
@@ -3439,8 +3439,8 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
 
 .zuhd-founder-image-container {
     flex-shrink: 0;
-    width: 120px;
-    height: 120px;
+    width: 300px;
+    height: 300px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(15, 61, 46, 0.1);
@@ -3477,8 +3477,9 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
 }
 
 .zuhd-founder-description strong {
-    color: var(--deep-green);
+    color: var(--off-white);
     font-weight: 600;
+    font-size: 33px;
 }
 
 /* Timeline Section */
