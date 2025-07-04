@@ -242,27 +242,7 @@
                 </div>
             </div>
 
-            <div class="story-card" data-story="6">
-<video 
-  class="story-video" 
-  autoplay 
-  muted 
-  loop 
-  playsinline 
-  poster="/placeholder.svg?height=400&width=280">
-  <source src="/01.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-                <div class="story-overlay">
-                    <div class="play-button">
-                        <div class="play-icon"></div>
-                    </div>
-                </div>
-                <div class="story-info">
-                    <div class="story-title">Eco-Friendly Lifestyle Solutions</div>
-                    <div class="story-description">Sustainable products for conscious living</div>
-                </div>
-            </div>
+          
         </div>
 
         <!-- <div class="navigation">
@@ -323,14 +303,14 @@
                 <iframe 
                     id="main-video-player"
                     src="https://www.youtube.com/embed/0YSpZsDr678" 
-                    title="From Mistake to Mercy: Lessons from Prophet Adam (A.S)" 
+                    title="The Rise of Umar RA: From Fearless Fighter to Guided Flame" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerpolicy="strict-origin-when-cross-origin" 
                     allowfullscreen>
                 </iframe>
             </div>
-            
+           
           
         </div>
     </div>
@@ -1169,7 +1149,137 @@ function socialClick(platform) {
 //         document.addEventListener('DOMContentLoaded', () => {
 //             new StorySlider();
 //         });
+// Video data for each category
+const videoData = {
+    seerah: {
+        id: "0YSpZsDr678",
+        title: "From Mistake to Mercy: Lessons from Prophet Adam (A.S)",
+        url: "https://www.youtube.com/embed/aaj1aclhfAc?list=PLA-ylo0o2Z5kgcbLS9pSvhwI5EB2sUN5q"
+    },
+    palestine: {
+        id: "dQw4w9WgXcQ", // Replace with actual video ID
+        title: "Palestine Series - Latest Khutbah",
+        url: "https://www.youtube.com/embed/sLrZduuDMV0?list=PLA-ylo0o2Z5nX01GnYJeA2FKlDthz4i2J"
+    },
+    parenting: {
+        id: "jNQXAC9IVRw", // Replace with actual video ID
+        title: "Parenting & Tarbiyah - Raising Righteous Children",
+        url: "https://www.youtube.com/embed/ncUqIMQQB60?list=PLA-ylo0o2Z5mse-S-f7xfpuiUnp75IuBL"
+    },
+    spiritual: {
+        id: "y6120QOlsfU", // Replace with actual video ID
+        title: "Spiritual Growth - Strengthening Your Connection with Allah",
+        url: "https://www.youtube.com/embed/yXEO3ok5J5c"
+    }
+};
 
+// Function to switch video
+function switchVideo(category) {
+    const videoPlayer = document.getElementById('main-video-player');
+    const videoData_selected = videoData[category];
+    
+    if (videoData_selected && videoPlayer) {
+        // Update video source
+        videoPlayer.src = videoData_selected.url;
+        videoPlayer.title = videoData_selected.title;
+        
+        // Optional: Add fade transition effect
+        videoPlayer.style.opacity = '0';
+        setTimeout(() => {
+            videoPlayer.style.opacity = '1';
+        }, 300);
+    }
+}
+
+// Function to update active button
+function updateActiveButton(clickedButton) {
+    // Remove active class from all buttons
+    const allButtons = document.querySelectorAll('.filter-btn');
+    allButtons.forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to clicked button
+    clickedButton.classList.add('active');
+}
+
+// Add event listeners to all filter buttons
+document.addEventListener('DOMContentLoaded', function() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Get the category from data-filter attribute
+            const category = this.getAttribute('data-filter');
+            
+            // Update active button styling
+            updateActiveButton(this);
+            
+            // Switch the video
+            switchVideo(category);
+            
+            // Optional: Add loading state
+            const videoPlayer = document.getElementById('main-video-player');
+            if (videoPlayer) {
+                videoPlayer.style.transition = 'opacity 0.3s ease';
+            }
+        });
+    });
+});
+
+// Alternative approach: If you want to store video IDs directly in the HTML
+// You can add data-video-id attributes to your buttons like this:
+// <button class="filter-btn active" data-filter="seerah" data-video-id="0YSpZsDr678">Seerah Series</button>
+
+// Then use this function instead:
+function switchVideoByDataAttribute(button) {
+    const videoId = button.getAttribute('data-video-id');
+    const videoPlayer = document.getElementById('main-video-player');
+    
+    if (videoId && videoPlayer) {
+        const newUrl = `https://www.youtube.com/embed/${videoId}`;
+        videoPlayer.src = newUrl;
+        
+        // Update title if you have a data-title attribute
+        const title = button.getAttribute('data-title');
+        if (title) {
+            videoPlayer.title = title;
+        }
+    }
+}
+
+// Enhanced version with error handling and loading states
+function switchVideoEnhanced(category) {
+    const videoPlayer = document.getElementById('main-video-player');
+    const videoContainer = document.querySelector('.video-container');
+    const selectedVideo = videoData[category];
+    
+    if (!selectedVideo || !videoPlayer) {
+        console.error('Video data or player not found for category:', category);
+        return;
+    }
+    
+    // Add loading state
+    videoContainer.style.opacity = '0.7';
+    videoContainer.style.pointerEvents = 'none';
+    
+    // Create new iframe to replace current one
+    const newIframe = document.createElement('iframe');
+    newIframe.id = 'main-video-player';
+    newIframe.src = selectedVideo.url;
+    newIframe.title = selectedVideo.title;
+    newIframe.frameBorder = '0';
+    newIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    newIframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    newIframe.allowFullscreen = true;
+    
+    // Replace old iframe with new one
+    videoPlayer.parentNode.replaceChild(newIframe, videoPlayer);
+    
+    // Remove loading state after a short delay
+    setTimeout(() => {
+        videoContainer.style.opacity = '1';
+        videoContainer.style.pointerEvents = 'auto';
+    }, 500);
+}
     
     </script>
 
