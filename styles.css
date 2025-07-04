@@ -404,7 +404,7 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
 
         /* Content Section */
         .content-section {
-            background: var(--sand-beige);
+            background: white;
             color: var(--deep-green);
             padding: 5rem 0;
             /* margin-top: 2rem; */
@@ -1563,10 +1563,10 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
             font-size:21px;
             color: #F7EFE5;
             margin-bottom:32px;
-            max-width:750px;
+            max-width:850px;
             margin-left: auto;
             margin-right: auto;
-            line-height:25px;
+            line-height:30px;
             font-weight:300;
             /* font-family: "Serotiva-Black"; */
 
@@ -8450,16 +8450,13 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
 
         }
         .section-title2 {
-            font-size: 3rem;
-            font-weight: 800;
             color: var(--off-white);
-            margin-bottom: 10px;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         .section-subtitle {
             font-size: 1.2rem;
             color: var(--sand-beige);
-            margin-bottom: 50px;
+            margin-bottom:20px;
             font-weight: 300;
         }
         .slider-container1 {
