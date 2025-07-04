@@ -753,8 +753,14 @@ background: url('/ZUHD\ AU\ New\ Banner-06.jpg') no-repeat center center;
             }
         }
         /* Instagram Posts Section */
-        .instagram-section {
+        .instagram-main {
+            background-color: white;
+        
+        }
+         .instagram-section {
             margin-bottom: 4rem;
+            max-width:1200px;
+            margin: auto;
         }
 
         .instagram-header {
@@ -8451,6 +8457,11 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
         .section-title2 {
             color: var(--off-white);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+         .section-title3 {
+            color: var(--deep-green);
+            text-align: center;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         .section-subtitle {
