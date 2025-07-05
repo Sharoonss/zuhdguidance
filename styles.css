@@ -8721,7 +8721,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
     margin: 0 auto;
     position: relative;
     max-width: 1400px;
-    padding: 0 20px;
+    padding: 0 0px;
 }
 
 .story-slider {
@@ -8729,7 +8729,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
     gap: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
-    padding: 20px 10px;
+    padding: 20px 0px;
     scrollbar-width: none;
     -ms-overflow-style: none;
     justify-content: center;
