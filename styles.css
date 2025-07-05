@@ -8706,7 +8706,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 /* upse section video */
 .main-upss {
-    padding-top: 80px;
+    padding-top:80px;
     background-color: white;
     text-align: center;
 }
@@ -8721,7 +8721,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
     margin: 0 auto;
     position: relative;
     width: 100%;
-    padding: 0; /* Removed left/right padding for big screens */
+    padding: 0px 20px; /* Removed left/right padding for big screens */
 }
 
 .story-slider {
