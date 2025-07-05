@@ -9029,10 +9029,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 
          .shorts-container {
-            /* max-width: 1200px; */
-            margin: 0 auto;
-            position: relative;
-    
+           width: 100%;
         }
 
         .section-header {
@@ -9046,7 +9043,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         .content-slider {
             display: flex;
             gap: 20px;
-            overflow-x: auto;
+            /* overflow-x: auto; */
             scroll-behavior: smooth;
             padding: 0px 20px;
             scrollbar-width: none;
