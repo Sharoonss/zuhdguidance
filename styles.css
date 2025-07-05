@@ -8720,7 +8720,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
 .story-slider-container {
     margin: 0 auto;
     position: relative;
-    max-width: 1400px;
+    width: 100%;
     padding: 0; /* Removed left/right padding for big screens */
 }
 
