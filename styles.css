@@ -8704,7 +8704,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-     /* upse section video */
+/* upse section video */
 .main-upss {
     padding-top: 80px;
     background-color: white;
@@ -8721,7 +8721,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
     margin: 0 auto;
     position: relative;
     max-width: 1400px;
-    padding: 0 0px;
+    padding: 0; /* Removed left/right padding for big screens */
 }
 
 .story-slider {
@@ -8867,6 +8867,10 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         font-size: 1.2rem;
     }
 
+    .story-slider-container {
+        padding: 0 15px; /* Add padding for tablets */
+    }
+
     .story-card {
         flex: 0 0 250px;
         height: 380px;
@@ -8899,6 +8903,10 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         font-size: 1rem;
     }
 
+    .story-slider-container {
+        padding: 0 10px; /* Add padding for mobile */
+    }
+
     .story-card {
         flex: 0 0 220px;
         height: 350px;
@@ -8927,6 +8935,10 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         padding-top: 40px;
     }
 
+    .story-slider-container {
+        padding: 0 10px; /* Add padding for small mobile */
+    }
+
     .story-card {
         flex: 0 0 200px;
         height: 320px;
@@ -8951,6 +8963,10 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
 }
 
 @media (max-width: 320px) {
+    .story-slider-container {
+        padding: 0 5px; /* Minimal padding for very small screens */
+    }
+
     .story-card {
         flex: 0 0 180px;
         height: 300px;
@@ -9004,7 +9020,6 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         font-size: 11px;
     }
 }
-
 /* trending shorts */
 
  .main-shorts{
