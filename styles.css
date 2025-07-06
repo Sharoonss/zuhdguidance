@@ -1221,7 +1221,7 @@ body {
 }
 
 .story-card {
-  flex: 0 0 clamp(200px, 35vw, 280px);
+  flex: 0 0 clamp(200px, 35vw, 312px);
   height: clamp(320px, 60vw, 500px);
   border-radius: 20px;
   position: relative;
