@@ -92,6 +92,7 @@
             font-weight: 700;
             font-size: 1.05rem;
             letter-spacing: 0.5px;
+            color: var(--off-white);
         }
 
         .logo-main img {
@@ -232,6 +233,14 @@
             display: none;
             color: var(--off-white);
             font-size: 1.5rem;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--gold);
         }
 
         .sidebar-header {
@@ -284,10 +293,6 @@
             background: rgba(255, 255, 255, 0.2);
             border-color: rgba(255, 255, 255, 0.4);
             transform: scale(1.1);
-        }
-
-        .close-search:active {
-            transform: scale(0.95);
         }
 
         .search-container {
@@ -465,24 +470,23 @@
 
             .nav-menu {
                 position: fixed;
-                top: -100%;
+                top: 0;
                 left: 0;
                 width: 100%;
-                max-width: none;
-                height: auto;
-                min-height: 100vh;
+                height: 100vh;
                 background: var(--dark-green);
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 1.5rem;
-                border-bottom: 1px solid var(--gold);
                 gap: 1rem;
-                transition: top 0.3s ease;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
                 overflow-y: auto;
+                z-index: 1001;
             }
 
             .nav-menu.active {
-                top: 0;
+                transform: translateX(0);
             }
 
             .sidebar-header {
@@ -534,6 +538,7 @@
             .nav-menu a {
                 width: 100%;
                 padding: 0.5rem 0;
+                font-size: 1rem;
             }
 
             /* Mobile Dropdown Styles */
@@ -554,9 +559,6 @@
 
             .dropdown.active .dropdown-menu {
                 max-height: 300px;
-                opacity: 1;
-                visibility: visible;
-                transform: translate(-9%, 0);
             }
 
             .dropdown-menu::before {
@@ -576,8 +578,9 @@
 
             .dropdown-menu a {
                 padding: 0.5rem 0;
-                text-align: left;
+                /* text-align: center; */
                 font-size: 0.9rem;
+                margin-left: 30px;
                 color: rgba(248, 246, 240, 0.9);
             }
 
@@ -593,6 +596,10 @@
 
             .search-btn.desktop {
                 display: none;
+            }
+
+            .mobile-search {
+                display: block !important;
             }
 
             .close-search {
@@ -637,7 +644,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- ===========================
          NAVIGATION BAR
@@ -706,7 +712,7 @@
             </ul>
 
             <!-- Desktop Search Button -->
-            <button class="search-btn desktop">
+            <button class="search-btn desktop" id="desktopSearch">
                 <i class="fas fa-search"></i>
                 <span>Search</span>
             </button>
@@ -738,6 +744,27 @@
 
     <!-- Mobile Menu Overlay -->
     <div class="overlay" id="overlay"></div>
+
+    <!-- Demo Content -->
+    <!-- <div class="demo-content">
+        <div class="container">
+            <div class="demo-section">
+                <h1>Welcome to ZUHD Academy</h1>
+                <p>This is a demo page to test the responsive navigation. Try clicking the hamburger menu on mobile devices or resizing your browser window to see the responsive behavior.</p>
+                <p>The navigation includes dropdown menus, search functionality, and smooth animations.</p>
+            </div>
+            <div class="demo-section">
+                <h2>Features</h2>
+                <ul>
+                    <li>Responsive hamburger menu for mobile</li>
+                    <li>Dropdown navigation</li>
+                    <li>Search overlay with results</li>
+                    <li>Smooth animations and transitions</li>
+                    <li>Accessible keyboard navigation</li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
 
     <!-- ===========================
          JAVASCRIPT
@@ -776,6 +803,7 @@
             // MOBILE MENU FUNCTIONS
             // ===========================
             function openMobileMenu() {
+                console.log("Opening mobile menu"); // Debug log
                 if (navMenu && overlay) {
                     navMenu.classList.add("active");
                     overlay.classList.add("active");
@@ -784,6 +812,7 @@
             }
 
             function closeMobileMenu() {
+                console.log("Closing mobile menu"); // Debug log
                 if (navMenu && overlay) {
                     navMenu.classList.remove("active");
                     overlay.classList.remove("active");
@@ -877,11 +906,20 @@
             
             // Mobile Menu Events
             if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener("click", openMobileMenu);
+                mobileMenuBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log("Mobile menu button clicked"); // Debug log
+                    openMobileMenu();
+                });
             }
 
             if (closeSidebar) {
-                closeSidebar.addEventListener("click", closeMobileMenu);
+                closeSidebar.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeMobileMenu();
+                });
             }
 
             if (overlay) {
@@ -961,6 +999,9 @@
 
             checkMobileView();
             window.addEventListener('resize', checkMobileView);
+
+            // Debug: Log when script is loaded
+            console.log("Navigation script loaded successfully");
         });
     </script>
 </body>

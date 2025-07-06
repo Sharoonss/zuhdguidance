@@ -203,8 +203,8 @@ body {
   opacity: 0;
   animation: fadeInUp 0.8s ease-out 0.6s forwards;
   margin-top: clamp(8px, 2vw, 10px);
-  width: 100%;
-  max-width: 200px;
+  /* width: 100%;
+  max-width: 200px; */
 }
 
 .sacred-action-btn:hover {
@@ -1199,7 +1199,8 @@ body {
   margin: 0 auto;
   position: relative;
   width: 100%;
-  padding: 0px clamp(15px, 4vw, 20px);
+  /* padding: 0px clamp(15px, 4vw, 20px); */
+  padding:0px 20px;
 }
 
 .story-slider {
@@ -1519,6 +1520,10 @@ body {
     grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
+  }
+  .story-slider-container{
+    width:100%;
+    padding: 0px;
   }
 
   .minbar-section {
@@ -3044,13 +3049,13 @@ body {
     align-items: center;
     text-align: center;
 }
-            .nav-menu {
+            /* .nav-menu {
                 display: none;
             }
 
             .mobile-menu-btn {
                 display: block;
-            }
+            } */
 
             .lectures-title {
                 font-size: 2.5rem;
