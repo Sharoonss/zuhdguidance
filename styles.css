@@ -392,6 +392,7 @@ body {
             margin: 0 auto;
             background-color: white;
             padding: 0 20px;
+            padding-bottom:50px;
 
         }
 
@@ -773,7 +774,9 @@ body {
   background-color: #c8b88a;
   transform: translateY(-2px);
 }
-
+.qotd-highlight-button i{
+color:#0a2a1f;
+}
 .qotd-quote-symbol {
   font-size: clamp(40px, 10vw, 60px);
   color: #c8b88a;
@@ -834,7 +837,7 @@ body {
 }
 
 .qotd-social-icon-circle:hover {
-  background-color: #c8b88a;
+  background-color:var(--deep-green);
   color: #fefefe;
   transform: scale(1.1);
 }
