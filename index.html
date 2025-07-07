@@ -212,7 +212,7 @@
     </div>
 </div>
     <!-- Content Section -->
-    <section class="content-section" id="content">
+    <section class="content-section1" id="content">
         <div class="grid-container">
             <!-- Statistics Grid -->
             <div class="stats-grid">
@@ -241,25 +241,24 @@
 
   <!-- Main Slider Container -->
  
-<!-- mainbar section -->
-  <div class="main-barr">
-        <div class="minbar-section">
-            <div class="minbar-content">
+ <div class="khutbah-wrapper">
+        <div class="khutbah-container">
+            <div class="khutbah-info">
                 <h2>From the Minbar</h2>
-                <p class="minbar-subtitle">This Week's Khutbah</p>
+                <p class="khutbah-description">This Week's Khutbah</p>
                 
-                <div class="category-filters">
-                    <button class="filter-btn active" data-filter="seerah">Seerah Series</button>
-                    <button class="filter-btn" data-filter="palestine">Palestine Series</button>
-                    <button class="filter-btn" data-filter="parenting">Parenting & Tarbiyah</button>
-                    <button class="filter-btn" data-filter="spiritual">Spiritual Growth</button>
+                <div class="topic-buttons">
+                    <button class="topic-btn selected" data-filter="seerah">Seerah Series</button>
+                    <button class="topic-btn" data-filter="palestine">Palestine Series</button>
+                    <button class="topic-btn" data-filter="parenting">Parenting & Tarbiyah</button>
+                    <button class="topic-btn" data-filter="spiritual">Spiritual Growth</button>
                 </div>
             </div>
             
-            <div class="main-video-ce">
-                <div class="video-container">
+            <div class="video-player-wrapper">
+                <div class="video-frame-container">
                     <iframe 
-                        id="main-video-player"
+                        id="khutbah-video-player"
                         src="https://www.youtube.com/embed/0YSpZsDr678" 
                         title="The Rise of Umar RA: From Fearless Fighter to Guided Flame" 
                         frameborder="0" 
@@ -361,6 +360,7 @@
             </div>
         </div>
     </div>
+    <div class="main-banner">
 <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
@@ -376,6 +376,7 @@
             <p class="update-text">New Updates Coming</p>
             <a href="https://www.youtube.com/@zuhdau/videos" class="subscribe-btn">Subscribe Our YouTube Channel</a>
         </div>
+    </div>
     </div>
  <div class="main-shorts">
   <div class="shorts-container">
@@ -1106,40 +1107,37 @@ function socialClick(platform) {
 //             new StorySlider();
 //         });
 // Video data for each category
- const videoData = {
+ const videoLibrary = {
             seerah: {
                 id: "0YSpZsDr678",
                 title: "From Mistake to Mercy: Lessons from Prophet Adam (A.S)",
                 url: "https://www.youtube.com/embed/aaj1aclhfAc?list=PLA-ylo0o2Z5kgcbLS9pSvhwI5EB2sUN5q"
             },
             palestine: {
-                id: "dQw4w9WgXcQ", // Replace with actual video ID
+                id: "dQw4w9WgXcQ",
                 title: "Palestine Series - Latest Khutbah",
                 url: "https://www.youtube.com/embed/sLrZduuDMV0?list=PLA-ylo0o2Z5nX01GnYJeA2FKlDthz4i2J"
             },
             parenting: {
-                id: "jNQXAC9IVRw", // Replace with actual video ID
+                id: "jNQXAC9IVRw",
                 title: "Parenting & Tarbiyah - Raising Righteous Children",
                 url: "https://www.youtube.com/embed/ncUqIMQQB60?list=PLA-ylo0o2Z5mse-S-f7xfpuiUnp75IuBL"
             },
             spiritual: {
-                id: "y6120QOlsfU", // Replace with actual video ID
+                id: "y6120QOlsfU",
                 title: "Spiritual Growth - Strengthening Your Connection with Allah",
                 url: "https://www.youtube.com/embed/yXEO3ok5J5c"
             }
         };
 
-        // Function to switch video
-        function switchVideo(category) {
-            const videoPlayer = document.getElementById('main-video-player');
-            const videoData_selected = videoData[category];
+        function changeVideo(category) {
+            const videoPlayer = document.getElementById('khutbah-video-player');
+            const selectedVideo = videoLibrary[category];
             
-            if (videoData_selected && videoPlayer) {
-                // Update video source
-                videoPlayer.src = videoData_selected.url;
-                videoPlayer.title = videoData_selected.title;
+            if (selectedVideo && videoPlayer) {
+                videoPlayer.src = selectedVideo.url;
+                videoPlayer.title = selectedVideo.title;
                 
-                // Optional: Add fade transition effect
                 videoPlayer.style.opacity = '0';
                 setTimeout(() => {
                     videoPlayer.style.opacity = '1';
@@ -1147,33 +1145,22 @@ function socialClick(platform) {
             }
         }
 
-        // Function to update active button
-        function updateActiveButton(clickedButton) {
-            // Remove active class from all buttons
-            const allButtons = document.querySelectorAll('.filter-btn');
-            allButtons.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            clickedButton.classList.add('active');
+        function updateSelectedButton(clickedButton) {
+            const allButtons = document.querySelectorAll('.topic-btn');
+            allButtons.forEach(btn => btn.classList.remove('selected'));
+            clickedButton.classList.add('selected');
         }
 
-        // Add event listeners to all filter buttons
         document.addEventListener('DOMContentLoaded', function() {
-            const filterButtons = document.querySelectorAll('.filter-btn');
+            const topicButtons = document.querySelectorAll('.topic-btn');
             
-            filterButtons.forEach(button => {
+            topicButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    // Get the category from data-filter attribute
                     const category = this.getAttribute('data-filter');
+                    updateSelectedButton(this);
+                    changeVideo(category);
                     
-                    // Update active button styling
-                    updateActiveButton(this);
-                    
-                    // Switch the video
-                    switchVideo(category);
-                    
-                    // Optional: Add loading state
-                    const videoPlayer = document.getElementById('main-video-player');
+                    const videoPlayer = document.getElementById('khutbah-video-player');
                     if (videoPlayer) {
                         videoPlayer.style.transition = 'opacity 0.3s ease';
                     }
@@ -1181,45 +1168,21 @@ function socialClick(platform) {
             });
         });
 
-        // Alternative approach: If you want to store video IDs directly in the HTML
-        // You can add data-video-id attributes to your buttons like this:
-        // <button class="filter-btn active" data-filter="seerah" data-video-id="0YSpZsDr678">Seerah Series</button>
-
-        // Then use this function instead:
-        function switchVideoByDataAttribute(button) {
-            const videoId = button.getAttribute('data-video-id');
-            const videoPlayer = document.getElementById('main-video-player');
-            
-            if (videoId && videoPlayer) {
-                const newUrl = `https://www.youtube.com/embed/${videoId}`;
-                videoPlayer.src = newUrl;
-                
-                // Update title if you have a data-title attribute
-                const title = button.getAttribute('data-title');
-                if (title) {
-                    videoPlayer.title = title;
-                }
-            }
-        }
-
-        // Enhanced version with error handling and loading states
-        function switchVideoEnhanced(category) {
-            const videoPlayer = document.getElementById('main-video-player');
-            const videoContainer = document.querySelector('.video-container');
-            const selectedVideo = videoData[category];
+        function changeVideoEnhanced(category) {
+            const videoPlayer = document.getElementById('khutbah-video-player');
+            const videoContainer = document.querySelector('.video-frame-container');
+            const selectedVideo = videoLibrary[category];
             
             if (!selectedVideo || !videoPlayer) {
                 console.error('Video data or player not found for category:', category);
                 return;
             }
             
-            // Add loading state
             videoContainer.style.opacity = '0.7';
             videoContainer.style.pointerEvents = 'none';
             
-            // Create new iframe to replace current one
             const newIframe = document.createElement('iframe');
-            newIframe.id = 'main-video-player';
+            newIframe.id = 'khutbah-video-player';
             newIframe.src = selectedVideo.url;
             newIframe.title = selectedVideo.title;
             newIframe.frameBorder = '0';
@@ -1227,15 +1190,13 @@ function socialClick(platform) {
             newIframe.referrerPolicy = 'strict-origin-when-cross-origin';
             newIframe.allowFullscreen = true;
             
-            // Replace old iframe with new one
             videoPlayer.parentNode.replaceChild(newIframe, videoPlayer);
             
-            // Remove loading state after a short delay
             setTimeout(() => {
                 videoContainer.style.opacity = '1';
                 videoContainer.style.pointerEvents = 'auto';
             }, 500);
-        }    
+        }   
     </script>
 
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
