@@ -454,10 +454,11 @@ body {
         }
 
         .khutbah-info h1 {
-            /* margin-bottom: 0.5rem; */
+             margin-bottom: 0.5rem; 
             color: var(--deep-green);
             font-size: 2.5rem;
             line-height:35px;
+            padding-top: 25px;
         }
 
 
