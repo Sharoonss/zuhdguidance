@@ -39,7 +39,7 @@ h3 {
 
 p {
   font-family: "Serotiva-Regular";
-  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  font-size:22px;
   line-height: 1.6;
 }
 
@@ -3475,7 +3475,7 @@ color:#0a2a1f;
     }
 }
 .zuhd-main-title{
-    font-size: 7rem;
+    font-size: 5rem;
 }
 .zuhd-header-section {
     width: 100%;
@@ -3504,10 +3504,12 @@ color:#0a2a1f;
   
     margin-bottom: 80px;
 }
-
+.zuhd-section-title{
+    font-size: 3rem;
+}
 .zuhd-vision-text {
-    font-size:20px;
-    line-height: 1.2;
+    font-size:22px;
+    line-height: 1.6;
     color: white;
     max-width: 800px;
     opacity: 0;
@@ -3564,8 +3566,8 @@ color:#0a2a1f;
 }
 
 .zuhd-founder-description {
-    font-size:20px;
-    line-height: 1.2;
+    font-size:22px;
+    line-height: 1.6;
     color: white;
 }
 
@@ -3574,6 +3576,103 @@ color:#0a2a1f;
     font-weight: 600;
     font-size: 33px;
 }
+
+    /* About Section */
+        .zuhd-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .tawheed-heading {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 80px;
+            letter-spacing: 2px;
+        }
+
+        .ilm-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: 80px;
+            gap: 60px;
+        }
+
+        .ilm-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .hadith-content {
+            flex: 1;
+            font-size:18px;
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .sunnah-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sunnah-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .ilm-section.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .wisdom-quote {
+          
+            line-height: 1.7;
+        }
+
+        /* Courses Section */
+        .madrasah-section {
+            color: #f5f1e8;
+            padding: 80px 20px;
+        }
+
+        .courses-bismillah {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+        }
+
+        .dars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .fiqh-card {
+            background-color: #f5f1e8;
+            color: #2c2c2c;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .fiqh-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1a4d3a;
+        }
+
 
 /* Timeline Section */
 .zuhd-timeline-section {
