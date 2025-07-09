@@ -3571,10 +3571,10 @@ color:#0a2a1f;
     color: white;
 }
 
-.zuhd-founder-description strong {
-    color: var(--off-white);
-    font-weight: 600;
-    font-size: 33px;
+.zuhd-founder-description{
+    /* color: var(--off-white); */
+    /* font-weight: 600; */
+    font-size:19px;
 }
 
     /* About Section */
@@ -3603,9 +3603,9 @@ color:#0a2a1f;
             margin-bottom: 0;
         }
 
-        .hadith-content {
+        .hadith-content p {
             flex: 1;
-            font-size:18px;
+            font-size:19px;
             line-height: 1.8;
             padding: 20px;
         }
@@ -3725,8 +3725,8 @@ color:#0a2a1f;
         padding: 20px;
     }
 
-    .course-title {
-        font-size: 1.25rem;
+   .boxp  {
+        font-size:19px;
     }
 
     .zuhd-container,
