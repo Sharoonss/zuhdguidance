@@ -3672,6 +3672,68 @@ color:#0a2a1f;
             margin-bottom: 15px;
             color: #1a4d3a;
         }
+@media (max-width: 768px) {
+    .zuhd-section-title{
+    font-size: 2rem;
+   padding: 0px 12px;
+
+}
+.zuhd-vision-text{
+    font-size:19px;
+    padding: 0px 12px;
+}
+
+
+    .tawheed-heading {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+    }
+
+    .ilm-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        margin-bottom: 60px;
+    }
+
+    .ilm-section.reverse {
+        flex-direction: column;
+
+    }
+.wisdom-quote {
+          font-size:19px;
+            line-height: 1.7;
+                    text-align: center;
+
+        }
+    /* .hadith-content {
+        font-size: 16px;
+        padding: 10px;
+    } */
+
+    .sunnah-image img {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .courses-bismillah {
+        font-size: 2rem;
+        margin-bottom: 40px;
+    }
+
+    .fiqh-card {
+        padding: 20px;
+    }
+
+    .course-title {
+        font-size: 1.25rem;
+    }
+
+    .zuhd-container,
+    .madrasah-section {
+        padding: 20px 15px;
+    }
+}
 
 
 /* Timeline Section */
@@ -3857,8 +3919,8 @@ color:#0a2a1f;
     }
 
     .zuhd-founder-image-container {
-        width: 100px;
-        height: 100px;
+        width: 180px;
+        height: 160px;
     }
 
     .zuhd-timeline-container {
@@ -3910,8 +3972,8 @@ color:#0a2a1f;
     }
 
     .zuhd-founder-image-container {
-        width: 80px;
-        height: 80px;
+        width: 180px;
+        height: 150px;
     }
 
     .zuhd-timeline-item {
