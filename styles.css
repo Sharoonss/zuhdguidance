@@ -3578,60 +3578,88 @@ color:#0a2a1f;
 }
 
     /* About Section */
-        .zuhd-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
+     .zuhd-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
 
-        .tawheed-heading {
-            text-align: center;
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 80px;
-            letter-spacing: 2px;
-        }
+.tawheed-heading {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+}
 
-        .ilm-section {
-            display: flex;
-            align-items: center;
-            margin-bottom: 80px;
-            gap: 60px;
-        }
+.ilm-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
 
-        .ilm-section:last-child {
-            margin-bottom: 0;
-        }
+.ilm-section:last-child {
+  margin-bottom: 0;
+}
 
-        .hadith-content p {
-            flex: 1;
-            font-size:19px;
-            line-height: 1.8;
-            padding: 20px;
-        }
+.ilm-section.reverse {
+  flex-direction: row-reverse;
+}
 
-        .sunnah-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.hadith-content {
+  flex: 1;
+  padding: 20px;
+}
 
-        .sunnah-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
+.hadith-content p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: #ffffff;
+}
 
-        .ilm-section.reverse {
-            flex-direction: row-reverse;
-        }
+.wisdom-quote {
+  color: #ffffff;
+}
 
-        .wisdom-quote {
-          
-            line-height: 1.7;
-        }
+.sunnah-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.sunnah-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ilm-section,
+  .ilm-section.reverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tawheed-heading {
+    font-size: 2.4rem;
+  }
+
+  .hadith-content p {
+    font-size: 16px;
+  }
+
+  .sunnah-image {
+    margin-top: 20px;
+  }
+}
+
 
         /* Courses Section */
         .madrasah-section {
@@ -3725,7 +3753,7 @@ color:#0a2a1f;
         padding: 20px;
     }
 
-   .boxp  {
+    .course-title {
         font-size:19px;
     }
 
