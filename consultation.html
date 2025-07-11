@@ -83,7 +83,7 @@
     <section class="consultation-islamic-banner" id="islamic-consultation">
         <div class="consultation-container">
             <div class="consultation-banner-content">
-                <h2>Get Consultation from Islamic Point of View</h2>
+                <h2>Get Consultation from Islamic  <br> Point of View</h2>
                 <p>Experience guidance that harmonizes spiritual wisdom with practical solutions. Our consultations are rooted in Islamic teachings, offering you a path that honors both your faith and your well-being.</p>
                <a href="https://calendly.com/zuhd-info"><button class="consultation-islamic-button">BOOK ISLAMIC CONSULTATION</button></a> 
             </div>
@@ -116,6 +116,88 @@
             </div>
         </div>
     </section>
+
+     <div class="offer-container">
+        <h2 class="main-heading">Services We Offer:</h2>
+        
+        <div class="offer-grid">
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Civil Marriage Certificate</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Marriage Counseling</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Notice of Intended Marriage</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Islamic Marriage Certificate</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Islamic Divorce</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Civil & Islamic Marriage</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Online Islamic Marriage</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Online Islamic Divorce</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Marriage</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Pre-Marriage</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Divorces</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Conflict Resolution</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Youth Counselling</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Family Problem Resolutions</div>
+            </div>
+            
+            <div class="offer-card">
+                <div class="card-icon">✓</div>
+                <div class="card-text">Grief Counselling</div>
+            </div>
+        </div>
+    </div>
+
 <div class="banner">
         <div class="decorative-elements">
             <div class="circle"></div>
@@ -271,6 +353,78 @@
                 consultationHeroButton.style.transform = 'translateY(0)';
             }, 1000);
         }, 3000);
+
+
+         // Add smooth scroll behavior and enhanced interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            const offerCards = document.querySelectorAll('.offer-card');
+            
+            // Add click animation effect
+            offerCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-5px)';
+                    }, 100);
+                });
+            });
+            
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            offerCards.forEach(card => {
+                observer.observe(card);
+            });
+            
+            // Add ripple effect on hover
+            offerCards.forEach(card => {
+                card.addEventListener('mouseenter', function(e) {
+                    const ripple = document.createElement('div');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(200, 184, 138, 0.1)';
+                    ripple.style.transform = 'scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = '50%';
+                    ripple.style.top = '50%';
+                    ripple.style.width = '100px';
+                    ripple.style.height = '100px';
+                    ripple.style.marginLeft = '-50px';
+                    ripple.style.marginTop = '-50px';
+                    ripple.style.pointerEvents = 'none';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+        
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
              <script src="navbar.js"></script>
 
