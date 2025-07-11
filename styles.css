@@ -614,7 +614,10 @@ body {
   padding-bottom: 60px;
 }
 
-.instagram-section {
+/* .instagram-section {
+      width:100%;
+      margin:auto;
+
 }
 
 .instagram-header {
@@ -712,7 +715,7 @@ body {
 .instagram-icon {
   color: var(--sand-beige);
   font-size: clamp(1.5rem, 4vw, 2rem);
-}
+} */
 
 /* Quote Section */
 .qotd-main {
