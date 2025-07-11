@@ -207,7 +207,7 @@ body {
 
 .sacred-action-btn:hover {
   background: var(--gold);
-  color: var(--off-white);
+  color: var(--deep-green);
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
