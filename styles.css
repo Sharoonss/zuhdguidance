@@ -607,15 +607,11 @@ body {
 
 /* Instagram Posts Section */
 .instagram-main {
-  background-color: white;
-  padding-top: clamp(30px, 6vw, 40px);
+  /* background-color: white; */
+  padding: 20px 0px;
 }
 
 .instagram-section {
-  margin-bottom: clamp(3rem, 6vw, 4rem);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .instagram-header {
@@ -8720,4 +8716,4 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 
 
-       
+      
