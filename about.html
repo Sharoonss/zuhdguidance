@@ -20,6 +20,207 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+
+         .zuhd-timeline-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 60px;
+        }
+
+        .zuhd-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 40px;
+            /* text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); */
+        }
+
+        .zuhd-timeline-container {
+            position: relative;
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .zuhd-timeline-line {
+            position: absolute;
+            top: 25px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 4px;
+            background: linear-gradient(to right, var(--gold), var(--gold), var(--gold), var(--gold));
+            transform-origin: left;
+            animation: zuhdLineGrow 2s ease-in-out forwards;
+            animation-delay: 1s;
+            transform: scaleX(0);
+            z-index: 1;
+            border-radius: 2px;
+            /* box-shadow: 0 0 10px rgba(255, 215, 0, 0.2); */
+        }
+
+        .zuhd-timeline-item {
+            position: relative;
+            width: 22%;
+            text-align: center;
+            opacity: 0;
+            z-index: 2;
+            animation: zuhdFadeInUp 0.6s ease-out forwards;
+        }
+
+        .zuhd-timeline-item:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        .zuhd-timeline-item:nth-child(3) {
+            animation-delay: 1.8s;
+        }
+
+        .zuhd-timeline-item:nth-child(4) {
+            animation-delay: 2.1s;
+        }
+
+        .zuhd-timeline-item:nth-child(5) {
+            animation-delay: 2.4s;
+        }
+
+        .zuhd-timeline-item:nth-child(6) {
+            animation-delay: 2.7s;
+        }
+
+        .zuhd-timeline-dot {
+            width: 18px;
+            height: 18px;
+            background-color: var(--gold);
+            border: 3px solid var(--deep-green);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            position: relative;
+            transform: scale(0);
+            transition: all 0.3s ease;
+            animation: zuhdScaleIn 0.4s ease-out forwards;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .zuhd-timeline-item:nth-child(2) .zuhd-timeline-dot {
+            animation-delay: 1.8s;
+        }
+
+        .zuhd-timeline-item:nth-child(3) .zuhd-timeline-dot {
+            animation-delay: 2.1s;
+        }
+
+        .zuhd-timeline-item:nth-child(4) .zuhd-timeline-dot {
+            animation-delay: 2.4s;
+        }
+
+        .zuhd-timeline-item:nth-child(5) .zuhd-timeline-dot {
+            animation-delay: 2.7s;
+        }
+
+        .zuhd-timeline-item:nth-child(6) .zuhd-timeline-dot {
+            animation-delay: 3s;
+        }
+
+        .zuhd-timeline-dot:hover {
+            background-color: var(--deep-green);
+            border-color: var(--gold);
+            transform: scale(1.3);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+        }
+
+        .zuhd-timeline-dot.zuhd-pulse {
+            animation: zuhdPulse 2s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        .zuhd-timeline-content {
+            padding: 0 5px;
+        }
+
+        .zuhd-timeline-year {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .zuhd-timeline-description {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: #e0e0e0;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Animations */
+        @keyframes zuhdLineGrow {
+            0% {
+                transform: scaleX(0);
+            }
+            100% {
+                transform: scaleX(1);
+            }
+        }
+
+        @keyframes zuhdFadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zuhdScaleIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zuhdPulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .zuhd-timeline-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
+
+            .zuhd-timeline-line {
+                display: none;
+            }
+
+            .zuhd-timeline-item {
+                width: 80%;
+                max-width: 300px;
+            }
+
+            .zuhd-timeline-dot {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
      <nav>
@@ -140,52 +341,62 @@
         </div>
     </section>
         <!-- Timeline Section -->
-        <section class="zuhd-timeline-section">
-            <h2 class="zuhd-section-title">Timeline</h2>
-            <div class="zuhd-timeline-container">
-                <div class="zuhd-timeline-line"></div>
-                
-                <div class="zuhd-timeline-item" data-year="2019">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2019</div>
-                        <div class="zuhd-timeline-description">
-                            Zuhd is founded in Sydney, Australia
-                        </div>
-                    </div>
-                </div>
-
-                <div class="zuhd-timeline-item" data-year="2020">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2020</div>
-                        <div class="zuhd-timeline-description">
-                            YouTube channel hits 100,000 subscribers
-                        </div>
-                    </div>
-                </div>
-
-                <div class="zuhd-timeline-item" data-year="2021">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2021</div>
-                        <div class="zuhd-timeline-description">
-                            Launch of Instagram page
-                        </div>
-                    </div>
-                </div>
-
-                <div class="zuhd-timeline-item" data-year="2023">
-                    <div class="zuhd-timeline-dot"></div>
-                    <div class="zuhd-timeline-content">
-                        <div class="zuhd-timeline-year">2023</div>
-                        <div class="zuhd-timeline-description">
-                            Over 1 million YouTube subscribers
-                        </div>
-                    </div>
+         <section class="zuhd-timeline-section">
+        <h2 class="zuhd-section-title">Timeline</h2>
+        <div class="zuhd-timeline-container">
+            <div class="zuhd-timeline-line"></div>
+            
+            <div class="zuhd-timeline-item" data-year="2021">
+                <div class="zuhd-timeline-dot"></div>
+                <div class="zuhd-timeline-content">
+                    <div class="zuhd-timeline-year">2021</div>
+                    <!-- <div class="zuhd-timeline-description">
+                        Launch of Instagram page
+                    </div> -->
                 </div>
             </div>
-        </section>
+
+            <div class="zuhd-timeline-item" data-year="2022">
+                <div class="zuhd-timeline-dot"></div>
+                <div class="zuhd-timeline-content">
+                    <div class="zuhd-timeline-year">2022</div>
+                    <!-- <div class="zuhd-timeline-description">
+                        Expansion to TikTok platform
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="zuhd-timeline-item" data-year="2023">
+                <div class="zuhd-timeline-dot"></div>
+                <div class="zuhd-timeline-content">
+                    <div class="zuhd-timeline-year">2023</div>
+                    <!-- <div class="zuhd-timeline-description">
+                        Over 1 million YouTube subscribers
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="zuhd-timeline-item" data-year="2024">
+                <div class="zuhd-timeline-dot"></div>
+                <div class="zuhd-timeline-content">
+                    <div class="zuhd-timeline-year">2024</div>
+                    <!-- <div class="zuhd-timeline-description">
+                        International recognition and awards
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="zuhd-timeline-item" data-year="2025">
+                <div class="zuhd-timeline-dot zuhd-pulse"></div>
+                <div class="zuhd-timeline-content">
+                    <div class="zuhd-timeline-year">2025</div>
+                    <!-- <div class="zuhd-timeline-description">
+                        Global expansion and new ventures
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
     </div>
     </div>
   <div class="main-banner">
@@ -292,6 +503,33 @@
             </div>
         </div>
     </footer>
+    <script>
+ // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.zuhd-timeline-item');
+            
+            timelineItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    const dot = this.querySelector('.zuhd-timeline-dot');
+                    const year = this.querySelector('.zuhd-timeline-year');
+                    
+                    dot.style.transform = 'scale(1.5)';
+                    year.style.color = 'var(--gold)';
+                    year.style.textShadow = '0 0 20px rgba(255, 215, 0, 0.8)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    const dot = this.querySelector('.zuhd-timeline-dot');
+                    const year = this.querySelector('.zuhd-timeline-year');
+                    
+                    dot.style.transform = 'scale(1)';
+                    year.style.color = 'var(--gold)';
+                    year.style.textShadow = '0 0 10px rgba(255, 215, 0, 0.3)';
+                });
+            });
+        });
+
+    </script>
          <script src="navbar.js"></script>
 
 </body>

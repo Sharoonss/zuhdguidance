@@ -3510,10 +3510,11 @@ color:#0a2a1f;
     font-size:22px;
     line-height: 1.6;
     color: white;
-    max-width: 800px;
+    max-width: 1200px;
     opacity: 0;
     animation: zuhdFadeInUp 0.8s ease-out forwards;
     animation-delay: 1.3s;
+    text-align:center;
 }
 
 /* Founders Section */
@@ -3533,20 +3534,20 @@ color:#0a2a1f;
 
 .zuhd-founder-image-container {
     flex-shrink: 0;
-    width: 300px;
-    height: 300px;
+    width: 500px;
+    height:450px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(15, 61, 46, 0.1);
     border: 3px solid var(--gold);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
     cursor: pointer;
 }
 
-.zuhd-founder-image-container:hover {
+/* .zuhd-founder-image-container:hover {
     transform: scale(1.05) rotate(2deg);
     box-shadow: 0 8px 25px rgba(15, 61, 46, 0.2);
-}
+} */
 
 .zuhd-founder-image {
     width: 100%;
@@ -3763,115 +3764,102 @@ color:#0a2a1f;
 }
 
 
-/* Timeline Section */
-.zuhd-timeline-section {
-    margin-bottom: 60px;
-}
+  .zuhd-timeline-dot:hover {
+            background-color: var(--deep-green);
+            border-color: var(--gold);
+            transform: scale(1.3);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+        }
 
-.zuhd-timeline-container {
-    position: relative;
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
+        .zuhd-timeline-dot.zuhd-pulse {
+            animation: zuhdPulse 2s ease-in-out infinite;
+            animation-delay: 4s;
+        }
 
-.zuhd-timeline-line {
-    position: absolute;
-    top: 25px;
-    left: 12.5%;
-    right: 12.5%;
-    height: 2px;
-    background: linear-gradient(to right, var(--gold), var(--deep-green));
-    transform-origin: left;
-    animation: zuhdLineGrow 1.5s ease-in-out forwards;
-    animation-delay: 3.5s;
-    transform: scaleX(0);
-    z-index: 1;
-}
+        .zuhd-timeline-content {
+            padding: 0 5px;
+        }
 
-.zuhd-timeline-item {
-    position: relative;
-    width: 22%;
-    text-align: center;
-    opacity: 0;
-    z-index: 2;
-    animation: zuhdFadeInUp 0.6s ease-out forwards;
-}
+        .zuhd-timeline-year {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
 
-.zuhd-timeline-item:nth-child(2) {
-    animation-delay: 4s;
-}
+        .zuhd-timeline-description {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: #e0e0e0;
+            line-height: 1.6;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
 
-.zuhd-timeline-item:nth-child(3) {
-    animation-delay: 4.2s;
-}
+        /* Animations */
+        @keyframes zuhdLineGrow {
+            0% {
+                transform: scaleX(0);
+            }
+            100% {
+                transform: scaleX(1);
+            }
+        }
 
-.zuhd-timeline-item:nth-child(4) {
-    animation-delay: 4.4s;
-}
+        @keyframes zuhdFadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.zuhd-timeline-item:nth-child(5) {
-    animation-delay: 4.6s;
-}
+        @keyframes zuhdScaleIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
 
-.zuhd-timeline-dot {
-    width: 16px;
-    height: 16px;
-    background-color: var(--gold);
-    border: 3px solid var(--deep-green);
-    border-radius: 50%;
-    margin: 0 auto 20px;
-    position: relative;
-    transform: scale(0);
-    transition: all 0.3s ease;
-    animation: zuhdScaleIn 0.4s ease-out forwards;
-}
+        @keyframes zuhdPulse {
+            0%, 100% {
+                box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            }
+        }
 
-.zuhd-timeline-item:nth-child(2) .zuhd-timeline-dot {
-    animation-delay: 4.3s;
-}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .zuhd-timeline-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 40px;
+            }
 
-.zuhd-timeline-item:nth-child(3) .zuhd-timeline-dot {
-    animation-delay: 4.5s;
-}
+            .zuhd-timeline-line {
+                display: none;
+            }
 
-.zuhd-timeline-item:nth-child(4) .zuhd-timeline-dot {
-    animation-delay: 4.7s;
-}
+            .zuhd-timeline-item {
+                width: 80%;
+                max-width: 300px;
+            }
 
-.zuhd-timeline-item:nth-child(5) .zuhd-timeline-dot {
-    animation-delay: 4.9s;
-}
-
-.zuhd-timeline-dot:hover {
-    background-color: var(--deep-green);
-    border-color: var(--gold);
-    transform: scale(1.2);
-}
-
-.zuhd-timeline-dot.zuhd-pulse {
-    animation: zuhdPulse 2s ease-in-out infinite;
-    animation-delay: 6s;
-}
-
-.zuhd-timeline-content {
-    padding: 0 5px;
-}
-
-.zuhd-timeline-year {
-    font-size: clamp(1.1rem, 3vw, 1.3rem);
-    font-weight: 600;
-    color:white;
-    margin-bottom: 10px;
-}
-
-.zuhd-timeline-description {
-    font-size: clamp(0.85rem, 2vw, 0.95rem);
-    color: white;
-    line-height: 1.5;
-}
-
+            .zuhd-timeline-dot {
+                width: 20px;
+                height: 20px;
+            }
+        }
 /* Word animation styles */
 .zuhd-word {
     display: inline-block;
@@ -8807,7 +8795,6 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 
         .offer-card {
-        .offer-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(200, 184, 138, 0.3);
             border-radius: 12px;
@@ -8921,3 +8908,5 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         .offer-card:nth-child(10) { animation-delay: 1s; }
         .offer-card:nth-child(11) { animation-delay: 1.1s; }
         .offer-card:nth-child(12) { animation-delay: 1.2s; }
+
+        /* time line  */
