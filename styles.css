@@ -40,7 +40,7 @@ h3 {
 p {
   font-family: "Serotiva-Regular";
   font-size:22px;
-  line-height: 1.6;
+  line-height:30px;
 }
 
 :root {
@@ -3331,13 +3331,10 @@ color:#0a2a1f;
 .about-main-section{
   max-width: 1200px;
   margin: auto;
-  padding:40px;
+  padding: 40px 40px ;
 }
 /* Vision Section */
-.zuhd-vision-section {
-  
-    margin-bottom: 80px;
-}
+
 .zuhd-section-title{
     font-size: 3rem;
     color: #0a2f22;
@@ -3351,7 +3348,7 @@ color:#0a2a1f;
 }
 .zuhd-vision-text {
     font-size:22px;
-    line-height: 1.6;
+    line-height: 30px;
     color: #0a2f22;
     max-width: 1200px;
     opacity: 0;
@@ -3362,7 +3359,7 @@ color:#0a2a1f;
 
 /* Founders Section */
 .zuhd-founders-section {
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 }
 
 .zuhd-founder-card {
@@ -3377,8 +3374,8 @@ color:#0a2a1f;
 
 .zuhd-founder-image-container {
     flex-shrink: 0;
-    width: 500px;
-    height:450px;
+    width:400px;
+    height:380px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(15, 61, 46, 0.1);
@@ -3407,7 +3404,9 @@ color:#0a2a1f;
 .zuhd-founder-info {
     flex: 1;
 }
-
+.Founder{
+    color:var(--deep-green);
+}
 .zuhd-founder-description {
     font-size:22px;
     line-height: 1.6;
@@ -3419,14 +3418,14 @@ color:#0a2a1f;
      .zuhd-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
 
 .tawheed-heading {
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
   letter-spacing: 2px;
 }
 
@@ -3454,7 +3453,7 @@ color:#0a2a1f;
 
 .hadith-content p {
   font-size:22px;
-  line-height: 1.8;
+  line-height: 30px;
   color: #ffffff;
 }
 
@@ -3476,6 +3475,11 @@ color:#0a2a1f;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
+  .course1{
+    font-size:22px;
+    list-style: 30px;
+    text-align: center;
+  }
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -3484,21 +3488,23 @@ color:#0a2a1f;
     flex-direction: column;
     text-align: center;
   }
-
+.about-main-section{
+    padding: 5px 0px;
+}
 .tawheed-heading  {
     font-size: 2rem !important;
+    padding: 0px;
   }
 
   .hadith-content p{
     font-size: 19px;
+    line-height: 25px;
   }
 
-  .sunnah-image {
-    margin-top: 20px;
-  }
-  
   .course1{
     font-size: 19px;
+    list-style: 25px;
+    text-align: center;
   }
 }
 
@@ -3507,13 +3513,13 @@ color:#0a2a1f;
         .madrasah-section {
             color:var(--deep-green);
             background-color: white;
-            padding: 80px 20px;
+            padding: 40px 20px;
         }
 
         .courses-bismillah {
             text-align: center;
             font-size: 3rem;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
 
         .dars-grid {
@@ -3538,7 +3544,7 @@ color:#0a2a1f;
         }
 
         .course-title {
-            font-size: 2rem;
+            font-size: 28px;
             margin-bottom: 15px;
             color: #ffffff;
          text-align:center;
@@ -3553,9 +3559,16 @@ color:#0a2a1f;
 }
 .zuhd-vision-text{
     font-size:19px;
-    padding: 0px 12px;
+    padding: 0px 10px;
+    text-align: center;
+    line-height: 25px;
 }
-
+.zuhd-section-title3 {
+    font-size: 2rem;
+    color: #0a2f22;
+    text-align: center;
+    padding: 10px 0px;
+}
 
     .tawheed-heading {
         font-size: 2.5rem;
@@ -3575,14 +3588,15 @@ color:#0a2a1f;
     }
 .wisdom-quote {
           font-size:19px;
-            line-height: 1.7;
+            line-height:25px;
                     text-align: center;
 
         }
-    /* .hadith-content {
-        font-size: 16px;
-        padding: 10px;
-    } */
+     .hadith-content {
+        font-size: 19px;
+        padding: 0px 10px;
+        line-height: 25px;
+    } 
 
     .sunnah-image img {
         width: 100%;
@@ -3599,7 +3613,7 @@ color:#0a2a1f;
     }
 
     .course-title {
-        font-size:19px;
+        font-size:25px;
     }
 
     .zuhd-container,
@@ -3824,7 +3838,7 @@ color:#0a2a1f;
 
     .zuhd-vision-section,
     .zuhd-founders-section {
-        margin-bottom: 60px;
+        margin-bottom: 10px;
     }
 
     .zuhd-founder-card {
@@ -6431,22 +6445,22 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 
         .consultation-doctor-content h3 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size:2.7rem;
+            margin-bottom:5px;
             color: var(--gold);
         }
 
         .consultation-doctor-content .doctor-title {
             font-size: 1.1rem;
             color: var(--gold);
-            margin-bottom: 20px;
+            margin-bottom:5px;
         }
 
         .consultation-doctor-content p {
             color: #ffffff;
             line-height:30px;
             font-size:22px;
-            margin-bottom: 25px;
+            margin-bottom:10px;
         }
 
         .consultation-doctor-credentials {
@@ -6496,7 +6510,8 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         @media (max-width: 768px) {
             .zuhd-founder-description{
                 font-size: 19px;
-                padding:0px 20px;
+                padding:0px 10px;
+                line-height: 25px;
             }
             .ilm-section{
                 gap: 10px;
@@ -6547,8 +6562,8 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             }
 
             .consultation-doctor-image {
-                width: 200px;
-                height: 200px;
+                width: 80px !important;
+                height:100px !important;
                 font-size: 50px;
             }
 
@@ -8614,10 +8629,11 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             margin: auto;
         }
 
-        .main-heading {
+        .main-heading1 {
             margin-bottom: 4rem;
             color: var(--off-white);
             position: relative;
+            font-size: 3rem;
         }
 
         .main-heading::after {
@@ -8639,7 +8655,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             margin-top: 3rem;
         }
 
-        .offer-card {
+        /* .offer-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(200, 184, 138, 0.3);
             border-radius: 12px;
@@ -8682,7 +8698,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
 
         .offer-card:hover .card-icon {
             transform: scale(1.1);
-        }
+        } */
 
         .card-text {
             font-size:22px;
@@ -8707,7 +8723,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             }
             
             .card-text {
-                font-size: 1rem;
+                font-size: 19px;
             }
         }
 
@@ -8716,8 +8732,9 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
                 padding: 1rem;
             } */
             
-            .main-heading {
+            .main-heading1 {
                 margin-bottom: 2rem;
+                font-size: 2rem;
             }
             
             .offer-card {

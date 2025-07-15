@@ -26,12 +26,12 @@
          .zuhd-timeline-section {
             max-width: 1200px;
             margin: 0 auto;
-            padding:60px 0px;
+            /* padding:60px 0px; */
         }
 
         .zuhd-section-title2 {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--gold);
            margin:40px 0px;
             /* text-shadow: 0 0 20px rgba(255, 215, 0, 0.3); */
@@ -48,10 +48,10 @@
         .zuhd-timeline-line {
             position: absolute;
             top: 25px;
-            left: 12.5%;
-            right: 12.5%;
+            left: 9.5%;
+            right:9.5%;
             height: 4px;
-            background: linear-gradient(to right, var(--gold), var(--gold), var(--gold), var(--gold));
+            background: linear-gradient(to right, white, var(--gold), var(--gold), var(--gold));
             transform-origin: left;
             animation: zuhdLineGrow 2s ease-in-out forwards;
             animation-delay: 1s;
@@ -200,6 +200,12 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .zuhd-section-title2{
+                font-size: 2rem;
+            }
+            .zuhd-timeline-section{
+                padding: 0px;
+            }
             .zuhd-timeline-container {
                 flex-direction: column;
                 align-items: center;
@@ -211,8 +217,7 @@
             }
 
             .zuhd-timeline-item {
-                width: 80%;
-                max-width: 300px;
+                /* max-width: 300px; */
             }
 
             .zuhd-timeline-dot {
@@ -248,7 +253,7 @@
                     <img src="/images/mufti4.png" alt="Dr. Sami Al-Hashmi" class="zuhd-founder-image">
                 </div>
                 <div class="zuhd-founder-info">
-                    <h2><strong>Dr. Sami Al-Hashmi</strong> <br></h2>
+                    <h2 class="Founder">Dr. Sami Al-Hashmi</h2>
                     <p class="zuhd-founder-description">
                         Born in Vienna, Austria, he earned a Master’s in Dental Surgery from the University of Otago, New Zealand, on a full scholarship. While practicing dentistry, he completed a degree in Islamic Studies from WISE University in Jordan.
 
