@@ -1580,3 +1580,169 @@ console.log("Islamic website main script initialized successfully")
 /* =================================================================== */
 /*  END OF SCRIPT                                                       */
 /* =================================================================== */
+// shorts js 
+
+document.addEventListener("DOMContentLoaded", () => {
+  const shortsData = [
+    {
+      id: 1,
+      src: "https://www.youtube.com/embed/9ALQ3m1A0Ec?autoplay=1&mute=1&controls=0&loop=1&playlist=9ALQ3m1A0Ec",
+      title: "Why Gaza Happened: The Truth No One Wants to Hear",
+      description: "Exploring the complex historical and political factors behind the Gaza conflict",
+      type: "iframe",
+    },
+    {
+      id: 2,
+      src: "https://www.youtube.com/embed/B3GwEeGyucs?autoplay=1&mute=1&controls=0&loop=1&playlist=B3GwEeGyucs",
+      title: "One Quote That Could Change Your Life",
+      description: "Discover powerful wisdom that can transform your perspective and mindset",
+      type: "iframe",
+    },
+    {
+      id: 3,
+      src: "https://www.youtube.com/embed/y5xhcyWI7Po?autoplay=1&mute=1&controls=0&loop=1&playlist=y5xhcyWI7Po",
+      title: "This Is What the Strongest Faith Looks Like",
+      description: "A life-changing reminder about the power and essence of true faith",
+      type: "iframe",
+    },
+    {
+      id: 4,
+      src: "https://www.youtube.com/embed/eGfnXUhwK6U?autoplay=1&mute=1&controls=0&loop=1&playlist=eGfnXUhwK6U",
+      title: "The Confusion of Our Time: Truth Has Become Strange",
+      description: "Mufti Abdur Rahman Mangera discusses navigating truth in modern times",
+      type: "iframe",
+    },
+    // Uncomment and add more video or local video content here if needed
+    {
+      id: 5,
+       src: "/01.mp4", // Assuming 01.mp4 is in the public folder
+       type: "video",
+       title: "Innovative Islamic Fashion with AI Sizing",
+       description: "Modern modest wear with perfect fit technology",
+     },
+     {
+      id: 6,
+     src: "/01.mp4", // Assuming 01.mp4 is in the public folder
+     type: "video",
+      title: "Eco-Friendly Lifestyle Solutions",
+      description: "Sustainable products for conscious living",
+     },
+  ]
+
+  const contentSlider = document.getElementById("content-slider")
+  const prevBtn = document.getElementById("prev-btn")
+  const nextBtn = document.getElementById("next-btn")
+  const sliderIndicators = document.getElementById("slider-indicators")
+
+  let currentIndex = 0
+
+  // Function to render media cards
+  function renderMediaCards() {
+    contentSlider.innerHTML = "" // Clear existing content
+    shortsData.forEach((short) => {
+      const mediaCard = document.createElement("div")
+      mediaCard.classList.add("media-card")
+      mediaCard.dataset.story = short.id
+
+      let mediaElement
+      if (short.type === "video") {
+        mediaElement = document.createElement("video")
+        mediaElement.classList.add("video-content")
+        mediaElement.src = short.src
+        mediaElement.autoplay = true
+        mediaElement.muted = true
+        mediaElement.loop = true
+        mediaElement.playsInline = true
+        mediaElement.poster = "/placeholder.svg?height=400&width=280" // Placeholder for local video
+        mediaElement.innerHTML = "Your browser does not support the video tag."
+      } else {
+        // Default to iframe for YouTube
+        mediaElement = document.createElement("iframe")
+        mediaElement.classList.add("video-frame")
+        mediaElement.src = short.src
+        mediaElement.title = short.title
+        mediaElement.setAttribute(
+          "allow",
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+        )
+        mediaElement.setAttribute("referrerpolicy", "strict-origin-when-cross-origin")
+        mediaElement.setAttribute("allowfullscreen", "")
+      }
+
+      const cardInfo = document.createElement("div")
+      cardInfo.classList.add("card-info")
+
+      const contentTitle = document.createElement("div")
+      contentTitle.classList.add("content-title")
+      contentTitle.textContent = short.title
+
+      const contentDescription = document.createElement("div")
+      contentDescription.classList.add("content-description")
+      contentDescription.textContent = short.description
+
+      cardInfo.appendChild(contentTitle)
+      cardInfo.appendChild(contentDescription)
+      mediaCard.appendChild(mediaElement)
+      mediaCard.appendChild(cardInfo)
+      contentSlider.appendChild(mediaCard)
+    })
+  }
+
+  // Function to render dot indicators
+  function renderDotIndicators() {
+    sliderIndicators.innerHTML = "" // Clear existing dots
+    shortsData.forEach((_, index) => {
+      const dot = document.createElement("span")
+      dot.classList.add("dot-indicator")
+      if (index === currentIndex) {
+        dot.classList.add("active")
+      }
+      dot.addEventListener("click", () => {
+        const cardWidth = contentSlider.children[0].clientWidth + 20 // Card width + gap
+        contentSlider.scrollTo({
+          left: index * cardWidth,
+          behavior: "smooth",
+        })
+      })
+      sliderIndicators.appendChild(dot)
+    })
+  }
+
+  // Update active dot based on scroll position
+  function updateActiveDot() {
+    if (contentSlider.children.length === 0) return
+
+    const { scrollLeft, scrollWidth, clientWidth } = contentSlider
+    const totalCards = shortsData.length
+    // Calculate approximate card width including gap
+    const cardWidth = (scrollWidth - (totalCards - 1) * 20) / totalCards
+    const newIndex = Math.round(scrollLeft / cardWidth)
+
+    if (newIndex !== currentIndex) {
+      currentIndex = newIndex
+      renderDotIndicators() // Re-render to update active class
+    }
+  }
+
+  // Navigation functions
+  const scrollLeft = () => {
+    if (contentSlider.children.length === 0) return
+    const cardWidth = contentSlider.children[0].clientWidth + 20 // Card width + gap
+    contentSlider.scrollBy({ left: -cardWidth, behavior: "smooth" })
+  }
+
+  const scrollRight = () => {
+    if (contentSlider.children.length === 0) return
+    const cardWidth = contentSlider.children[0].clientWidth + 20 // Card width + gap
+    contentSlider.scrollBy({ left: cardWidth, behavior: "smooth" })
+  }
+
+  // Event Listeners
+  prevBtn.addEventListener("click", scrollLeft)
+  nextBtn.addEventListener("click", scrollRight)
+  contentSlider.addEventListener("scroll", updateActiveDot)
+
+  // Initial render
+  renderMediaCards()
+  renderDotIndicators()
+})
