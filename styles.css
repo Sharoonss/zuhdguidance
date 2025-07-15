@@ -3375,9 +3375,10 @@ color:#0a2a1f;
 
 /* about-section */
 .zuhd-about-container {
-    max-width:1200px;
-    margin: 0 auto; 
-    padding:40px 20px; 
+    width:100%;
+    margin:auto; 
+    /* padding:40px 20px;  */
+    background-color:white;
 }
 
 /* Animation Keyframes */
@@ -3480,7 +3481,7 @@ color:#0a2a1f;
     width: 100%;
     height: 100vh;
     text-align: center; /* Center horizontally */
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
     opacity: 0;
     animation: zuhdFadeInDown 1s ease-out forwards;
     animation-delay: 0.2s;
@@ -3497,6 +3498,8 @@ color:#0a2a1f;
 }
 .about-main-section{
   max-width: 1200px;
+  margin: auto;
+  padding:40px;
 }
 /* Vision Section */
 .zuhd-vision-section {
@@ -3505,11 +3508,19 @@ color:#0a2a1f;
 }
 .zuhd-section-title{
     font-size: 3rem;
+    color: #0a2f22;
+    text-align:center;
+}
+.zuhd-section-title3{
+    font-size: 3rem;
+    color: #0a2f22;
+    text-align:center;
+    padding: 40px 0px;
 }
 .zuhd-vision-text {
     font-size:22px;
     line-height: 1.6;
-    color: white;
+    color: #0a2f22;
     max-width: 1200px;
     opacity: 0;
     animation: zuhdFadeInUp 0.8s ease-out forwards;
@@ -3568,7 +3579,7 @@ color:#0a2a1f;
 .zuhd-founder-description {
     font-size:22px;
     line-height: 1.6;
-    color: white;
+    color:var(--deep-green);
 }
 
 
@@ -3662,7 +3673,8 @@ color:#0a2a1f;
 
         /* Courses Section */
         .madrasah-section {
-            color: #f5f1e8;
+            color:var(--deep-green);
+            background-color: white;
             padding: 80px 20px;
         }
 
@@ -3681,8 +3693,8 @@ color:#0a2a1f;
         }
 
         .fiqh-card {
-            background-color: #f5f1e8;
-            color: #2c2c2c;
+            background-color:var(--deep-green);
+            color: #ffffff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -3694,10 +3706,11 @@ color:#0a2a1f;
         }
 
         .course-title {
-            font-size: 1.5rem;
-            font-weight: bold;
+            font-size: 2rem;
             margin-bottom: 15px;
-            color: #1a4d3a;
+            color: #ffffff;
+         text-align:center;
+
         }
 @media (max-width: 768px) {
     .zuhd-section-title{
