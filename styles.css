@@ -8922,4 +8922,47 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         .offer-card:nth-child(11) { animation-delay: 1.1s; }
         .offer-card:nth-child(12) { animation-delay: 1.2s; }
 
-        /* time line  */
+        /* usps line  */
+
+           /* Scrolling Section */
+        .scroll-section {
+            width: 100%;
+            overflow: hidden;
+            padding: 12px 0;
+        }
+
+        .scroll-content {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .marquee-track {
+            display: flex;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 5px 30px;
+            margin-right: 40px;
+            font-weight: bold;
+            color: #fafafa;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .item img {
+            width: 70px;
+            height: 70px;
+            margin-right: 10px;
+        }

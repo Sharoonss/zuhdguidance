@@ -1,0 +1,100 @@
+ /* Scrolling Section */
+   .scroll-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+            width: 100%;
+            overflow: hidden;
+            padding: 12px 0;
+        }
+
+        .scroll-content {
+            display: flex;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 5px 30px;
+            margin-right: 40px;
+            font-weight: bold;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .item img {
+            width: 50px;
+            height:50px;
+            margin-right: 10px;
+        }
+
+<div class="scroll-section">
+    <div class="scroll-content" id="scrollContent">
+        <div class="item">
+            <img src="/partnerlogo/Icon-01.png" alt="📚"> AUTHENTIC ISLAMIC KNOWLEDGE
+        </div>
+        <div class="item">
+            <img src="/partnerlogo/Icon-02.png" alt="🌐"> GLOBAL SCHOLAR NETWORK
+        </div>
+        <div class="item">
+            <img src="/partnerlogo/Icon-03.png" alt="📸"> HIGH-QUALITY VISUAL CONTENT
+        </div>
+        <div class="item">
+          <img src="/partnerlogo/Icon-04.png" alt="📸"> FAITH-DRIVEN PURPOSE LED
+      </div>
+      <div class="item">
+        <img src="/partnerlogo/Icon-05.png" alt="📸"> VOICE FOR JUSTICE 
+    </div>
+        <!-- Duplicate items for continuous scrolling -->
+        <div class="item">
+          <img src="/partnerlogo/Icon-01.png" alt=""> AUTHENTIC ISLAMIC KNOWLEDGE
+      </div>
+      <div class="item">
+          <img src="/partnerlogo/Icon-02.png" alt=""> GLOBAL SCHOLAR NETWORK
+      </div>
+      <div class="item">
+          <img src="/partnerlogo/Icon-03.png" alt=""> HIGH-QUALITY VISUAL CONTENT
+      </div>
+      <div class="item">
+        <img src="/partnerlogo/Icon-04.png" alt=""> FAITH-DRIVEN PURPOSE LED
+    </div>
+    <div class="item">
+      <img src="/partnerlogo/Icon-05.png" alt=""> VOICE FOR JUSTICE 
+  </div>
+    </div>
+</div>
+
+ // Get elements
+ const content = document.getElementById('scrollContent');
+        
+        // Animation variables
+        let position = 0;
+        let animationId = null;
+        let speed = 0.7; // Very slow speed for subtle effect
+        
+        // Start animation
+        function startAnimation() {
+            if (animationId !== null) return; // Already running
+            
+            function animate() {
+                position -= speed;
+                
+                // Reset position when first element is offscreen
+                const firstItem = content.children[0];
+                if (-position > firstItem.offsetWidth) {
+                    position += firstItem.offsetWidth;
+                    // Move first item to the end
+                    content.appendChild(firstItem);
+                }
+                
+                content.style.transform = `translateX(${position}px)`;
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        // Start animation automatically
+        window.addEventListener('DOMContentLoaded', startAnimation);
