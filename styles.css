@@ -6287,13 +6287,15 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
                 margin-bottom: 10px;
             }
             .consultation-hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 32px;
             }
 .consultation-doctor-content .doctor-title{
     margin:0;
 }
             .consultation-hero-content p {
-                font-size: 1rem;
+                font-size: 19px;
+                padding: 0px 30px;
             }
 
             .consultation-hero-section {
@@ -8927,7 +8929,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 
         .newsletter p {
-            font-size: 0.9rem;
+            font-size:16px;
             opacity: 0.8;
             margin-bottom: 1rem;
             line-height: 1.4;
@@ -9208,10 +9210,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             }
 
             .newsletter h3 {
-                font-size: 18px;
-                margin-bottom: 10px;
-                text-transform: uppercase;
-                letter-spacing: 1px;
+               padding: 10px 20px;
             }
 
             .newsletter h3::after {
@@ -9221,6 +9220,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             .newsletter p {
                 font-size: 14px;
                 margin-bottom: 20px;
+                padding: 0px 20px;
             }
             
             .newsletter-form {
