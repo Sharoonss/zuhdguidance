@@ -6208,9 +6208,10 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
         }
 
         .consultation-doctor-content h3 {
-            font-size:2.7rem;
-            margin-bottom:5px;
+            font-size:30px;
+            /* margin-bottom:5px; */
             color: var(--gold);
+            margin-top: 60px;
         }
 
         .consultation-doctor-content .doctor-title {
