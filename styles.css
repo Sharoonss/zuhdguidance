@@ -6272,6 +6272,17 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .consultation-service-icon{
+                  width:80px;
+            height:80px;
+            }
+            .consultation-service-card p{
+                font-size: 19px;
+                line-height:25px;
+            }
+            .consultation-section-title{
+                font-size: 2rem;
+            }
             .zuhd-founder-description{
                 font-size: 19px;
                 padding:0px 10px;
@@ -6297,6 +6308,7 @@ input[type="radio"]:checked + .zuhd-radio-label::after {
             .consultation-hero-content p {
                 font-size: 19px;
                 padding: 0px 30px;
+                line-height: 25px;
             }
 
             .consultation-hero-section {
