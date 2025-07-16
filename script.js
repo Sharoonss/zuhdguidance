@@ -1746,3 +1746,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderMediaCards()
   renderDotIndicators()
 })
+  // Existing functions (if they exist in your codebase)
+        function linkClick(item) {
+            console.log('Link clicked:', item);
+        }
+
+        function socialClick(platform) {
+            console.log('Social link clicked:', platform);
+        }
+
+        function submitNewsletter(event) {
+            event.preventDefault();
+            console.log('Newsletter submitted');
+            // Add your newsletter submission logic here
+        }

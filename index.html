@@ -982,40 +982,7 @@ function socialClick(platform) {
                 videoContainer.style.pointerEvents = 'auto';
             }, 500);
         } 
-        
-        
-
-         // Mobile accordion functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const footerColumns = document.querySelectorAll('.footer-column:not(.footer-logo):not(.newsletter)');
-            
-            footerColumns.forEach(column => {
-                const heading = column.querySelector('h3');
-                if (heading) {
-                    heading.addEventListener('click', function() {
-                        // Only work on mobile
-                        if (window.innerWidth <= 768) {
-                            column.classList.toggle('active');
-                        }
-                    });
-                }
-            });
-        });
-
-        // Existing functions (if they exist in your codebase)
-        function linkClick(item) {
-            console.log('Link clicked:', item);
-        }
-
-        function socialClick(platform) {
-            console.log('Social link clicked:', platform);
-        }
-
-        function submitNewsletter(event) {
-            event.preventDefault();
-            console.log('Newsletter submitted');
-            // Add your newsletter submission logic here
-        }
+          
     </script>
 
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
