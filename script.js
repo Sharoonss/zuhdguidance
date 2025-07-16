@@ -1581,7 +1581,6 @@ console.log("Islamic website main script initialized successfully")
 /*  END OF SCRIPT                                                       */
 /* =================================================================== */
 // shorts js 
-
 document.addEventListener("DOMContentLoaded", () => {
   const shortsData = [
     {
@@ -1612,140 +1611,131 @@ document.addEventListener("DOMContentLoaded", () => {
       description: "Mufti Abdur Rahman Mangera discusses navigating truth in modern times",
       type: "iframe",
     },
-    // Uncomment and add more video or local video content here if needed
     {
       id: 5,
-       src: "/01.mp4", // Assuming 01.mp4 is in the public folder
-       type: "video",
-       title: "Innovative Islamic Fashion with AI Sizing",
-       description: "Modern modest wear with perfect fit technology",
-     },
-     {
+      src: "https://www.youtube.com/embed/fw-BGeoz9kk",
+      type: "iframe", // FIXED
+      title: "The Danger of Dividing the Ummah – Sect Disputes Are Haram!",
+      description: "Sect Disputes Are Haram"
+    },
+    {
       id: 6,
-     src: "/01.mp4", // Assuming 01.mp4 is in the public folder
-     type: "video",
-      title: "Eco-Friendly Lifestyle Solutions",
-      description: "Sustainable products for conscious living",
-     },
-  ]
+      src: "https://www.youtube.com/embed/DlFjFh5zE54",
+      type: "iframe", // FIXED
+      title: "Who is ALLAH ﷻ?",
+      description: "A Reminder That Will Shake Your Heart"
+    }
+  ];
 
-  const contentSlider = document.getElementById("content-slider")
-  const prevBtn = document.getElementById("prev-btn")
-  const nextBtn = document.getElementById("next-btn")
-  const sliderIndicators = document.getElementById("slider-indicators")
+  const contentSlider = document.getElementById("content-slider");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+  const sliderIndicators = document.getElementById("slider-indicators");
 
-  let currentIndex = 0
+  let currentIndex = 0;
 
-  // Function to render media cards
   function renderMediaCards() {
-    contentSlider.innerHTML = "" // Clear existing content
+    contentSlider.innerHTML = "";
     shortsData.forEach((short) => {
-      const mediaCard = document.createElement("div")
-      mediaCard.classList.add("media-card")
-      mediaCard.dataset.story = short.id
+      const mediaCard = document.createElement("div");
+      mediaCard.classList.add("media-card");
+      mediaCard.dataset.story = short.id;
 
-      let mediaElement
+      let mediaElement;
       if (short.type === "video") {
-        mediaElement = document.createElement("video")
-        mediaElement.classList.add("video-content")
-        mediaElement.src = short.src
-        mediaElement.autoplay = true
-        mediaElement.muted = true
-        mediaElement.loop = true
-        mediaElement.playsInline = true
-        mediaElement.poster = "/placeholder.svg?height=400&width=280" // Placeholder for local video
-        mediaElement.innerHTML = "Your browser does not support the video tag."
+        mediaElement = document.createElement("video");
+        mediaElement.classList.add("video-content");
+        mediaElement.src = short.src;
+        mediaElement.autoplay = true;
+        mediaElement.muted = true;
+        mediaElement.loop = true;
+        mediaElement.playsInline = true;
+        mediaElement.poster = "/placeholder.svg?height=400&width=280";
+        mediaElement.innerHTML = "Your browser does not support the video tag.";
       } else {
-        // Default to iframe for YouTube
-        mediaElement = document.createElement("iframe")
-        mediaElement.classList.add("video-frame")
-        mediaElement.src = short.src
-        mediaElement.title = short.title
+        mediaElement = document.createElement("iframe");
+        mediaElement.classList.add("video-frame");
+        mediaElement.src = short.src;
+        mediaElement.title = short.title;
         mediaElement.setAttribute(
           "allow",
-          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
-        )
-        mediaElement.setAttribute("referrerpolicy", "strict-origin-when-cross-origin")
-        mediaElement.setAttribute("allowfullscreen", "")
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        );
+        mediaElement.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+        mediaElement.setAttribute("allowfullscreen", "");
       }
 
-      const cardInfo = document.createElement("div")
-      cardInfo.classList.add("card-info")
+      const cardInfo = document.createElement("div");
+      cardInfo.classList.add("card-info");
 
-      const contentTitle = document.createElement("div")
-      contentTitle.classList.add("content-title")
-      contentTitle.textContent = short.title
+      const contentTitle = document.createElement("div");
+      contentTitle.classList.add("content-title");
+      contentTitle.textContent = short.title;
 
-      const contentDescription = document.createElement("div")
-      contentDescription.classList.add("content-description")
-      contentDescription.textContent = short.description
+      const contentDescription = document.createElement("div");
+      contentDescription.classList.add("content-description");
+      contentDescription.textContent = short.description;
 
-      cardInfo.appendChild(contentTitle)
-      cardInfo.appendChild(contentDescription)
-      mediaCard.appendChild(mediaElement)
-      mediaCard.appendChild(cardInfo)
-      contentSlider.appendChild(mediaCard)
-    })
+      cardInfo.appendChild(contentTitle);
+      cardInfo.appendChild(contentDescription);
+      mediaCard.appendChild(mediaElement);
+      mediaCard.appendChild(cardInfo);
+      contentSlider.appendChild(mediaCard);
+    });
   }
 
-  // Function to render dot indicators
   function renderDotIndicators() {
-    sliderIndicators.innerHTML = "" // Clear existing dots
+    sliderIndicators.innerHTML = "";
     shortsData.forEach((_, index) => {
-      const dot = document.createElement("span")
-      dot.classList.add("dot-indicator")
+      const dot = document.createElement("span");
+      dot.classList.add("dot-indicator");
       if (index === currentIndex) {
-        dot.classList.add("active")
+        dot.classList.add("active");
       }
       dot.addEventListener("click", () => {
-        const cardWidth = contentSlider.children[0].clientWidth + 20 // Card width + gap
+        const cardWidth = contentSlider.children[0].clientWidth + 20;
         contentSlider.scrollTo({
           left: index * cardWidth,
           behavior: "smooth",
-        })
-      })
-      sliderIndicators.appendChild(dot)
-    })
+        });
+      });
+      sliderIndicators.appendChild(dot);
+    });
   }
 
-  // Update active dot based on scroll position
   function updateActiveDot() {
-    if (contentSlider.children.length === 0) return
+    if (contentSlider.children.length === 0) return;
 
-    const { scrollLeft, scrollWidth, clientWidth } = contentSlider
-    const totalCards = shortsData.length
-    // Calculate approximate card width including gap
-    const cardWidth = (scrollWidth - (totalCards - 1) * 20) / totalCards
-    const newIndex = Math.round(scrollLeft / cardWidth)
+    const { scrollLeft, scrollWidth, clientWidth } = contentSlider;
+    const totalCards = shortsData.length;
+    const cardWidth = (scrollWidth - (totalCards - 1) * 20) / totalCards;
+    const newIndex = Math.round(scrollLeft / cardWidth);
 
     if (newIndex !== currentIndex) {
-      currentIndex = newIndex
-      renderDotIndicators() // Re-render to update active class
+      currentIndex = newIndex;
+      renderDotIndicators();
     }
   }
 
-  // Navigation functions
   const scrollLeft = () => {
-    if (contentSlider.children.length === 0) return
-    const cardWidth = contentSlider.children[0].clientWidth + 20 // Card width + gap
-    contentSlider.scrollBy({ left: -cardWidth, behavior: "smooth" })
-  }
+    if (contentSlider.children.length === 0) return;
+    const cardWidth = contentSlider.children[0].clientWidth + 20;
+    contentSlider.scrollBy({ left: -cardWidth, behavior: "smooth" });
+  };
 
   const scrollRight = () => {
-    if (contentSlider.children.length === 0) return
-    const cardWidth = contentSlider.children[0].clientWidth + 20 // Card width + gap
-    contentSlider.scrollBy({ left: cardWidth, behavior: "smooth" })
-  }
+    if (contentSlider.children.length === 0) return;
+    const cardWidth = contentSlider.children[0].clientWidth + 20;
+    contentSlider.scrollBy({ left: cardWidth, behavior: "smooth" });
+  };
 
-  // Event Listeners
-  prevBtn.addEventListener("click", scrollLeft)
-  nextBtn.addEventListener("click", scrollRight)
-  contentSlider.addEventListener("scroll", updateActiveDot)
+  prevBtn.addEventListener("click", scrollLeft);
+  nextBtn.addEventListener("click", scrollRight);
+  contentSlider.addEventListener("scroll", updateActiveDot);
 
-  // Initial render
-  renderMediaCards()
-  renderDotIndicators()
-})
+  renderMediaCards();
+  renderDotIndicators();
+});
   // Existing functions (if they exist in your codebase)
         function linkClick(item) {
             console.log('Link clicked:', item);
